@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <DefaultItemExcludes Condition="'$(Configuration)' == 'ExportRelease'">
-      $(DefaultItemExcludes);Examples/**;addons/SGT/**
+      $(DefaultItemExcludes);addons/SGT/**
     </DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
