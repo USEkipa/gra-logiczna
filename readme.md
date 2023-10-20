@@ -15,3 +15,12 @@ Celem gry jest przechodzenie poziomów z punktu początkowego do końca. Mapa b�
 - Dodawanie własnych poziomów
 - Zapis postępów gracza
 - Edytor map (opcjonalnie / optymistycznie)
+
+**Estymaty**
+
+Story pointy
+- 1 (max 1 dzień)
+- 2 (max 2-3 dni)
+- 3 (max 3-4 dni)
+- 5 (max tydzień)
+- 8 (max 2 tygodnie)
