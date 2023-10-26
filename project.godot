@@ -10,12 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GraLogiczna"
+config/name="LogicGame"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 
 [dotnet]
 
-project/assembly_name="SGT"
+project/assembly_name="LogicGame"
 
 [editor_plugins]
 

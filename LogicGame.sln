@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraLogiczna", "GraLogiczna.csproj", "{C01B474E-8BB2-4ACB-9A60-D1E48C885891}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicGame", "LogicGame.csproj", "{C01B474E-8BB2-4ACB-9A60-D1E48C885891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
