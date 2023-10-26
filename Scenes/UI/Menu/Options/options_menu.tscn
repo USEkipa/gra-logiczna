@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd2h3xfpvoxrw"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Menu/Options/options_menu.cs" id="1_pjroc"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pjroc")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.01
+anchor_bottom = 0.01
+offset_right = 45.0
+offset_bottom = 31.0
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sound" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="SoundOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Volume" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 95
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Volume"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Volume"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music"
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Music"]
+layout_mode = 2
+
+[node name="Graphics" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GraphicsOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="FullScreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 95
+
+[node name="FullScreen" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Full Screen"
+
+[node name="toggleFullScreen" type="CheckButton" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen"]
+layout_mode = 2
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen/toggleFullScreen" to="." method="_on_toggle_full_screen_pressed"]
