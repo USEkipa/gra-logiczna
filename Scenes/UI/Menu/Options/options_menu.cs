@@ -4,11 +4,17 @@ using System;
 public partial class options_menu : Control
 {
 	private CheckButton toggleFullScreen;
-	// Called when the node enters the scene tree for the first time.
+	private CheckButton toggleMusic;
+	private HSlider volumeSlider;
+
 	public override void _Ready()
 	{
-		toggleFullScreen = GetNode<CheckButton>("MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen/toggleFullScreen");
+		toggleFullScreen = GetNode<CheckButton>("PanelContainer/VBoxContainer/FullScreen/toggleFullScreen");
+		toggleMusic = GetNode<CheckButton>("PanelContainer/VBoxContainer/Music/toggleMusic");
+		volumeSlider = GetNode<HSlider>("PanelContainer/VBoxContainer/Volume/VolumeControls/VolumeSlider");
 		toggleFullScreen.ButtonPressed = globals.isFullScreen;
+		toggleMusic.ButtonPressed = globals.isMusic;
+		volumeSlider.Value = globals.volume;
 	}
 	
 	private void _on_back_pressed()
@@ -29,10 +35,24 @@ public partial class options_menu : Control
 			GetTree().Root.GetWindow().Mode = Window.ModeEnum.Windowed;
 		}
 	}
+
+	private void _on_toggle_music_pressed()
+	{
+		globals.isMusic = toggleMusic.ButtonPressed;
+	}
+	
+	private void _on_h_slider_value_changed(double value)
+	{
+		globals.volume = (int)volumeSlider.Value;
+	}
+
+	private void _on_volume_up_btn_pressed()
+	{
+		volumeSlider.Value += 1;
+	}
+
+	private void _on_volume_down_btn_pressed()
+	{
+		volumeSlider.Value -= 1;
+	}
 }
-
-
-
-
-
-

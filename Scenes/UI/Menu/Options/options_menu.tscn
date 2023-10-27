@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd2h3xfpvoxrw"]
+[gd_scene load_steps=11 format=3 uid="uid://bd2h3xfpvoxrw"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Menu/Options/options_menu.cs" id="1_pjroc"]
+[ext_resource type="Theme" uid="uid://be7rheue60ujx" path="res://themes/ui/ui_theme.tres" id="2_402bp"]
+[ext_resource type="Texture2D" uid="uid://dd1oepbtnkyoa" path="res://graphics/UI/Icon_White (8).png" id="3_h4jc7"]
+[ext_resource type="Texture2D" uid="uid://b2o8rktuj7a8u" path="res://graphics/UI/bitmap_#path27612_1.png" id="3_nuxyv"]
+[ext_resource type="Texture2D" uid="uid://beqak756ldksg" path="res://graphics/UI/bitmap_#path27612_1_pressed.png" id="4_1pj40"]
+[ext_resource type="Texture2D" uid="uid://chd4kq8eeovh4" path="res://graphics/UI/Icon_White (9).png" id="4_4xbp5"]
+[ext_resource type="Texture2D" uid="uid://ctb13cb8o4kuu" path="res://graphics/UI/Icon_White_pressed (8).png" id="4_xgf3b"]
+[ext_resource type="Texture2D" uid="uid://2gln7cffw6qo" path="res://graphics/UI/Icon_White_outline (8).png" id="4_ywoyg"]
+[ext_resource type="Texture2D" uid="uid://dn1afboktjqnh" path="res://graphics/UI/Icon_White_pressed (9).png" id="7_eejne"]
+[ext_resource type="Texture2D" uid="uid://cx4qc0t6jq76f" path="res://graphics/UI/Icon_White_outline (9).png" id="8_kebwn"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -11,105 +20,140 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pjroc")
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
 anchor_top = 0.01
 anchor_right = 0.01
 anchor_bottom = 0.01
-offset_right = 45.0
-offset_bottom = 31.0
-text = "Back"
+offset_left = 8.2
+offset_top = 15.8
+offset_right = 35.2
+offset_bottom = 47.8
+theme = ExtResource("2_402bp")
+texture_normal = ExtResource("3_nuxyv")
+texture_pressed = ExtResource("4_1pj40")
+texture_hover = ExtResource("4_1pj40")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.0
+offset_top = -283.0
+offset_right = 302.0
+offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_402bp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 200)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Volume" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Sound" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]
+[node name="VolumeLabel" type="Label" parent="PanelContainer/VBoxContainer/Volume"]
 layout_mode = 2
-
-[node name="SoundOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Volume" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 95
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Volume"]
-layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_type_variation = &"HeaderMedium"
 text = "Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Volume"]
-custom_minimum_size = Vector2(250, 0)
+[node name="VolumeControls" type="HBoxContainer" parent="PanelContainer/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VolumeDownBtn" type="TextureButton" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_4xbp5")
+texture_pressed = ExtResource("7_eejne")
+texture_hover = ExtResource("8_kebwn")
+
+[node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+size_flags_stretch_ratio = 12.0
 
-[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions"]
+[node name="Spacer2" type="Control" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 100
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Music"]
+[node name="VolumeUpBtn" type="TextureButton" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_h4jc7")
+texture_pressed = ExtResource("4_xgf3b")
+texture_hover = ExtResource("4_ywoyg")
+
+[node name="Music" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MusicLabel" type="Label" parent="PanelContainer/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderMedium"
 text = "Music"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/TabContainer/Sound/SoundOptions/Music"]
+[node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer/Music"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Graphics" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
+[node name="toggleMusic" type="CheckButton" parent="PanelContainer/VBoxContainer/Music"]
 layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"CheckButtonMusic"
 
-[node name="GraphicsOptions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Graphics"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="FullScreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions"]
+[node name="Spacer2" type="Control" parent="PanelContainer/VBoxContainer/Music"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 95
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
 
-[node name="FullScreen" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen"]
+[node name="FullScreen" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="FullScreenLabel" type="Label" parent="PanelContainer/VBoxContainer/FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderMedium"
 text = "Full Screen"
 
-[node name="toggleFullScreen" type="CheckButton" parent="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen"]
+[node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer/FullScreen"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="toggleFullScreen" type="CheckButton" parent="PanelContainer/VBoxContainer/FullScreen"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"CheckButtonFullScreen"
+
+[node name="Spacer2" type="Control" parent="PanelContainer/VBoxContainer/FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Graphics/GraphicsOptions/FullScreen/toggleFullScreen" to="." method="_on_toggle_full_screen_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Volume/VolumeControls/VolumeDownBtn" to="." method="_on_volume_down_btn_pressed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/Volume/VolumeControls/VolumeSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Volume/VolumeControls/VolumeUpBtn" to="." method="_on_volume_up_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Music/toggleMusic" to="." method="_on_toggle_music_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/FullScreen/toggleFullScreen" to="." method="_on_toggle_full_screen_pressed"]
