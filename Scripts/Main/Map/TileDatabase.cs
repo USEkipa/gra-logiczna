@@ -4,14 +4,17 @@ namespace LogicGame;
 
 public class TileDatabase : InMemoryDatabase<Tile>
 {
-  public enum TileType { TEMP_TILE_NAME }
+  public enum Layer { BACKGROUND, FOREGROUND }
+  public enum TileType { STONE, STONE_GROUND, WATER }
 
   public TileDatabase()
   {
-    AddTile(TileType.TEMP_TILE_NAME, Colors.SkyBlue);
+    AddTile(TileType.STONE, Layer.BACKGROUND);
+    AddTile(TileType.WATER, Layer.BACKGROUND);
+    AddTile(TileType.STONE_GROUND, Layer.FOREGROUND);
   }
 
-  private void AddTile(TileType tileType, Color color)
-    => AddEntry(tileType, new((int)tileType, color));
+  private void AddTile(TileType tileType, Layer layer)
+    => AddEntry(tileType, new((int)tileType, (int)layer));
 
 }

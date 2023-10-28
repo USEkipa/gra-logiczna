@@ -1,4 +1,3 @@
-using Godot;
 using Newtonsoft.Json;
 
 namespace LogicGame;
@@ -6,12 +5,12 @@ namespace LogicGame;
 public class Tile : JsonSerializable
 {
   [JsonProperty] public int tileId;
-  [JsonProperty] public Color color;
+  [JsonProperty] public int layer;
 
-  public Tile(int tileId = default, Color color = default)
+  public Tile(int tileId = default, int layer = default)
   {
     this.tileId = tileId;
-    this.color = color;
+    this.layer = layer;
   }
 
   public Tile() { }
@@ -23,10 +22,10 @@ public class Tile : JsonSerializable
 
     Tile other = obj as Tile;
 
-    return (tileId == other.tileId) && (color == other.color);
+    return (tileId == other.tileId) && (layer == other.layer);
   }
 
   public override int GetHashCode()
-    => System.HashCode.Combine(tileId, color);
+    => System.HashCode.Combine(tileId, layer);
 
 }
