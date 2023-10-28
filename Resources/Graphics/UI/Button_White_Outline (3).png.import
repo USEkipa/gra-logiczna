@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3seqrir5wk18"
-path="res://.godot/imported/Window_Dark (5).png-4fa690ee60a6b1ad30257bf6e6888407.ctex"
+uid="uid://ckswhjlg03f7i"
+path="res://.godot/imported/Button_White_Outline (3).png-a8a0b3b8c08e079d14d640d19fb1c4eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/UI/Window_Dark (5).png"
-dest_files=["res://.godot/imported/Window_Dark (5).png-4fa690ee60a6b1ad30257bf6e6888407.ctex"]
+source_file="res://Resources/Graphics/UI/Button_White_Outline (3).png"
+dest_files=["res://.godot/imported/Button_White_Outline (3).png-a8a0b3b8c08e079d14d640d19fb1c4eb.ctex"]
 
 [params]
 

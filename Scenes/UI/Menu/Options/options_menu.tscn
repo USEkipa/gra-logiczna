@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://bd2h3xfpvoxrw"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Menu/Options/options_menu.cs" id="1_pjroc"]
-[ext_resource type="Theme" uid="uid://be7rheue60ujx" path="res://themes/ui/ui_theme.tres" id="2_402bp"]
-[ext_resource type="Texture2D" uid="uid://dd1oepbtnkyoa" path="res://graphics/UI/Icon_White (8).png" id="3_h4jc7"]
-[ext_resource type="Texture2D" uid="uid://b2o8rktuj7a8u" path="res://graphics/UI/bitmap_#path27612_1.png" id="3_nuxyv"]
-[ext_resource type="Texture2D" uid="uid://beqak756ldksg" path="res://graphics/UI/bitmap_#path27612_1_pressed.png" id="4_1pj40"]
-[ext_resource type="Texture2D" uid="uid://chd4kq8eeovh4" path="res://graphics/UI/Icon_White (9).png" id="4_4xbp5"]
-[ext_resource type="Texture2D" uid="uid://ctb13cb8o4kuu" path="res://graphics/UI/Icon_White_pressed (8).png" id="4_xgf3b"]
-[ext_resource type="Texture2D" uid="uid://2gln7cffw6qo" path="res://graphics/UI/Icon_White_outline (8).png" id="4_ywoyg"]
-[ext_resource type="Texture2D" uid="uid://dn1afboktjqnh" path="res://graphics/UI/Icon_White_pressed (9).png" id="7_eejne"]
-[ext_resource type="Texture2D" uid="uid://cx4qc0t6jq76f" path="res://graphics/UI/Icon_White_outline (9).png" id="8_kebwn"]
+[ext_resource type="Theme" uid="uid://be7rheue60ujx" path="res://Resources/Themes/ui/ui_theme.tres" id="2_hpanq"]
+[ext_resource type="Texture2D" uid="uid://b2o8rktuj7a8u" path="res://Resources/Graphics/UI/bitmap_#path27612_1.png" id="3_qkrow"]
+[ext_resource type="Texture2D" uid="uid://beqak756ldksg" path="res://Resources/Graphics/UI/bitmap_#path27612_1_pressed.png" id="4_b8ftq"]
+[ext_resource type="Texture2D" uid="uid://chd4kq8eeovh4" path="res://Resources/Graphics/UI/Icon_White (9).png" id="5_aepkh"]
+[ext_resource type="Texture2D" uid="uid://dn1afboktjqnh" path="res://Resources/Graphics/UI/Icon_White_pressed (9).png" id="6_usfnr"]
+[ext_resource type="Texture2D" uid="uid://cx4qc0t6jq76f" path="res://Resources/Graphics/UI/Icon_White_outline (9).png" id="7_22lu7"]
+[ext_resource type="Texture2D" uid="uid://dd1oepbtnkyoa" path="res://Resources/Graphics/UI/Icon_White (8).png" id="8_ysvmt"]
+[ext_resource type="Texture2D" uid="uid://ctb13cb8o4kuu" path="res://Resources/Graphics/UI/Icon_White_pressed (8).png" id="9_0j5ry"]
+[ext_resource type="Texture2D" uid="uid://2gln7cffw6qo" path="res://Resources/Graphics/UI/Icon_White_outline (8).png" id="10_sx2mr"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -31,10 +31,10 @@ offset_left = 8.2
 offset_top = 15.8
 offset_right = 35.2
 offset_bottom = 47.8
-theme = ExtResource("2_402bp")
-texture_normal = ExtResource("3_nuxyv")
-texture_pressed = ExtResource("4_1pj40")
-texture_hover = ExtResource("4_1pj40")
+theme = ExtResource("2_hpanq")
+texture_normal = ExtResource("3_qkrow")
+texture_pressed = ExtResource("4_b8ftq")
+texture_hover = ExtResource("4_b8ftq")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -49,7 +49,7 @@ offset_right = 302.0
 offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_402bp")
+theme = ExtResource("2_hpanq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -71,9 +71,9 @@ size_flags_vertical = 3
 [node name="VolumeDownBtn" type="TextureButton" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("4_4xbp5")
-texture_pressed = ExtResource("7_eejne")
-texture_hover = ExtResource("8_kebwn")
+texture_normal = ExtResource("5_aepkh")
+texture_pressed = ExtResource("6_usfnr")
+texture_hover = ExtResource("7_22lu7")
 
 [node name="Spacer" type="Control" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
@@ -92,9 +92,9 @@ size_flags_horizontal = 3
 [node name="VolumeUpBtn" type="TextureButton" parent="PanelContainer/VBoxContainer/Volume/VolumeControls"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("3_h4jc7")
-texture_pressed = ExtResource("4_xgf3b")
-texture_hover = ExtResource("4_ywoyg")
+texture_normal = ExtResource("8_ysvmt")
+texture_pressed = ExtResource("9_0j5ry")
+texture_hover = ExtResource("10_sx2mr")
 
 [node name="Music" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

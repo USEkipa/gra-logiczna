@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg6gry26hcij2"
-path="res://.godot/imported/Medal (4).png-522d9141b9515dbc27b73d2de0452298.ctex"
+uid="uid://chd4kq8eeovh4"
+path="res://.godot/imported/Icon_White (9).png-8d91ae24e46069a617f19c401131e83c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/UI/Medal (4).png"
-dest_files=["res://.godot/imported/Medal (4).png-522d9141b9515dbc27b73d2de0452298.ctex"]
+source_file="res://Resources/Graphics/UI/Icon_White (9).png"
+dest_files=["res://.godot/imported/Icon_White (9).png-8d91ae24e46069a617f19c401131e83c.ctex"]
 
 [params]
 

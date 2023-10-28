@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 
 [autoload]
 
-Globals="*res://globals/globals.cs"
+Globals="*res://Scripts/Main/Globals/globals.cs"
 
 [display]
 

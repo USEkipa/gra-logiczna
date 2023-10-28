@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjl82t7pe0ciw"
-path="res://.godot/imported/bitmap_#g31660_1.png-7767444e406ecb5343fa12ad9e00c9ae.ctex"
+uid="uid://cdniehlwiiyhn"
+path="res://.godot/imported/Pellet (5).png-3061d1d2737ab7aa58ec916bc58cdac7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/UI/bitmap_#g31660_1.png"
-dest_files=["res://.godot/imported/bitmap_#g31660_1.png-7767444e406ecb5343fa12ad9e00c9ae.ctex"]
+source_file="res://Resources/Graphics/UI/Pellet (5).png"
+dest_files=["res://.godot/imported/Pellet (5).png-3061d1d2737ab7aa58ec916bc58cdac7.ctex"]
 
 [params]
 
