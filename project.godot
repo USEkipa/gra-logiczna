@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="LogicGame"
-run/main_scene="res://Scenes/UI/Menu/Main/menu.tscn"
+run/main_scene="res://Scenes/UI/Menu/Main/Menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 
 [autoload]
 
-Globals="*res://Scripts/Main/Globals/globals.cs"
+Globals="*res://Scripts/GDScript/Singletons/Globals.gd"
 
 [display]
 
