@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3bg46xcf465n"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/bullet.gd" id="1_7vand"]
+[ext_resource type="Texture2D" uid="uid://dqai514c02q4a" path="res://Resources/Graphics/Spritesheets/Projectiles/bullet.png" id="1_raskp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oufh8"]
+radius = 2.23607
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_7vand")
+
+[node name="BulletImage" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+texture = ExtResource("1_raskp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oufh8")
+
+[node name="BulletLifeDuration" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="BulletLifeDuration" to="." method="_on_bullet_life_duration_timeout"]
