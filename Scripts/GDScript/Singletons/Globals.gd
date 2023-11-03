@@ -5,3 +5,6 @@ var Menu:Dictionary = {
 	isMusic = false,
 	volume = 50,
 }
+
+var PlayerStats:Dictionary = {
+}
