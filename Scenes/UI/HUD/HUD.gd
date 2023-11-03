@@ -60,7 +60,7 @@ func _update_bullet_texture() -> void:
 		BulletContainer.add_child(BULLET_SCENE.instantiate())
 	while BulletContainer.get_children().size() > bulletCount:
 		var bulletTextures: Array[Node] = BulletContainer.get_children()
-		var bulletToRemove:Node = bulletTextures[bulletTextures.size() - 1]
+		var bulletToRemove: Node = bulletTextures[bulletTextures.size() - 1]
 		BulletContainer.remove_child(bulletToRemove)
 		bulletToRemove.queue_free()
 
@@ -69,12 +69,12 @@ func _input(_event: InputEvent) -> void:
 	# DEBUG
 	if Input.is_key_pressed(KEY_1):
 		print("add bullet: ", add_bullet())
-	if Input.is_key_pressed(KEY_2):
+	elif Input.is_key_pressed(KEY_2):
 		print("remove bullet: ", remove_bullet())
-	if Input.is_key_pressed(KEY_3):
+	elif Input.is_key_pressed(KEY_3):
 		print("add 10 health: ", add_health(10))
-	if Input.is_key_pressed(KEY_4):
+	elif Input.is_key_pressed(KEY_4):
 		print("remove 10 health: ", add_health(-10))
-	if Input.is_key_pressed(KEY_5):
+	elif Input.is_key_pressed(KEY_5):
 		add_score(1)
 		print("add 1 score: " + str(score))
