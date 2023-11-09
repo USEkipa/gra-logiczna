@@ -219,6 +219,10 @@ position = Vector2(-12, -2)
 wait_time = 0.5
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="PlayerMoving"]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
 [node name="Projectiles" type="Node2D" parent="."]
 
 [connection signal="bullet_shot" from="PlayerMoving" to="." method="_on_player_moving_bullet_shot"]
