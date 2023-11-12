@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=11 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
-[ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/player.tscn" id="2_n2i3f"]
+[ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/Player.tscn" id="2_n2i3f"]
+[ext_resource type="PackedScene" uid="uid://ds16pxtt8su5p" path="res://Scenes/Items/Coin/Coin.tscn" id="3_as2rr"]
 [ext_resource type="PackedScene" uid="uid://h6cvw0kg2yd4" path="res://Scenes/UI/HUD/HUD.tscn" id="3_hts2f"]
+[ext_resource type="PackedScene" uid="uid://dorejct3hu1dj" path="res://Scenes/Platforms/MovingPlatform.tscn" id="4_u7a4g"]
+[ext_resource type="PackedScene" uid="uid://cwrr1kl261nh1" path="res://Scenes/Platforms/MovingPlatform3.tscn" id="5_bghe5"]
+[ext_resource type="PackedScene" uid="uid://chnankwx0ekhv" path="res://Scenes/Spikes/Spikes.tscn" id="6_lc8u0"]
+[ext_resource type="PackedScene" uid="uid://bjxmhvwepchhm" path="res://Scenes/Trampoline/Trampoline.tscn" id="7_fd7c3"]
+[ext_resource type="PackedScene" uid="uid://bs16y7qki4w5g" path="res://Scenes/Spikes/SpikesMoving.tscn" id="8_dvli1"]
 
-[node name="LevelBase" type="Node2D"]
+[node name="LevelBase" type="Node2D" node_paths=PackedStringArray("PlayerScene")]
 script = ExtResource("1_qt0tg")
+PlayerScene = NodePath("Player")
 
 [node name="TileMap" parent="." instance=ExtResource("1_8tid3")]
 layer_0/tile_data = PackedInt32Array(-131075, 458753, 9, 65533, 458753, 10, -131074, 524289, 9, -65538, 524289, 9, -2, 524289, 9, 65534, 524289, 10, -1, 589825, 9)
@@ -16,15 +23,26 @@ layer_1/tile_data = PackedInt32Array(196607, 720897, 7, 131071, 720897, 5, 13107
 
 [node name="Collectibles" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_n2i3f")]
+[node name="Coin" parent="Collectibles" instance=ExtResource("3_as2rr")]
+position = Vector2(63, -51)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+[node name="Player" parent="." instance=ExtResource("2_n2i3f")]
+position = Vector2(-43, 0)
 
 [node name="HUD" parent="." instance=ExtResource("3_hts2f")]
 
-[connection signal="bullet_picked_up" from="Player" to="." method="_on_player_bullet_picked_up"]
-[connection signal="bullet_shot" from="Player" to="." method="_on_player_bullet_shot"]
-[connection signal="coin_picked_up" from="Player" to="." method="_on_player_coin_picked_up"]
-[connection signal="damage_taken" from="Player" to="." method="_on_player_damage_taken"]
-[connection signal="health_picked_up" from="Player" to="." method="_on_player_health_picked_up"]
+[node name="MovingPlatform" parent="." instance=ExtResource("4_u7a4g")]
+position = Vector2(180, 26)
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("5_bghe5")]
+position = Vector2(128, 21)
+
+[node name="Spikes" parent="." instance=ExtResource("6_lc8u0")]
+position = Vector2(85, -24)
+
+[node name="Trampoline" parent="." instance=ExtResource("7_fd7c3")]
+position = Vector2(64, -23)
+
+[node name="Spikes2" parent="." instance=ExtResource("8_dvli1")]
+position = Vector2(24, 15)
+collision_layer = 2

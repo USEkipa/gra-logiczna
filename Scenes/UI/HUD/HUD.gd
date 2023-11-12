@@ -43,7 +43,9 @@ func add_score(amount: int) -> void:
 
 
 func add_health(amount: int) -> int:
-	Globals.PlayerStats.health = clampi(Globals.PlayerStats.health + amount, 0, Globals.PlayerStats.maxHealth)
+	Globals.PlayerStats.health = clampi(
+		Globals.PlayerStats.health + amount, 0, Globals.PlayerStats.maxHealth
+	)
 	HealthBar.value = Globals.PlayerStats.health
 	return Globals.PlayerStats.health
 
