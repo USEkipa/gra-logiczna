@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=10 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
 [ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/player.tscn" id="2_n2i3f"]
-[ext_resource type="PackedScene" uid="uid://ds16pxtt8su5p" path="res://Scenes/Items/Coin/Coin.tscn" id="3_as2rr"]
 [ext_resource type="PackedScene" uid="uid://h6cvw0kg2yd4" path="res://Scenes/UI/HUD/HUD.tscn" id="3_hts2f"]
 [ext_resource type="PackedScene" uid="uid://dorejct3hu1dj" path="res://Scenes/Platforms/MovingPlatform.tscn" id="4_u7a4g"]
 [ext_resource type="PackedScene" uid="uid://cwrr1kl261nh1" path="res://Scenes/Platforms/MovingPlatform3.tscn" id="5_bghe5"]
@@ -23,11 +22,7 @@ layer_1/tile_data = PackedInt32Array(196607, 720897, 7, 131071, 720897, 5, 13107
 
 [node name="Collectibles" type="Node2D" parent="."]
 
-[node name="Coin" parent="Collectibles" instance=ExtResource("3_as2rr")]
-position = Vector2(63, -51)
-
 [node name="Player" parent="." instance=ExtResource("2_n2i3f")]
-position = Vector2(-43, 0)
 
 [node name="HUD" parent="." instance=ExtResource("3_hts2f")]
 
