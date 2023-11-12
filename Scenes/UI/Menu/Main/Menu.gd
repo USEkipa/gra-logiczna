@@ -1,6 +1,8 @@
 extends Control
 
 func _ready() -> void:
+	Sounds.stop_loop_sound()
+	Sounds.play_loop_sound(Sounds.SoundType.MENU)
 	if Globals.Menu.isFullScreen:
 		get_tree().root.get_window().mode = Window.MODE_FULLSCREEN
 

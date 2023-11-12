@@ -16,11 +16,12 @@ enum SoundType {
 }
 
 var soundDict = {}
+var sound_loop : AudioStreamPlayer
 
 func _ready():
 	
-	soundDict[SoundType.MENU] = preload("res://Resources/Soundtracks/Menu/MENU.wav")
-	soundDict[SoundType.GAME] = preload("res://Resources/Soundtracks/Game/GAME.wav")
+	soundDict[SoundType.MENU] = preload("res://Resources/Soundtracks/Menu/MENU.mp3")
+	soundDict[SoundType.GAME] = preload("res://Resources/Soundtracks/Game/GAME.mp3")
 	soundDict[SoundType.BUTTON_CLICK] = preload("res://Resources/Soundtracks/Effects/button_click/BUTTON_CLICK.mp3")
 	soundDict[SoundType.GAME_OVER] = preload("res://Resources/Soundtracks/Effects/game_over/GAME_OVER.mp3")
 	soundDict[SoundType.GET_AMMO] = preload("res://Resources/Soundtracks/Effects/get_ammo/GET_AMMO.mp3")
@@ -42,3 +43,20 @@ func play_sound(SoundType, volume_percent = Globals.Menu.volume):
 		sound_instance.play()
 	else:
 		print("Sound not found for ", SoundType)
+		
+		
+func play_loop_sound(SoundType, volume_percent = Globals.Menu.volume):
+	if soundDict.has(SoundType):
+		sound_loop = AudioStreamPlayer.new()
+		sound_loop.volume_db = 20 * log(clamp(volume_percent / 100.0, 0.0, 1.0)) / log(10)
+		var looped_sound = soundDict[SoundType]
+		looped_sound.loop = true
+		sound_loop.stream = looped_sound
+		add_child(sound_loop)
+		sound_loop.play()
+	else:
+		print("Sound not found for ", SoundType)
+		
+func stop_loop_sound():
+	if sound_loop:
+		sound_loop.stop()
