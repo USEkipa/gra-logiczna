@@ -1,10 +1,19 @@
 extends Node2D
 
-
 const bullet_scene: PackedScene = preload("res://Scenes/Projectiles/bullet.tscn")
 
+@export var PlayerScene: Player
 
-func _on_player_bullet_shot(pos, direction):
+
+func _ready() -> void:
+	PlayerScene.connect("bullet_shot", _on_player_bullet_shot)
+	PlayerScene.connect("bullet_picked_up", _on_player_bullet_picked_up)
+	PlayerScene.connect("coin_picked_up", _on_player_coin_picked_up)
+	PlayerScene.connect("health_picked_up", _on_player_health_picked_up)
+	PlayerScene.connect("damage_taken", _on_player_damage_taken)
+
+
+func _on_player_bullet_shot(pos: Vector2, direction: Vector2) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.rotation = direction.angle()
 	bullet.direction = direction
@@ -13,22 +22,17 @@ func _on_player_bullet_shot(pos, direction):
 	$HUD.remove_bullet()
 
 
-func _on_player_bullet_picked_up(count):
+func _on_player_bullet_picked_up(count: int) -> void:
 	$HUD.set_bullet_count(count)
 
 
-func _on_player_coin_picked_up(count):
+func _on_player_coin_picked_up(count: int) -> void:
 	$HUD.add_score(count)
 
 
-func _on_player_damage_taken(count):
+func _on_player_damage_taken(count: int) -> void:
 	$HUD.add_health(count)
 
 
-func _on_player_health_picked_up(count):
+func _on_player_health_picked_up(count: int) -> void:
 	$HUD.add_health(count)
-
-
-func _on_test_object_body_entered(body):
-	if "take_damage" in body:
-		body.take_damage(10)

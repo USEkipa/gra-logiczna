@@ -1,13 +1,12 @@
 extends Node
 
-
-var Menu:Dictionary = {
+var Menu: Dictionary = {
 	isFullScreen = false,
 	isMusic = false,
 	volume = 50,
 }
 
-var PlayerStats:Dictionary = {
+var PlayerStats: Dictionary = {
 	SPEED = 100,
 	JUMP_VELOCITY = -300,
 	GRAVITY = 20,
