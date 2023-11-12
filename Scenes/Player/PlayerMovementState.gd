@@ -46,6 +46,7 @@ func get_direction() -> Vector2:
 
 func jump():
 	if Input.is_action_just_pressed("up") and avaible_jumps > 0:
+		Sounds.play_sound(Sounds.SoundType.JUMP)
 		playerAnimations.play("jump")
 		avaible_jumps -= 1
 		playerBody.velocity.y = Globals.PlayerStats.JUMP_VELOCITY + abs(playerBody.velocity.x) * 0.3
@@ -86,6 +87,7 @@ func update_delta(_delta: float) -> void:
 		and playerBody.can_shoot
 		and Globals.PlayerStats.bulletCount > 0
 	):
+		Sounds.play_sound(Sounds.SoundType.START_GAME) # zmienić to
 		gpuPlayerParticles.set_emitting(true)
 		playerBody.can_shoot = false
 		playerBody.get_node("BulletTimer").start()

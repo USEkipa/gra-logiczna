@@ -1,9 +1,9 @@
 extends Node
 
-var Menu: Dictionary = {
+var Options: Dictionary = {
 	isFullScreen = false,
 	isMusic = false,
-	volume = 50,
+	volume = 5,
 }
 
 var PlayerStats: Dictionary = {

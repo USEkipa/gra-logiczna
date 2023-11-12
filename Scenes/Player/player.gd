@@ -22,18 +22,22 @@ func _ready() -> void:
 
 
 func increase_bullet_count(count: int) -> void:
+	Sounds.play_sound(Sounds.SoundType.GET_AMMO)
 	bullet_picked_up.emit(count)
 
 
 func increase_score_count(count: int) -> void:
+	Sounds.play_sound(Sounds.SoundType.GET_COIN)
 	coin_picked_up.emit(count)
 
 
 func increase_health_count(count: int) -> void:
+	Sounds.play_sound(Sounds.SoundType.GET_HP)
 	health_picked_up.emit(count)
 
 
 func take_damage(count: int) -> void:
+	Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
 	damage_taken.emit(-count)
 
 
