@@ -1,20 +1,32 @@
 extends CharacterBody2D
 
 
-const SPEED = 300
-const JUMP_VELOCITY = -1500
-const ACC = 50
-const FRICTION = 70
-const GRAVITY = 100
-const MAX_JUMPS = 1                # in case we want to add double jump
-
-
-var avaible_jumps = MAX_JUMPS
+var avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 var last_dir = Vector2.LEFT
 var can_shoot = true
 
 
 signal bullet_shot(pos, direction)
+signal bullet_picked_up(count: int)
+signal coin_picked_up(count: int)
+signal health_picked_up(count: int)
+signal damage_taken(count: int)
+
+
+func increase_bullet_count(count: int) -> void:
+	bullet_picked_up.emit(count)
+
+
+func increase_score_count(count: int) -> void:
+	coin_picked_up.emit(count)	
+
+
+func increase_health_count(count: int) -> void:
+	health_picked_up.emit(count)
+
+
+func take_damage(count: int) -> void:
+	damage_taken.emit(-count)
 
 
 func _on_bullet_timer_timeout():
@@ -50,27 +62,27 @@ func get_direction() -> Vector2:
 
 
 func accelerate(direction):
-	velocity = velocity.move_toward(direction * SPEED, ACC)
+	velocity = velocity.move_toward(direction * Globals.PlayerStats.SPEED, Globals.PlayerStats.ACC)
 
 
 func apply_friction():
-	velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	velocity = velocity.move_toward(Vector2.ZERO, Globals.PlayerStats.FRICTION)
 
 
 func jump():
 	if Input.is_action_just_pressed("up") and avaible_jumps > 0:
 		$Animations.play("jump")
 		avaible_jumps -= 1
-		velocity.y = JUMP_VELOCITY
+		velocity.y = Globals.PlayerStats.JUMP_VELOCITY
 	elif not is_on_floor():
-		velocity.y += GRAVITY
+		velocity.y += Globals.PlayerStats.GRAVITY
 		if velocity.y >= 0:
 			$Animations.play("fall")
 
 
 func reset_jumps():
-	if is_on_floor() and avaible_jumps < MAX_JUMPS:
-		avaible_jumps = MAX_JUMPS
+	if is_on_floor() and avaible_jumps < Globals.PlayerStats.MAX_JUMPS:
+		avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 
 
 func _physics_process(_delta):
@@ -79,16 +91,16 @@ func _physics_process(_delta):
 	if direction != Vector2.ZERO:
 		last_dir = direction
 		accelerate(direction)
-		if avaible_jumps == MAX_JUMPS:
+		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			$Animations.play("run")
 	else:
 		apply_friction()
-		if avaible_jumps == MAX_JUMPS:
+		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			$Animations.play("idle")
 	jump()
 	move_and_slide()
 	reset_jumps()
-	if Input.is_action_pressed("shoot") and can_shoot:
+	if Input.is_action_pressed("shoot") and can_shoot and Globals.PlayerStats.bulletCount > 0:
 		$GPUParticles2D.set_emitting(true)
 		can_shoot = false
 		$BulletTimer.start()

@@ -84,5 +84,6 @@ text = "Score: 123"
 horizontal_alignment = 2
 
 [node name="Control" type="Control" parent="Front/H/GameStats"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
