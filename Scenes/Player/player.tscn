@@ -1,6 +1,5 @@
-[gd_scene load_steps=30 format=3 uid="uid://clqptvd5duuek"]
+[gd_scene load_steps=29 format=3 uid="uid://clqptvd5duuek"]
 
-[ext_resource type="Script" path="res://Scenes/Player/PlayerMovement.gd" id="1_1mbw2"]
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_nivif"]
 [ext_resource type="Texture2D" uid="uid://b5woimrh1xofx" path="res://Resources/Graphics/Spritesheets/Projectiles/white.png" id="2_78uo8"]
 [ext_resource type="Texture2D" uid="uid://d3qo0rkh1ghhu" path="res://Resources/Graphics/Spritesheets/Player/fall.png" id="3_t4p4q"]
@@ -182,14 +181,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_nivif")
 
-[node name="PlayerMoving" type="CharacterBody2D" parent="."]
-texture_filter = 1
-script = ExtResource("1_1mbw2")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="PlayerMoving"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-12, -2.5)
 emitting = false
 amount = 10
@@ -198,32 +194,25 @@ texture = ExtResource("2_78uo8")
 lifetime = 0.05
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMoving"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wunpw")
 
-[node name="Animations" type="AnimatedSprite2D" parent="PlayerMoving"]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_n5vq0")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="BulletStartPositions" type="Node2D" parent="PlayerMoving"]
+[node name="BulletStartPositions" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="PlayerMoving/BulletStartPositions"]
+[node name="Marker2D" type="Marker2D" parent="BulletStartPositions"]
 position = Vector2(-12, -3)
 
-[node name="Marker2D2" type="Marker2D" parent="PlayerMoving/BulletStartPositions"]
+[node name="Marker2D2" type="Marker2D" parent="BulletStartPositions"]
 position = Vector2(-12, -2)
 
-[node name="BulletTimer" type="Timer" parent="PlayerMoving"]
+[node name="BulletTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="PlayerMoving"]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-
-[node name="Projectiles" type="Node2D" parent="."]
-
-[connection signal="bullet_shot" from="PlayerMoving" to="." method="_on_player_moving_bullet_shot"]
-[connection signal="timeout" from="PlayerMoving/BulletTimer" to="PlayerMoving" method="_on_bullet_timer_timeout" flags=18]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]
