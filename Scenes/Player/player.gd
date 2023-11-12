@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 var avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 var last_dir = Vector2.LEFT
@@ -60,20 +60,11 @@ func get_direction() -> Vector2:
 		return Vector2.RIGHT
 	return Vector2.ZERO
 
-
-func accelerate(direction):
-	velocity = velocity.move_toward(direction * Globals.PlayerStats.SPEED, Globals.PlayerStats.ACC)
-
-
-func apply_friction():
-	velocity = velocity.move_toward(Vector2.ZERO, Globals.PlayerStats.FRICTION)
-
-
 func jump():
 	if Input.is_action_just_pressed("up") and avaible_jumps > 0:
 		$Animations.play("jump")
 		avaible_jumps -= 1
-		velocity.y = Globals.PlayerStats.JUMP_VELOCITY
+		velocity.y = Globals.PlayerStats.JUMP_VELOCITY + abs(velocity.x) * 0.3
 	elif not is_on_floor():
 		velocity.y += Globals.PlayerStats.GRAVITY
 		if velocity.y >= 0:
@@ -84,17 +75,21 @@ func reset_jumps():
 	if is_on_floor() and avaible_jumps < Globals.PlayerStats.MAX_JUMPS:
 		avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 
+func _input(event : InputEvent):
+	if(event.is_action_pressed("down") && is_on_floor()):
+		position.y += 3
 
 func _physics_process(_delta):
 	var direction = get_direction()
 	change_components_direction(direction)
+	
+	velocity.x = direction.x * Globals.PlayerStats.SPEED
+	
 	if direction != Vector2.ZERO:
 		last_dir = direction
-		accelerate(direction)
 		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			$Animations.play("run")
 	else:
-		apply_friction()
 		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			$Animations.play("idle")
 	jump()

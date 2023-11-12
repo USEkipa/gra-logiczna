@@ -9,10 +9,8 @@ var Menu:Dictionary = {
 
 var PlayerStats:Dictionary = {
 	SPEED = 100,
-	JUMP_VELOCITY = -800,
-	ACC = 50,
-	FRICTION = 70,
-	GRAVITY = 80,
+	JUMP_VELOCITY = -300,
+	GRAVITY = 20,
 	MAX_JUMPS = 1,
 	maxBulletCount = 10,
 	maxHealth = 100,
