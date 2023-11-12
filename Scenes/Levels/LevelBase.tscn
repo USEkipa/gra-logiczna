@@ -1,17 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=5 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
 [ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/player.tscn" id="2_n2i3f"]
 [ext_resource type="PackedScene" uid="uid://h6cvw0kg2yd4" path="res://Scenes/UI/HUD/HUD.tscn" id="3_hts2f"]
-[ext_resource type="PackedScene" uid="uid://bciumwpu3oci4" path="res://Scenes/Items/Bullet/Bullet.tscn" id="4_r6gg0"]
-[ext_resource type="PackedScene" uid="uid://by4w684fwsocp" path="res://Scenes/Items/Bullets/Bullets.tscn" id="6_o3sst"]
-[ext_resource type="PackedScene" uid="uid://dm7hq76td17sv" path="res://Scenes/Items/Heart/Heart.tscn" id="6_ra3a3"]
-[ext_resource type="PackedScene" uid="uid://ds16pxtt8su5p" path="res://Scenes/Items/Coin/Coin.tscn" id="7_qs4je"]
-[ext_resource type="Texture2D" uid="uid://dkkyifgx3se4b" path="res://icon.svg" id="9_813kx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7owg4"]
-size = Vector2(6, 7)
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_qt0tg")
@@ -24,18 +16,6 @@ layer_1/tile_data = PackedInt32Array(196607, 720897, 7, 131071, 720897, 5, 13107
 
 [node name="Collectibles" type="Node2D" parent="."]
 
-[node name="Bullet" parent="Collectibles" instance=ExtResource("4_r6gg0")]
-position = Vector2(-40, -51)
-
-[node name="Bullets" parent="Collectibles" instance=ExtResource("6_o3sst")]
-position = Vector2(-12, -19)
-
-[node name="Coin" parent="Collectibles" instance=ExtResource("7_qs4je")]
-position = Vector2(64, -20)
-
-[node name="Heart" parent="Collectibles" instance=ExtResource("6_ra3a3")]
-position = Vector2(-42, 12)
-
 [node name="Player" parent="." instance=ExtResource("2_n2i3f")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -43,19 +23,8 @@ zoom = Vector2(3, 3)
 
 [node name="HUD" parent="." instance=ExtResource("3_hts2f")]
 
-[node name="TestObject" type="Area2D" parent="."]
-position = Vector2(90, -20)
-
-[node name="Sprite2D" type="Sprite2D" parent="TestObject"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_813kx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestObject"]
-shape = SubResource("RectangleShape2D_7owg4")
-
 [connection signal="bullet_picked_up" from="Player" to="." method="_on_player_bullet_picked_up"]
 [connection signal="bullet_shot" from="Player" to="." method="_on_player_bullet_shot"]
 [connection signal="coin_picked_up" from="Player" to="." method="_on_player_coin_picked_up"]
 [connection signal="damage_taken" from="Player" to="." method="_on_player_damage_taken"]
 [connection signal="health_picked_up" from="Player" to="." method="_on_player_health_picked_up"]
-[connection signal="body_entered" from="TestObject" to="." method="_on_test_object_body_entered"]
