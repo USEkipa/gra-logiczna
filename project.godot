@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 [autoload]
 
 Globals="*res://Scripts/GDScript/Singletons/Globals.gd"
+Sounds="*res://Scripts/GDScript/Singletons/Sounds.gd"
 
 [display]
 
@@ -32,7 +33,6 @@ project/assembly_name="LogicGame"
 [filesystem]
 
 import/blender/enabled=false
-
 
 [input]
 
