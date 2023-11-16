@@ -4,7 +4,6 @@ const bullet_scene: PackedScene = preload("res://Scenes/Projectiles/bullet.tscn"
 
 @export var PlayerScene: Player
 
-
 func _ready() -> void:
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)

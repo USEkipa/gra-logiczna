@@ -1,6 +1,7 @@
 extends Area2D
 
 var animation_player: AnimationPlayer
+@export var timer_duration: float = 2.0
 var timer: Timer
 
 enum SpikeState { UP, DOWN }
@@ -9,6 +10,7 @@ var current_state: SpikeState = SpikeState.DOWN
 
 func _ready():
 	animation_player = $AnimationPlayer
+	$Timer.wait_time = timer_duration
 	$Timer.start()
 	
 	animation_player.play("idle")
