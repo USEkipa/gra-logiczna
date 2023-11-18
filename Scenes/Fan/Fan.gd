@@ -5,12 +5,14 @@ signal wind
 @onready var wind_area: CollisionShape2D = $wind/CollisionShape2D
 @onready var particles: CPUParticles2D = $wind/CollisionShape2D/CPUParticles2D
 
-
 @export var targetDistance: float = 50.0
-@export var windStrength: float = 100.0
+@export var windStrength: float = 50.0
 
-var animation_player : AnimationPlayer
+var animation_player: AnimationPlayer
 var initialParticlePosition: Vector2 = Vector2(0, 0)
+
+var isInArea := false
+var player: CharacterBody2D
 
 func _ready():
 	# Save the initial position of the particles
@@ -38,24 +40,39 @@ func _physics_process(_delta):
 	particles.gravity = wind_velocity
 
 	# Set particle system lifetime based on target distance
-	particles.lifetime = (targetDistance / windStrength) + 0.3
+	particles.lifetime = (targetDistance / windStrength)
 
 	# Emit the wind signal (you can connect this signal to your Player)
 	emit_signal("wind", direction)
+	
+	if isInArea:
+		var dir = direction.normalized()
+		var target_position = global_position + dir * targetDistance
+
+		if int(rotation_degrees) % 180 == 0:  # Fan is in a horizontal position
+			player.velocity.x = dir.x * windStrength
+			player.velocity.y = 0
+		else:  # Fan is in a vertical position
+			player.velocity.x = 0
+			player.velocity.y = dir.y * windStrength
+		player.move_and_slide()
+
+		# Check if the player is in the right target position
+		var distance_to_target = player.global_position.distance_to(target_position)
+		var threshold = 5.0  # Adjust this threshold as needed
+
+		if distance_to_target < threshold:
+			# Player is in the right position, do something
+			print("Player is in the right position")
 
 func _on_wind_body_entered(body):
 	if body is Player:
-		var direction = Vector2(cos(rotation), sin(rotation))
-		var target_position = body.global_position + direction * targetDistance
+		isInArea = true
+		player = body
+		Globals.PlayerStats.JUMP_VELOCITY = 0
+		Globals.PlayerStats.GRAVITY = 40
 
-		if int(rotation_degrees) % 180 == 0:  # Fan is in a horizontal position
-			body.velocity.x = direction.x * windStrength
-			body.velocity.y = 0
-		else:  # Fan is in a vertical position
-			body.velocity.x = 0
-			body.velocity.y = direction.y * windStrength
-		var movement_speed = 0.1
-		body.global_position = body.global_position.move_toward(target_position, movement_speed)
-		body.move_and_slide()
-
-		print(direction)
+func _on_wind_body_exited(_body):
+	isInArea = false
+	Globals.PlayerStats.JUMP_VELOCITY = -300
+	Globals.PlayerStats.GRAVITY = 20

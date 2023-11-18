@@ -47,7 +47,7 @@ duration = 10.0
 [node name="MovingPlatform2" parent="." instance=ExtResource("5_bghe5")]
 position = Vector2(90, -46)
 targetPosition = Vector2(0, -100)
-duration = 1.0
+duration = 4.0
 
 [node name="Spikes" parent="." instance=ExtResource("6_lc8u0")]
 position = Vector2(85, -24)
@@ -61,4 +61,14 @@ collision_layer = 2
 timer_duration = 5.0
 
 [node name="Fan" parent="." instance=ExtResource("13_6hqp6")]
-position = Vector2(-135, 6)
+position = Vector2(-135, 7)
+rotation = -1.5708
+targetDistance = 120.0
+windStrength = 100.0
+
+[node name="Fan2" parent="." instance=ExtResource("13_6hqp6")]
+position = Vector2(-213, -91)
+
+[node name="Fan3" parent="." instance=ExtResource("13_6hqp6")]
+position = Vector2(20, -58)
+rotation = 3.14159

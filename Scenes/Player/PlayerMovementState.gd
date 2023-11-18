@@ -6,6 +6,7 @@ var gpuPlayerParticles: GPUParticles2D = null
 var playerAnimations: AnimatedSprite2D = null
 var bulletStartPosition: Node2D = null
 
+var gravityTurnedOn: = true
 var avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 var last_dir = Vector2.LEFT
 
@@ -50,7 +51,7 @@ func jump():
 		playerAnimations.play("jump")
 		avaible_jumps -= 1
 		playerBody.velocity.y = Globals.PlayerStats.JUMP_VELOCITY + abs(playerBody.velocity.x) * 0.3
-	elif not playerBody.is_on_floor():
+	elif not playerBody.is_on_floor() and gravityTurnedOn:
 		playerBody.velocity.y += Globals.PlayerStats.GRAVITY
 		if playerBody.velocity.y >= 0:
 			playerAnimations.play("fall")
@@ -59,7 +60,6 @@ func jump():
 func reset_jumps():
 	if playerBody.is_on_floor() and avaible_jumps < Globals.PlayerStats.MAX_JUMPS:
 		avaible_jumps = Globals.PlayerStats.MAX_JUMPS
-
 
 func update_input(event: InputEvent) -> void:
 	if event.is_action_pressed("down") && playerBody.is_on_floor():
