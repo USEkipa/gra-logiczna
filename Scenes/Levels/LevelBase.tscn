@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=15 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
@@ -10,8 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dm7hq76td17sv" path="res://Scenes/Items/Heart/Heart.tscn" id="5_3kihb"]
 [ext_resource type="PackedScene" uid="uid://cwrr1kl261nh1" path="res://Scenes/Platforms/MovingPlatform3.tscn" id="5_bghe5"]
 [ext_resource type="PackedScene" uid="uid://bjxmhvwepchhm" path="res://Scenes/Trampoline/Trampoline.tscn" id="7_fd7c3"]
+[ext_resource type="PackedScene" uid="uid://b8tohxqubwtof" path="res://Scenes/Environment/Box.tscn" id="11_d58vb"]
 [ext_resource type="PackedScene" uid="uid://x1n06sp64hb3" path="res://Scenes/UI/Menu/Pause/Main/PauseMenu.tscn" id="11_p10wp"]
 [ext_resource type="PackedScene" uid="uid://bn84klstelkpc" path="res://Scenes/UI/Menu/Pause/Options/PauseOptions.tscn" id="12_2bi5d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x5ly3"]
+friction = 0.5
 
 [node name="LevelBase" type="Node2D" node_paths=PackedStringArray("PlayerScene")]
 process_mode = 3
@@ -51,6 +55,10 @@ position = Vector2(128, 21)
 
 [node name="Trampoline" parent="Level" instance=ExtResource("7_fd7c3")]
 position = Vector2(64, -23)
+
+[node name="Box" parent="Level" instance=ExtResource("11_d58vb")]
+position = Vector2(-73, 7)
+physics_material_override = SubResource("PhysicsMaterial_x5ly3")
 
 [node name="Pause" type="CanvasLayer" parent="."]
 

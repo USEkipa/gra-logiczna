@@ -11,6 +11,7 @@ var PlayerStats: Dictionary = {
 	JUMP_VELOCITY = -300,
 	GRAVITY = 20,
 	MAX_JUMPS = 1,
+	PUSH_FORCE = 20,
 	maxBulletCount = 10,
 	maxHealth = 100,
 	bulletCount = 0,
