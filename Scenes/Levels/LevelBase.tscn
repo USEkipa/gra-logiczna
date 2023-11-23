@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=16 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8tohxqubwtof" path="res://Scenes/Environment/Box.tscn" id="11_d58vb"]
 [ext_resource type="PackedScene" uid="uid://x1n06sp64hb3" path="res://Scenes/UI/Menu/Pause/Main/PauseMenu.tscn" id="11_p10wp"]
 [ext_resource type="PackedScene" uid="uid://bn84klstelkpc" path="res://Scenes/UI/Menu/Pause/Options/PauseOptions.tscn" id="12_2bi5d"]
+[ext_resource type="PackedScene" uid="uid://b82hw7tfyii3a" path="res://Scenes/Environment/Rock.tscn" id="12_g3d1i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x5ly3"]
 friction = 0.5
@@ -59,6 +60,9 @@ position = Vector2(64, -23)
 [node name="Box" parent="Level" instance=ExtResource("11_d58vb")]
 position = Vector2(-73, 7)
 physics_material_override = SubResource("PhysicsMaterial_x5ly3")
+
+[node name="Rock" parent="Level" instance=ExtResource("12_g3d1i")]
+position = Vector2(-111, 1)
 
 [node name="Pause" type="CanvasLayer" parent="."]
 
