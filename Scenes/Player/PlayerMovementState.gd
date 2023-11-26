@@ -51,7 +51,7 @@ func jump():
 		avaible_jumps -= 1
 		playerBody.velocity.y = Globals.PlayerStats.JUMP_VELOCITY + abs(playerBody.velocity.x) * 0.3
 	elif not playerBody.is_on_floor():
-		playerBody.velocity.y += Globals.PlayerStats.GRAVITY
+		playerBody.velocity.y += Globals.World.GRAVITY
 		if playerBody.velocity.y >= 0:
 			playerAnimations.play("fall")
 

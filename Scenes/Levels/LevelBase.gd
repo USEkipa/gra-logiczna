@@ -5,6 +5,8 @@ var pause_menu: Control
 var options_menu: Control
 var paused: bool = false
 
+@onready var effects := preload("res://Scenes/Effects/Effects.tscn").instantiate()
+
 @export var PlayerScene: Player
 
 
@@ -26,6 +28,9 @@ func _input(event: InputEvent):
 func _ready() -> void:
 	pause_menu = $Pause/PauseMenu
 	options_menu = $Pause/PauseOptions
+	add_child(effects)
+	effects.turn_on_filter(Color.CYAN, 0.05)
+	effects.set_color_background(Color.BLACK)
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)
 	PlayerScene.connect("bullet_shot", _on_player_bullet_shot)
