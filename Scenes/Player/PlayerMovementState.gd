@@ -51,8 +51,8 @@ func jump():
 		playerAnimations.play("jump")
 		avaible_jumps -= 1
 		playerBody.velocity.y = Globals.PlayerStats.JUMP_VELOCITY + abs(playerBody.velocity.x) * 0.3
-	elif not playerBody.is_on_floor():
-		playerBody.velocity.y += Globals.World.GRAVITY
+	elif not playerBody.is_on_floor() and gravityTurnedOn:
+		playerBody.velocity.y += Globals.PlayerStats.GRAVITY
 		if playerBody.velocity.y >= 0:
 			playerAnimations.play("fall")
 
@@ -81,10 +81,6 @@ func update_delta(_delta: float) -> void:
 			playerAnimations.play("idle")
 	jump()
 	playerBody.move_and_slide()
-	for i in playerBody.get_slide_collision_count():
-		var collided_object = playerBody.get_slide_collision(i)
-		if collided_object.get_collider() is RigidBody2D:
-			collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * Globals.PlayerStats.PUSH_FORCE)
 	reset_jumps()
 	if (
 		Input.is_action_pressed("shoot")
