@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready() -> void:
 	Sounds.play_loop_sound(Sounds.SoundType.MENU)
 	if Globals.Options.isFullScreen:
@@ -17,4 +18,4 @@ func _on_options_pressed():
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Levels/LevelBase.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/TestLevel.tscn")
