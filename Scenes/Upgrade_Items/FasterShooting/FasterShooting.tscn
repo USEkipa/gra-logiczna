@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5dytpjdf07md"]
+
+[ext_resource type="Texture2D" uid="uid://k6lh60lrlu22" path="res://Scenes/Upgrade_Items/Textures/faster_shooting.png" id="1_2u6sm"]
+[ext_resource type="Script" path="res://Scenes/Upgrade_Items/FasterShooting/FasterShooting.gd" id="2_co871"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2avje"]
+size = Vector2(31, 18)
+
+[node name="FasterShooting" type="Sprite2D"]
+texture = ExtResource("1_2u6sm")
+script = ExtResource("2_co871")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2avje")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
