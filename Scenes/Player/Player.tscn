@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://clqptvd5duuek"]
+[gd_scene load_steps=30 format=3 uid="uid://clqptvd5duuek"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_nivif"]
 [ext_resource type="Texture2D" uid="uid://b5woimrh1xofx" path="res://Resources/Graphics/Spritesheets/Projectiles/white.png" id="2_78uo8"]
@@ -181,6 +181,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_1psbc"]
+font_size = 10
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_nivif")
@@ -218,5 +221,14 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="Press_E" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 18.0
+offset_bottom = -8.0
+text = "Press E"
+label_settings = SubResource("LabelSettings_1psbc")
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]

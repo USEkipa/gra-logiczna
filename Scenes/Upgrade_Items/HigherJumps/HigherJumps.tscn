@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dif14o7qpivms"]
+
+[ext_resource type="Script" path="res://Scenes/Upgrade_Items/HigherJumps/HigherJumps.gd" id="2_sr46e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ubmgj"]
+load_path = "res://.godot/imported/higher_jumps.png-7370fa01f183c4f7c2d4ddb5983557ea.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2avje"]
+size = Vector2(31, 18)
+
+[node name="HigherJumps" type="Sprite2D"]
+texture = SubResource("CompressedTexture2D_ubmgj")
+script = ExtResource("2_sr46e")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2avje")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
