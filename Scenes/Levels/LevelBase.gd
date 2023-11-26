@@ -10,7 +10,7 @@ const bullet_scene: PackedScene = preload("res://Scenes/Projectiles/bullet.tscn"
 func _ready() -> void:
 	add_child(effects)
 	effects.turn_on_filter(Color.CYAN, 0.05)
-	effects.set_color_background(Color.LIGHT_PINK)
+	effects.set_color_background(Color.BLACK)
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)
 	PlayerScene.connect("bullet_shot", _on_player_bullet_shot)

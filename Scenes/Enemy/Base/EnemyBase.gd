@@ -2,6 +2,7 @@ extends Node2D
 class_name EnemyBase
 
 @export var player: Player = null
+@export var collectibles: Node2D = null
 @onready var healthBar: TextureProgressBar = $HealthBar
 
 var dropOnDeath: Array[PackedScene] = [preload("res://Scenes/Items/Coin/Coin.tscn")]
@@ -17,7 +18,11 @@ var healthPoints: int = 100
 
 func _ready() -> void:
 	if player == null:
-		Logger.log_warning(["Player was not set for this enemy! Position: ", global_position])
+		Logger.log_error(["Player was not set for this enemy! Position: ", global_position])
+		get_tree().quit()
+	if collectibles == null:
+		Logger.log_error(["Collectibles was not set for this enemy! Position: ", global_position])
+		get_tree().quit()
 	enemyMovementState.set_enemy(self)
 
 	stateMachine.add_state(enemyMovementState)
@@ -49,7 +54,9 @@ func _input(event: InputEvent) -> void:
 
 func _die() -> void:
 	for packedScene in dropOnDeath:
-		print("should drop: ", packedScene)
+		var item: Node2D = packedScene.instantiate()
+		item.global_position = global_position
+		collectibles.call_deferred("add_child", item)
 	queue_free()
 
 

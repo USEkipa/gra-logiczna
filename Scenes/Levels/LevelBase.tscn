@@ -58,6 +58,7 @@ collision_layer = 2
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyBase" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("13_hwhdn")]
+[node name="EnemyBase" parent="Enemies" node_paths=PackedStringArray("player", "collectibles") instance=ExtResource("13_hwhdn")]
 position = Vector2(-114, -18)
 player = NodePath("../../Player")
+collectibles = NodePath("../../Collectibles")
