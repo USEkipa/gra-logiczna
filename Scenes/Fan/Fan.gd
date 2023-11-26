@@ -44,7 +44,6 @@ func _physics_process(_delta):
 
 	if isInArea:
 		var dir = direction.normalized()
-		var target_position = global_position + dir * targetDistance
 
 		if int(rotation_degrees) % 180 == 0:  # Fan is in a horizontal position
 			player.velocity.x = dir.x * windStrength
@@ -53,14 +52,6 @@ func _physics_process(_delta):
 			player.velocity.x = 0
 			player.velocity.y = dir.y * windStrength
 		player.move_and_slide()
-
-		# Check if the player is in the right target position
-		var distance_to_target = player.global_position.distance_to(target_position)
-		var threshold = 5.0  # Adjust this threshold as needed
-
-		if distance_to_target < threshold:
-			# Player is in the right position, do something
-			print("Player is in the right position")
 
 func _on_wind_body_entered(body):
 	if body is Player:
