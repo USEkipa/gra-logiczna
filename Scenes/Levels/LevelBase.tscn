@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bniqepvmttb5o"]
+[gd_scene load_steps=14 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Resources/TileMap/TileMap.tscn" id="1_8tid3"]
 [ext_resource type="Script" path="res://Scenes/Levels/LevelBase.gd" id="1_qt0tg"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://chnankwx0ekhv" path="res://Scenes/Spikes/Spikes.tscn" id="6_lc8u0"]
 [ext_resource type="PackedScene" uid="uid://bjxmhvwepchhm" path="res://Scenes/Trampoline/Trampoline.tscn" id="7_fd7c3"]
 [ext_resource type="PackedScene" uid="uid://bs16y7qki4w5g" path="res://Scenes/Spikes/SpikesMoving.tscn" id="8_dvli1"]
+[ext_resource type="PackedScene" uid="uid://dbjj5whajpctq" path="res://Scenes/Enemy/Base/EnemyBase.tscn" id="13_hwhdn"]
 
 [node name="LevelBase" type="Node2D" node_paths=PackedStringArray("PlayerScene")]
 script = ExtResource("1_qt0tg")
@@ -54,3 +55,9 @@ position = Vector2(64, -23)
 [node name="Spikes2" parent="." instance=ExtResource("8_dvli1")]
 position = Vector2(24, 15)
 collision_layer = 2
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyBase" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("13_hwhdn")]
+position = Vector2(-114, -18)
+player = NodePath("../../Player")
