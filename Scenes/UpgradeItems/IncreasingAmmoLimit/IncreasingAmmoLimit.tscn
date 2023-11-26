@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnkwvm0aq1587"]
+
+[ext_resource type="Texture2D" uid="uid://b86ehj1x17y7d" path="res://Scenes/UpgradeItems/Textures/increasing_ammo_limit.png" id="1_ngito"]
+[ext_resource type="Script" path="res://Scenes/UpgradeItems/IncreasingAmmoLimit/IncreasingAmmoLimit.gd" id="2_v0k7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2avje"]
+size = Vector2(31, 18)
+
+[node name="IncreasingAmmoLimit" type="Sprite2D"]
+texture = ExtResource("1_ngito")
+script = ExtResource("2_v0k7n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2avje")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

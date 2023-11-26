@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bniqepvmttb5o"]
+
+[ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Scenes/TileMap/TileMap.tscn" id="1_laa5k"]
+[ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/Player.tscn" id="2_6piqj"]
+[ext_resource type="PackedScene" uid="uid://h6cvw0kg2yd4" path="res://Scenes/UI/HUD/HUD.tscn" id="3_wsicm"]
+[ext_resource type="PackedScene" uid="uid://x1n06sp64hb3" path="res://Scenes/UI/Menu/Pause/Main/PauseMenu.tscn" id="13_ydtfg"]
+[ext_resource type="PackedScene" uid="uid://bn84klstelkpc" path="res://Scenes/UI/Menu/Pause/Options/PauseOptions.tscn" id="14_pbjsh"]
+
+[node name="LevelBase" type="Node2D"]
+process_mode = 3
+
+[node name="Pausable" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="TileMap" parent="Pausable" instance=ExtResource("1_laa5k")]
+layer_0/tile_data = PackedInt32Array(-131075, 458753, 9, 65533, 458753, 10, -131074, 524289, 9, -65538, 524289, 9, -2, 524289, 9, 65534, 524289, 10, -1, 589825, 9)
+layer_1/tile_data = PackedInt32Array(196607, 786433, 7, 131071, 786433, 5, 131070, 720897, 5, 196606, 720897, 7, 131069, 720897, 5, 196605, 720897, 7, 196604, 655361, 7, 131068, 655361, 5)
+
+[node name="Projectiles" type="Node2D" parent="Pausable"]
+
+[node name="Player" parent="Pausable" instance=ExtResource("2_6piqj")]
+position = Vector2(-43, 0)
+
+[node name="HUD" parent="Pausable" instance=ExtResource("3_wsicm")]
+
+[node name="Enemies" type="Node2D" parent="Pausable"]
+
+[node name="Collectibles" type="Node2D" parent="Pausable"]
+
+[node name="UpgradeItems" type="Node2D" parent="Pausable"]
+
+[node name="Enviroment" type="Node2D" parent="Pausable"]
+
+[node name="Platforms" type="Node2D" parent="Pausable"]
+
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="PauseMenu" parent="Pause" instance=ExtResource("13_ydtfg")]
+process_mode = 2
+visible = false
+
+[node name="PauseOptions" parent="Pause" instance=ExtResource("14_pbjsh")]
+process_mode = 2
+visible = false
+
+[connection signal="game_resume" from="Pause/PauseMenu" to="." method="_on_pause_menu_game_resume"]
+[connection signal="options_menu" from="Pause/PauseMenu" to="." method="_on_pause_menu_options_menu"]
+[connection signal="quit_to_menu" from="Pause/PauseMenu" to="." method="_on_pause_menu_quit_to_menu"]
+[connection signal="back" from="Pause/PauseOptions" to="." method="_on_pause_options_back"]
