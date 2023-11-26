@@ -1,6 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjgfp8psykyaq"]
+[gd_scene load_steps=31 format=3 uid="uid://bjgfp8psykyaq"]
 
+[ext_resource type="PackedScene" uid="uid://chnankwx0ekhv" path="res://Scenes/Spikes/Spikes.tscn" id="1_phb3k"]
 [ext_resource type="Texture2D" uid="uid://dcy3qpac4a5y5" path="res://Resources/TileMap/Textures/monochrome_tilemap_packed.png" id="1_q3p6m"]
+[ext_resource type="PackedScene" uid="uid://bs16y7qki4w5g" path="res://Scenes/Spikes/SpikesMoving.tscn" id="2_qitxb"]
 [ext_resource type="Script" path="res://Resources/TileMap/TileMap.gd" id="2_vgcfl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_e5edp"]
@@ -71,6 +73,10 @@ tile_data = PackedInt32Array(0, 196609, 0, 65536, 196609, 1, 131072, 196609, 2)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_a2nfk"]
 tile_data = PackedInt32Array(65536, 262145, 1, 131072, 262145, 2, 1, 327681, 0, 65537, 327681, 1, 131073, 327681, 2, 65538, 393217, 1, 131074, 393217, 2)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pl2ff"]
+scenes/1/scene = ExtResource("1_phb3k")
+scenes/2/scene = ExtResource("2_qitxb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwan4"]
 texture = ExtResource("1_q3p6m")
@@ -2154,6 +2160,7 @@ terrain_set_0/terrain_5/color = Color(0.678431, 0.545098, 0, 1)
 terrain_set_0/terrain_6/name = "WaveDirt"
 terrain_set_0/terrain_6/color = Color(0.25, 0.5, 0.40625, 1)
 sources/1 = SubResource("TileSetAtlasSource_rwan4")
+sources/0 = SubResource("TileSetScenesCollectionSource_pl2ff")
 pattern_0 = SubResource("TileMapPattern_e5edp")
 pattern_1 = SubResource("TileMapPattern_2d367")
 pattern_2 = SubResource("TileMapPattern_2mjpv")
