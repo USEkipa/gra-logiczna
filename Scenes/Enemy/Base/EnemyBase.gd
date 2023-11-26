@@ -9,6 +9,7 @@ var dropOnDeath: Array[PackedScene] = [preload("res://Scenes/Items/Coin/Coin.tsc
 var stateMachine := StateMachine.new()
 var enemyMovementState := EnemyMovemementState.new()
 
+var awarnessRange: int = 100
 var damage: int = 20
 var maxHealthPoints: int = 100
 var healthPoints: int = 100
@@ -25,8 +26,8 @@ func _ready() -> void:
 	_update_health_bar()
 
 
-func take_damage(damage: int) -> void:
-	healthPoints = clamp(healthPoints - damage, 0, maxHealthPoints)
+func take_damage(_damage: int) -> void:
+	healthPoints = clamp(healthPoints - _damage, 0, maxHealthPoints)
 	_update_health_bar()
 	if healthPoints <= 0:
 		_die()

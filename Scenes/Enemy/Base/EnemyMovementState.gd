@@ -28,6 +28,9 @@ func update_delta(_delta: float) -> void:
 func _move_toward_player() -> void:
 	if player == null:
 		return
+	if enemyBody.position.distance_to(player.position) > enemyBody.awarnessRange:
+		enemyBody.velocity = Vector2()
+		return
 
 	var moveDirection := (player.position - enemyBody.position).normalized()
 	enemyBody.velocity.x = moveDirection.x * movementSpeed
