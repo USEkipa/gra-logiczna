@@ -9,7 +9,7 @@ signal coin_picked_up(count: int)
 signal health_picked_up(count: int)
 signal damage_taken(count: int)
 
-var stateMachine := StateMachine.new(true)
+var stateMachine := StateMachine.new()
 var playerMovementState := PlayerMovementState.new()
 
 

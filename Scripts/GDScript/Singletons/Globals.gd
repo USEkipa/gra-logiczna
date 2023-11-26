@@ -1,5 +1,7 @@
 extends Node
 
+var World: Dictionary = {GRAVITY = 20}
+
 var Options: Dictionary = {
 	isFullScreen = false,
 	isMusic = false,
@@ -9,7 +11,6 @@ var Options: Dictionary = {
 var PlayerStats: Dictionary = {
 	SPEED = 100,
 	JUMP_VELOCITY = -300,
-	GRAVITY = 20,
 	MAX_JUMPS = 1,
 	maxBulletCount = 10,
 	maxHealth = 100,
