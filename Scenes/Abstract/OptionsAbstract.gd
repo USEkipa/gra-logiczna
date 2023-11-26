@@ -1,4 +1,5 @@
 extends Control
+class_name Options
 
 var toggleFullScreen: CheckButton
 var toggleMusic: CheckButton
@@ -12,11 +13,6 @@ func _ready() -> void:
 	toggleFullScreen.button_pressed = Globals.Options.isFullScreen
 	toggleMusic.button_pressed = Globals.Options.isMusic
 	volumeSlider.value = Globals.Options.volume
-
-
-func _on_back_pressed() -> void:
-	Sounds.play_sound(Sounds.SoundType.BUTTON_CLICK)
-	get_tree().change_scene_to_file("res://Scenes/UI/Menu/Main/Menu.tscn")
 
 
 func _on_toggle_full_screen_pressed() -> void:

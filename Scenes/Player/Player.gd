@@ -13,7 +13,7 @@ var press_e_label: Label
 var bullet_timer: Timer
 var all_interactions = []
 
-var stateMachine := StateMachine.new(true)
+var stateMachine := StateMachine.new()
 var playerMovementState := PlayerMovementState.new()
 
 
