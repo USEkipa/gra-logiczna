@@ -66,6 +66,7 @@ func _on_player_health_picked_up(count: int) -> void:
 
 
 func _on_pause_menu_game_resume():
+	print("AAAAA")
 	pause()
 
 
