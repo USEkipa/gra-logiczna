@@ -40,11 +40,8 @@ func _physics_process(_delta):
 	particles.gravity = wind_velocity
 
 	# Set particle system lifetime based on target distance
-	particles.lifetime = (targetDistance / windStrength)
+	particles.lifetime = (targetDistance / windStrength) + 0.2
 
-	# Emit the wind signal (you can connect this signal to your Player)
-	emit_signal("wind", direction)
-	
 	if isInArea:
 		var dir = direction.normalized()
 		var target_position = global_position + dir * targetDistance

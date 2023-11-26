@@ -73,3 +73,6 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_key_pressed(KEY_5):
 		add_score(1)
 		print("add 1 Globals.PlayerStats.score: " + str(Globals.PlayerStats.score))
+	elif Input.is_key_pressed(KEY_6):
+		print("restart")
+		get_tree().reload_current_scene()
