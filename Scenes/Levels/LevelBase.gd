@@ -40,24 +40,24 @@ func _on_player_bullet_shot(pos: Vector2, direction: Vector2) -> void:
 	bullet.rotation = direction.angle()
 	bullet.direction = direction
 	bullet.position = pos
-	$Level/Projectiles.add_child(bullet)
-	$Level/HUD.remove_bullet()
+	$Environment/Projectiles.add_child(bullet)
+	$Environment/HUD.remove_bullet()
 
 
 func _on_player_bullet_picked_up(count: int) -> void:
-	$Level/HUD.set_bullet_count(count)
+	$Environment/HUD.set_bullet_count(count)
 
 
 func _on_player_coin_picked_up(count: int) -> void:
-	$Level/HUD.add_score(count)
+	$Environment/HUD.add_score(count)
 
 
 func _on_player_damage_taken(count: int) -> void:
-	$Level/HUD.add_health(count)
+	$Environment/HUD.add_health(count)
 
 
 func _on_player_health_picked_up(count: int) -> void:
-	$Level/HUD.add_health(count)
+	$Environment/HUD.add_health(count)
 
 
 func _on_pause_menu_game_resume():
