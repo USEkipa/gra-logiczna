@@ -6,7 +6,7 @@ var gpuPlayerParticles: GPUParticles2D = null
 var playerAnimations: AnimatedSprite2D = null
 var bulletStartPosition: Node2D = null
 
-var avaible_jumps = Globals.PlayerStats.MAX_JUMPS
+var avaible_jumps
 var last_dir = Vector2.LEFT
 
 
@@ -15,6 +15,7 @@ func set_player(_playerBody: Player) -> void:
 	gpuPlayerParticles = _playerBody.get_node("GPUParticles2D")
 	playerAnimations = _playerBody.get_node("Animations")
 	bulletStartPosition = _playerBody.get_node("BulletStartPositions")
+	avaible_jumps = Globals.PlayerStats.MAX_JUMPS
 
 
 func change_components_direction(direction) -> void:

@@ -35,3 +35,5 @@ script = ExtResource("2_2gcyn")
 [node name="Player" parent="Pausable/PlayerEnviroment" instance=ExtResource("3_ag6sj")]
 
 [node name="Pause" parent="." instance=ExtResource("2_va5sg")]
+
+[editable path="Pause"]

@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://by4w684fwsocp"]
+[gd_scene load_steps=5 format=3 uid="uid://by4w684fwsocp"]
 
-[ext_resource type="Texture2D" uid="uid://no4lxh8wxk1h" path="res://Scenes/Items/Textures/bullets.png" id="1_pndoy"]
+[ext_resource type="Texture2D" uid="uid://dsg7bcbyu5t2e" path="res://Resources/Graphics/Spritesheets/1-bit 16px icons part-1.png" id="1_0n2uh"]
 [ext_resource type="Script" path="res://Scenes/Items/Bullets/Bullets.gd" id="2_u7q5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgk26"]
+atlas = ExtResource("1_0n2uh")
+region = Rect2(153, 300, 14, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l00kn"]
 size = Vector2(10, 14)
 
 [node name="Bullets" type="Sprite2D"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_pndoy")
+modulate = Color(0.811765, 0.615686, 0.290196, 1)
+texture_filter = 1
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_qgk26")
 script = ExtResource("2_u7q5i")
 
 [node name="Area2D" type="Area2D" parent="."]

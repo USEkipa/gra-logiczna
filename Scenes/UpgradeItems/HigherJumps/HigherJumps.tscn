@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dif14o7qpivms"]
+[gd_scene load_steps=5 format=3 uid="uid://dif14o7qpivms"]
 
+[ext_resource type="Texture2D" uid="uid://d3dd8g86icdl2" path="res://Resources/Graphics/Spritesheets/1bit 16px icons part-2.png" id="1_pufec"]
 [ext_resource type="Script" path="res://Scenes/UpgradeItems/HigherJumps/HigherJumps.gd" id="2_sr46e"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ubmgj"]
-load_path = "res://.godot/imported/higher_jumps.png-7370fa01f183c4f7c2d4ddb5983557ea.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8bbo"]
+atlas = ExtResource("1_pufec")
+region = Rect2(299, 82, 9, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2avje"]
 size = Vector2(31, 18)
 
 [node name="HigherJumps" type="Sprite2D"]
-texture = SubResource("CompressedTexture2D_ubmgj")
+modulate = Color(0, 0.792157, 0.266667, 1)
+texture_filter = 1
+texture = SubResource("AtlasTexture_s8bbo")
 script = ExtResource("2_sr46e")
 
 [node name="Area2D" type="Area2D" parent="."]

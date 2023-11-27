@@ -8,9 +8,12 @@ var Options: Dictionary = {
 	volume = 5,
 }
 
-var PlayerStats: Dictionary = {
+var PlayerStats: Dictionary = {}
+
+var DefaultPlayerStats: Dictionary = {
 	SPEED = 100,
 	JUMP_VELOCITY = -300,
+	GRAVITY = 20,
 	MAX_JUMPS = 1,
 	PUSH_FORCE = 20,
 	maxBulletCount = 10,
@@ -20,14 +23,11 @@ var PlayerStats: Dictionary = {
 	health = 0,
 }
 
-var DefaultPlayerStats: Dictionary = {
-	SPEED = 100,
-	JUMP_VELOCITY = -300,
-	GRAVITY = 20,
-	MAX_JUMPS = 1,
-	maxBulletCount = 10,
-	maxHealth = 100,
-	bulletCount = 0,
-	score = 0,
-	health = 0,
-}
+
+func _enter_tree() -> void:
+	set_default_stats()
+
+
+func set_default_stats() -> void:
+	PlayerStats = DefaultPlayerStats.duplicate(true)
+	print(PlayerStats)

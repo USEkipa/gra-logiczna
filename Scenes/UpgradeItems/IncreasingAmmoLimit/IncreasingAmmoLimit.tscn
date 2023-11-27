@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnkwvm0aq1587"]
+[gd_scene load_steps=5 format=3 uid="uid://bnkwvm0aq1587"]
 
-[ext_resource type="Texture2D" uid="uid://b86ehj1x17y7d" path="res://Scenes/UpgradeItems/Textures/increasing_ammo_limit.png" id="1_ngito"]
+[ext_resource type="Texture2D" uid="uid://d3dd8g86icdl2" path="res://Resources/Graphics/Spritesheets/1bit 16px icons part-2.png" id="1_gxoou"]
 [ext_resource type="Script" path="res://Scenes/UpgradeItems/IncreasingAmmoLimit/IncreasingAmmoLimit.gd" id="2_v0k7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qugiy"]
+atlas = ExtResource("1_gxoou")
+region = Rect2(105, 200, 14, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2avje"]
 size = Vector2(31, 18)
 
 [node name="IncreasingAmmoLimit" type="Sprite2D"]
-texture = ExtResource("1_ngito")
+modulate = Color(1, 0.709804, 1, 1)
+texture_filter = 1
+texture = SubResource("AtlasTexture_qugiy")
 script = ExtResource("2_v0k7n")
 
 [node name="Area2D" type="Area2D" parent="."]

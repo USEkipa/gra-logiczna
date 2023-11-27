@@ -17,6 +17,12 @@ func _ready() -> void:
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)
 
+	pauseMenu.connect("game_resume", _on_pause_menu_game_resume)
+	pauseMenu.connect("quit_to_menu", _on_pause_menu_quit_to_menu)
+	pauseMenu.connect("options_menu", _on_pause_menu_options_menu)
+
+	optionsMenu.connect("back", _on_pause_options_back)
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
