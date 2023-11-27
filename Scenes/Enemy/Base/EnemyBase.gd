@@ -1,8 +1,8 @@
 extends Node2D
 class_name EnemyBase
 
-@export var player: Player = null
-@export var collectibles: Node2D = null
+var player: Player = null
+var collectibles: Node2D = null
 @onready var healthBar: TextureProgressBar = $HealthBar
 
 var dropOnDeath: Array[PackedScene] = [preload("res://Scenes/Items/Coin/Coin.tscn")]
@@ -17,18 +17,24 @@ var healthPoints: int = 100
 
 
 func _ready() -> void:
-	if player == null:
-		Logger.log_error(["Player was not set for this enemy! Position: ", global_position])
-		get_tree().quit()
-	if collectibles == null:
-		Logger.log_error(["Collectibles was not set for this enemy! Position: ", global_position])
-		get_tree().quit()
+	try_fetch_level_enviroment()
 	enemyMovementState.set_enemy(self)
 
 	stateMachine.add_state(enemyMovementState)
 	stateMachine.add_default_state(enemyMovementState)
 	stateMachine.set_state(enemyMovementState)
 	_update_health_bar()
+
+
+func try_fetch_level_enviroment() -> void:
+	var levelBase: LevelBase = get_parent().get_parent().get_parent()
+	player = levelBase.player
+	collectibles = levelBase.collectibles
+
+	if player == null:
+		Logger.log_warning(["Player was not set for this enemy! Position: ", global_position])
+	if collectibles == null:
+		Logger.log_warning(["Collectibles was not set for this enemy! Position: ", global_position])
 
 
 func take_damage(_damage: int) -> void:

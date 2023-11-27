@@ -96,3 +96,4 @@ func update_delta(_delta: float) -> void:
 		playerBody.can_shoot = false
 		playerBody.get_node("BulletTimer").start()
 		playerBody.bullet_shot.emit(playerBody.get_random_marker().global_position, last_dir)
+		playerBody.hud.remove_bullet()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://clqptvd5duuek"]
+[gd_scene load_steps=31 format=3 uid="uid://clqptvd5duuek"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_nivif"]
 [ext_resource type="Texture2D" uid="uid://b5woimrh1xofx" path="res://Resources/Graphics/Spritesheets/Projectiles/white.png" id="2_78uo8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2tecocki86wv" path="res://Resources/Graphics/Spritesheets/Player/idle.png" id="4_vgtwx"]
 [ext_resource type="Texture2D" uid="uid://c0i0triyxopid" path="res://Resources/Graphics/Spritesheets/Player/jump.png" id="5_aof48"]
 [ext_resource type="Texture2D" uid="uid://c03rx4ojeq1km" path="res://Resources/Graphics/Spritesheets/Player/run.png" id="6_lkq3w"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/HUD/HUD.tscn" id="7_ctmk6"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1hfqt"]
 emission_shape = 1
@@ -230,5 +231,7 @@ offset_right = 18.0
 offset_bottom = -8.0
 text = "Press E"
 label_settings = SubResource("LabelSettings_1psbc")
+
+[node name="HUD" parent="." instance=ExtResource("7_ctmk6")]
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]

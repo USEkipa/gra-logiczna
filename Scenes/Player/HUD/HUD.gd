@@ -1,6 +1,7 @@
 extends Control
+class_name PlayerHUD
 
-const BULLET_SCENE = preload("res://Scenes/UI/HUD/BulletTexture.tscn")
+const BULLET_SCENE = preload("res://Scenes/Player/HUD/BulletTexture.tscn")
 
 @onready var BulletContainer: HBoxContainer = $Front/H/PlayerStats/Ammo/H
 @onready var ScoreLabel: Control = $Front/H/GameStats/Score/Label

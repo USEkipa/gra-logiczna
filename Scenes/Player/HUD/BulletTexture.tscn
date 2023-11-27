@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tw303pyl00fv"]
 
-[ext_resource type="Texture2D" uid="uid://b1igggd2q153w" path="res://Scenes/UI/HUD/bullet.png" id="1_2m1sg"]
+[ext_resource type="Texture2D" uid="uid://b1igggd2q153w" path="res://Scenes/Player/HUD/bullet.png" id="1_2m1sg"]
 
 [node name="BulletTexture" type="TextureRect"]
 texture = ExtResource("1_2m1sg")

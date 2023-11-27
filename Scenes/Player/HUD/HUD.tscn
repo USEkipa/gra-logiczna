@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://h6cvw0kg2yd4"]
 
-[ext_resource type="Texture2D" uid="uid://ca2nq6odvmpqm" path="res://Scenes/UI/HUD/under.png" id="1_ft5o4"]
-[ext_resource type="Script" path="res://Scenes/UI/HUD/HUD.gd" id="1_jlgou"]
-[ext_resource type="Texture2D" uid="uid://ch23p8a4vcvhy" path="res://Scenes/UI/HUD/progress.png" id="2_4fo4l"]
+[ext_resource type="Texture2D" uid="uid://ca2nq6odvmpqm" path="res://Scenes/Player/HUD/under.png" id="1_ft5o4"]
+[ext_resource type="Script" path="res://Scenes/Player/HUD/HUD.gd" id="1_jlgou"]
+[ext_resource type="Texture2D" uid="uid://ch23p8a4vcvhy" path="res://Scenes/Player/HUD/progress.png" id="2_4fo4l"]
 [ext_resource type="FontFile" uid="uid://cch1dxiah5qsd" path="res://Resources/Themes/fonts/SpaceMono-Regular.ttf" id="3_br6mm"]
 
 [node name="HUD" type="Control"]

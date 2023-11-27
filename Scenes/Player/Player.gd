@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
-var can_shoot = true
+const bullet_scene: PackedScene = preload("res://Scenes/Projectiles/bullet.tscn")
 
-signal bullet_shot(pos, direction)
-signal bullet_picked_up(count: int)
-signal coin_picked_up(count: int)
-signal health_picked_up(count: int)
-signal damage_taken(count: int)
+signal bullet_shot
+
+@onready var hud: PlayerHUD = $HUD
+
+var can_shoot = true
 
 var press_e_label: Label
 var bullet_timer: Timer
@@ -23,30 +23,29 @@ func _ready() -> void:
 	stateMachine.add_state(playerMovementState)
 	stateMachine.add_default_state(playerMovementState)
 	stateMachine.set_state(playerMovementState)
-	
+
 	press_e_label = $Press_E
 	bullet_timer = $BulletTimer
-	
 
 
-func increase_bullet_count(count: int) -> void:
+func bullet_picked_up(count: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_AMMO)
-	bullet_picked_up.emit(count)
+	$HUD.set_bullet_count(count)
 
 
-func increase_score_count(count: int) -> void:
+func coin_picked_up(count: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_COIN)
-	coin_picked_up.emit(count)
-
-
-func increase_health_count(count: int) -> void:
-	Sounds.play_sound(Sounds.SoundType.GET_HP)
-	health_picked_up.emit(count)
+	$HUD.add_score(count)
 
 
 func take_damage(count: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
-	damage_taken.emit(-count)
+	$HUD.add_health(-count)
+
+
+func health_picked_up(count: int) -> void:
+	Sounds.play_sound(Sounds.SoundType.GET_HP)
+	$HUD.add_health(count)
 
 
 func _on_bullet_timer_timeout():
@@ -56,40 +55,42 @@ func _on_bullet_timer_timeout():
 func get_random_marker() -> Marker2D:
 	var bullet_markers = $BulletStartPositions.get_children()
 	return bullet_markers[randi() % bullet_markers.size()]
-	
-	
+
+
 # INTERACTIONS --------------------------------------------------
 func update_press_e_label_visibility() -> void:
 	if all_interactions:
 		press_e_label.visible = true
 	else:
 		press_e_label.visible = false
-	
-	
+
+
 func add_interaction(interaction: UpgradeItemBase) -> void:
 	all_interactions.insert(0, interaction)
 	update_press_e_label_visibility()
-	
-	
+
+
 func erase_interaction(interaction: UpgradeItemBase) -> void:
 	all_interactions.erase(interaction)
 	update_press_e_label_visibility()
-	
-	
+
+
 func execute_interaction() -> void:
 	if all_interactions:
 		var current_interaction = all_interactions[0]
 		if "on_execute_interaction" in current_interaction:
 			current_interaction.on_execute_interaction(self)
 
+
 func change_bullet_timer_speed(count: float) -> void:
 	var new_wait_time = bullet_timer.wait_time + count
 	if new_wait_time > 0:
 		bullet_timer.wait_time = new_wait_time
 
+
 func _physics_process(delta: float) -> void:
 	stateMachine.update_state_delta(delta)
-	
+
 	if Input.is_action_just_pressed("interact"):
 		execute_interaction()
 
