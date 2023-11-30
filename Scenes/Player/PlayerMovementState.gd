@@ -5,8 +5,8 @@ var playerBody: Player = null
 var gpuPlayerParticles: GPUParticles2D = null
 var playerAnimations: AnimatedSprite2D = null
 var bulletStartPosition: Node2D = null
-
-var avaible_jumps
+var isStaggered: bool = false
+var avaible_jumps: int
 var last_dir = Vector2.LEFT
 
 
@@ -27,6 +27,7 @@ func change_components_direction(direction) -> void:
 		playerAnimations.flip_h = false
 		for marker in bulletStartPosition.get_children():
 			marker.position.x = -abs(marker.position.x)
+		last_dir = Vector2.LEFT
 	elif direction == Vector2.RIGHT:
 		gpuPlayerParticles.position = Vector2(
 			abs(gpuPlayerParticles.position.x), gpuPlayerParticles.position.y
@@ -35,6 +36,7 @@ func change_components_direction(direction) -> void:
 		playerAnimations.flip_h = true
 		for marker in bulletStartPosition.get_children():
 			marker.position.x = abs(marker.position.x)
+		last_dir = Vector2.RIGHT
 
 
 func get_direction() -> Vector2:
@@ -45,7 +47,7 @@ func get_direction() -> Vector2:
 	return Vector2.ZERO
 
 
-func jump():
+func jumpManager() -> void:
 	if Input.is_action_just_pressed("up") and avaible_jumps > 0:
 		Sounds.play_sound(Sounds.SoundType.JUMP)
 		playerAnimations.play("jump")
@@ -57,36 +59,18 @@ func jump():
 			playerAnimations.play("fall")
 
 
-func reset_jumps():
-	if playerBody.is_on_floor() and avaible_jumps < Globals.PlayerStats.MAX_JUMPS:
-		avaible_jumps = Globals.PlayerStats.MAX_JUMPS
-
-
-func update_input(event: InputEvent) -> void:
-	if event.is_action_pressed("down") && playerBody.is_on_floor():
-		playerBody.position.y += 3
-
-
-func update_delta(_delta: float) -> void:
-	var direction = get_direction()
+func runManager(direction: Vector2) -> void:
 	change_components_direction(direction)
-
 	playerBody.velocity.x = direction.x * Globals.PlayerStats.SPEED
-
 	if direction != Vector2.ZERO:
-		last_dir = direction
 		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			playerAnimations.play("run")
 	else:
 		if avaible_jumps == Globals.PlayerStats.MAX_JUMPS:
 			playerAnimations.play("idle")
-	jump()
-	playerBody.move_and_slide()
-	for i in playerBody.get_slide_collision_count():
-		var collided_object = playerBody.get_slide_collision(i)
-		if collided_object.get_collider() is RigidBody2D:
-			collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * Globals.PlayerStats.PUSH_FORCE)
-	reset_jumps()
+
+
+func shootingManager() -> void:
 	if (
 		Input.is_action_pressed("shoot")
 		and playerBody.can_shoot
@@ -98,3 +82,30 @@ func update_delta(_delta: float) -> void:
 		playerBody.get_node("BulletTimer").start()
 		playerBody.bullet_shot.emit(playerBody.get_random_marker().global_position, last_dir)
 		playerBody.hud.remove_bullet()
+
+
+func reset_jumps() -> void:
+	if playerBody.is_on_floor() and avaible_jumps < Globals.PlayerStats.MAX_JUMPS:
+		avaible_jumps = Globals.PlayerStats.MAX_JUMPS
+
+
+func update_input(event: InputEvent) -> void:
+	if event.is_action_pressed("down") && playerBody.is_on_floor():
+		playerBody.position.y += 3
+
+
+func update_delta(_delta: float) -> void:
+	var direction = get_direction()
+	if not isStaggered:
+		runManager(direction)
+		jumpManager()
+		shootingManager()
+	if isStaggered:
+		playerBody.velocity.x = -last_dir.x * Globals.PlayerStats.STAGGER_FORCE
+	playerBody.move_and_slide()
+	reset_jumps()
+	
+	for i in playerBody.get_slide_collision_count():
+		var collided_object = playerBody.get_slide_collision(i)
+		if collided_object.get_collider() is RigidBody2D:
+			collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * Globals.PlayerStats.PUSH_FORCE)

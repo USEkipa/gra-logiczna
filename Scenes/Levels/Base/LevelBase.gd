@@ -12,7 +12,7 @@ class_name LevelBase
 
 func _ready() -> void:
 	add_child(effects)
-	effects.turn_on_filter(Color.CYAN, 0.05)
+	effects.turn_on_filter(Color.CYAN, 0.0)
 	effects.set_color_background(Color.BLACK)
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)

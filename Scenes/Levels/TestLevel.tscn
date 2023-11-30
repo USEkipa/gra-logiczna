@@ -63,13 +63,13 @@ position = Vector2(-113, -44)
 [node name="Rock" parent="." index="7" instance=ExtResource("14_4vypn")]
 position = Vector2(-110, -68)
 
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18987" to="Pausable/TileMap/@Area2D@18987" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18988" to="Pausable/TileMap/@Area2D@18988" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18989" to="Pausable/TileMap/@Area2D@18989" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18990" to="Pausable/TileMap/@Area2D@18990" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18991" to="Pausable/TileMap/@Area2D@18991" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18992" to="Pausable/TileMap/@Area2D@18992" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18993" to="Pausable/TileMap/@Area2D@18993" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18994" to="Pausable/TileMap/@Area2D@18994" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@46093" to="Pausable/TileMap/@Area2D@46093" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@46094" to="Pausable/TileMap/@Area2D@46094" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@46095" to="Pausable/TileMap/@Area2D@46095" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@46096" to="Pausable/TileMap/@Area2D@46096" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@46097" to="Pausable/TileMap/@Area2D@46097" method="_on_body_entered" flags=18]
 
 [editable path="Pause"]

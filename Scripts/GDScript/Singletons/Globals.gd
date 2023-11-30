@@ -16,6 +16,7 @@ var DefaultPlayerStats: Dictionary = {
 	GRAVITY = 20,
 	MAX_JUMPS = 1,
 	PUSH_FORCE = 20,
+	STAGGER_FORCE = 100,
 	maxBulletCount = 10,
 	maxHealth = 100,
 	bulletCount = 0,
