@@ -6,6 +6,7 @@ var gpuPlayerParticles: GPUParticles2D = null
 var playerAnimations: AnimatedSprite2D = null
 var bulletStartPosition: Node2D = null
 var isStaggered: bool = false
+var isDead: bool = false
 var avaible_jumps: int
 var last_dir = Vector2.LEFT
 
@@ -90,22 +91,24 @@ func reset_jumps() -> void:
 
 
 func update_input(event: InputEvent) -> void:
-	if event.is_action_pressed("down") && playerBody.is_on_floor():
-		playerBody.position.y += 3
+	if not isDead:
+		if event.is_action_pressed("down") && playerBody.is_on_floor():
+			playerBody.position.y += 3
 
 
 func update_delta(_delta: float) -> void:
-	var direction = get_direction()
-	if not isStaggered:
-		runManager(direction)
-		jumpManager()
-		shootingManager()
-	if isStaggered:
-		playerBody.velocity.x = -last_dir.x * Globals.PlayerStats.STAGGER_FORCE
-	playerBody.move_and_slide()
-	reset_jumps()
-	
-	for i in playerBody.get_slide_collision_count():
-		var collided_object = playerBody.get_slide_collision(i)
-		if collided_object.get_collider() is RigidBody2D:
-			collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * Globals.PlayerStats.PUSH_FORCE)
+	if not isDead:
+		var direction = get_direction()
+		if not isStaggered:
+			runManager(direction)
+			jumpManager()
+			shootingManager()
+		if isStaggered:
+			playerBody.velocity.x = -last_dir.x * Globals.PlayerStats.STAGGER_FORCE
+		playerBody.move_and_slide()
+		reset_jumps()
+		
+		for i in playerBody.get_slide_collision_count():
+			var collided_object = playerBody.get_slide_collision(i)
+			if collided_object.get_collider() is RigidBody2D:
+				collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * Globals.PlayerStats.PUSH_FORCE)

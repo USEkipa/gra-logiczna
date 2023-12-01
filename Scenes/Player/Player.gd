@@ -9,13 +9,13 @@ signal bullet_shot
 @onready var effects := preload("res://Scenes/Effects/Effects.tscn").instantiate()
 
 var can_shoot = true
-
 var press_e_label: Label
 var bullet_timer: Timer
 var all_interactions = []
 var can_take_damage = true
 var stateMachine := StateMachine.new()
 var playerMovementState := PlayerMovementState.new()
+var fade: float = 0.0
 
 
 func _ready() -> void:
@@ -48,15 +48,22 @@ func calc_stagger_direction(enemyPosition: Vector2):
 
 
 func take_damage(count: int, objectPosition: Vector2) -> void:
-	if can_take_damage:
+	if can_take_damage and Globals.PlayerStats.health > 0:
+		$HUD.add_health(-count)
 		playerMovementState.change_components_direction(-calc_stagger_direction(objectPosition))
 		effects.turn_on_filter(Color.RED, 0.2)
 		can_take_damage = false
-		$Animations.play("stagger")
 		$StaggerTimer.start()
 		playerMovementState.isStaggered = true
-		Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
-		$HUD.add_health(-count)
+		if Globals.PlayerStats.health <= 0:
+			$Animations.play("death")
+			Sounds.play_sound(Sounds.SoundType.GAME_OVER)
+			playerMovementState.isDead = true
+			all_interactions = []
+			Globals.set_default_stats()
+		else:
+			Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
+			$Animations.play("stagger")
 
 
 func health_picked_up(count: int) -> void:
@@ -77,10 +84,20 @@ func _on_animations_animation_finished():
 	if playerMovementState.isStaggered:
 		playerMovementState.isStaggered = false
 		effects.turn_on_filter(Color.CYAN, 0.0)
+	if playerMovementState.isDead:
+		for i in range(10):
+			$DeathFade.start()
+			await $DeathFade.timeout
+		get_tree().change_scene_to_file("res://Scenes/UI/Menu/Death/DeathMenu.tscn")
 
 
 func _on_stagger_timer_timeout():
-	can_take_damage = true
+	can_take_damage = true	
+
+
+func _on_death_fade_timeout():
+	fade += 0.1
+	effects.turn_on_filter(Color.BLACK, fade)
 
 
 # INTERACTIONS --------------------------------------------------

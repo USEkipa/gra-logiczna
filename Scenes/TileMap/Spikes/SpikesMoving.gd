@@ -30,9 +30,8 @@ func checkForPlayerCollision():
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		if body is Player:
-			print("Player hit the spikes")
-			get_tree().reload_current_scene()
+			body.take_damage(10, global_position)
 
 func _on_body_entered(body):
 	if body is Player && current_state == SpikeState.UP:
-		get_tree().reload_current_scene()
+		body.take_damage(10, global_position)

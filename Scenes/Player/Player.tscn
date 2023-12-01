@@ -311,6 +311,10 @@ one_shot = true
 [node name="StaggerTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DeathFade" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
@@ -329,3 +333,4 @@ label_settings = SubResource("LabelSettings_1psbc")
 [connection signal="animation_finished" from="Animations" to="." method="_on_animations_animation_finished"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]
 [connection signal="timeout" from="StaggerTimer" to="." method="_on_stagger_timer_timeout"]
+[connection signal="timeout" from="DeathFade" to="." method="_on_death_fade_timeout"]
