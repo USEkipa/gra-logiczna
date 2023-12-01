@@ -3,7 +3,6 @@ extends ItemBase
 
 func _ready():
 	item_name = "coin"
-	start_tween()
 
 
 func _on_area_2d_body_entered(body) -> void:

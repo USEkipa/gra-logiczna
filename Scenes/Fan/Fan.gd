@@ -12,55 +12,41 @@ var animation_player: AnimationPlayer
 var initialParticlePosition: Vector2 = Vector2(0, 0)
 
 var isInArea := false
-var player: CharacterBody2D
+var bodiesInFanArea: Array[Entity] = []
 
 
 func _ready() -> void:
-	# Save the initial position of the particles
 	initialParticlePosition = particles.global_position
 	animation_player = $fan/AnimationPlayer
 
 
 func _physics_process(_delta) -> void:
-	# Calculate the new position and size of the CollisionShape2D
-	var direction = Vector2.RIGHT.rotated(deg_to_rad(rotation_degrees))
+	var direction = Vector2(cos(deg_to_rad(rotation_degrees)), sin(deg_to_rad(rotation_degrees)))
 	var new_position = global_position + direction * targetDistance / 2
 	var new_size = Vector2(targetDistance, wind_area.shape.extents.y * 2)
 
 	animation_player.play("active")
-	# Update the CollisionShape2D
+
 	wind_area.global_position = new_position
 	wind_area.shape.extents = new_size / 2
 
-	# Update particle system position
-	particles.global_position = initialParticlePosition
-
-	# Calculate the wind velocity and direction
 	var wind_velocity = direction * windStrength
-
-	# Set the particle system gravity based on wind direction
+	particles.global_position = initialParticlePosition
 	particles.gravity = wind_velocity
-
-	# Set particle system lifetime based on target distance
 	particles.lifetime = (targetDistance / windStrength) + 0.2
 
-	if isInArea:
-		var dir = direction.normalized()
-
-		if int(rotation_degrees) % 180 == 0:  # Fan is in a horizontal position
-			player.velocity.x = dir.x * windStrength
-			player.velocity.y = 0
-		else:  # Fan is in a vertical position
-			player.velocity.x = 0
-			player.velocity.y = dir.y * windStrength
-		player.move_and_slide()
+	for body in bodiesInFanArea:
+		var directionNormalized = direction.normalized()
+		body.velocity.x = directionNormalized.x * windStrength
+		body.velocity.y = directionNormalized.y * windStrength
+		body.move_and_slide()
 
 
 func _on_wind_body_entered(body) -> void:
-	if body is Player:
-		isInArea = true
-		player = body
+	if body is Entity:
+		bodiesInFanArea.append(body)
 
 
-func _on_wind_body_exited(_body) -> void:
-	isInArea = false
+func _on_wind_body_exited(body) -> void:
+	if body is Entity:
+		bodiesInFanArea.remove_at(bodiesInFanArea.find(body))

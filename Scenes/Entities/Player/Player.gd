@@ -35,21 +35,21 @@ func _ready() -> void:
 	bulletTimer = $BulletTimer
 
 
-func add_bullets(count: int) -> void:
+func add_bullets(amount: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_AMMO)
-	bulletCount = clampi(bulletCount + count, 0, maxBulletCount)
+	bulletCount = clampi(bulletCount + amount, 0, maxBulletCount)
 	hud.update_ui()
 
 
-func add_score(count: int) -> void:
+func add_score(amount: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_COIN)
-	score += count
+	score += amount
 	hud.update_ui()
 
 
-func take_damage(count: int) -> void:
+func take_damage(amount: int) -> void:
 	Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
-	add_health(-count)
+	add_health(-amount)
 	hud.update_ui()
 
 

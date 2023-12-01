@@ -1,5 +1,4 @@
-extends Sprite2D
-
+extends LevitationEffect
 class_name UpgradeItemBase
 
 @export var item_name: String = "none"

@@ -1,4 +1,4 @@
-extends Node2D
+extends Entity
 class_name EnemyBase
 
 var player: Player = null
@@ -12,8 +12,6 @@ var enemyMovementState := EnemyMovemementState.new()
 
 var awarnessRange: int = 100
 var damage: int = 20
-var maxHealthPoints: int = 100
-var healthPoints: int = 100
 
 
 func _ready() -> void:
@@ -37,17 +35,15 @@ func try_fetch_level_enviroment() -> void:
 		Logger.log_warning(["Collectibles was not set for this enemy! Position: ", global_position])
 
 
-func take_damage(_damage: int) -> void:
-	healthPoints = clamp(healthPoints - _damage, 0, maxHealthPoints)
+func take_damage(amount: int) -> void:
+	health = clamp(health - amount, 0, maxHealth)
 	_update_health_bar()
-	if healthPoints <= 0:
+	if health <= 0:
 		_die()
 
 
 func _update_health_bar() -> void:
-	healthBar.min_value = 0
-	healthBar.max_value = maxHealthPoints
-	healthBar.value = healthPoints
+	healthBar.value = health
 
 
 func _physics_process(delta: float) -> void:

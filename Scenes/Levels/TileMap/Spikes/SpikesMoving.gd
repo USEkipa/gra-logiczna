@@ -26,5 +26,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body) -> void:
-	if body is Player && current_state == SpikeState.UP:
+	if body is Entity && current_state == SpikeState.UP:
 		body.take_damage(SPIKE_DAMAGE)
