@@ -39,20 +39,20 @@ func pause() -> void:
 		optionsMenu.hide()
 
 
-func _on_pause_menu_game_resume():
+func _on_pause_menu_game_resume() -> void:
 	pause()
 
 
-func _on_pause_menu_quit_to_menu():
+func _on_pause_menu_quit_to_menu() -> void:
 	pause()
 	get_tree().change_scene_to_file("res://Scenes/UI/Menu/Main/Menu.tscn")
 
 
-func _on_pause_menu_options_menu():
+func _on_pause_menu_options_menu() -> void:
 	pauseMenu.hide()
 	optionsMenu.show()
 
 
-func _on_pause_options_back():
+func _on_pause_options_back() -> void:
 	pauseMenu.show()
 	optionsMenu.hide()

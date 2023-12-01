@@ -16,5 +16,5 @@ func _on_area_2d_body_exited(body):
 
 
 func on_execute_interaction(_player):
-	Globals.PlayerStats.maxHealth += 10
+	_player.maxHealth += 10
 	queue_free()

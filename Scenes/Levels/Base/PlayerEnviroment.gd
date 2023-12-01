@@ -1,6 +1,8 @@
 extends Node2D
 
-const bullet_scene: PackedScene = preload("res://Scenes/Projectiles/bullet.tscn")
+const BULLET_SCENE: PackedScene = preload(
+	"res://Scenes/Entities/Player/Projectiles/PlayerBullet.tscn"
+)
 
 @onready var player: Player = $Player
 var projectiles: Node2D = null
@@ -14,7 +16,7 @@ func _ready() -> void:
 
 
 func bullet_shot(pos: Vector2, direction: Vector2) -> void:
-	var bullet = bullet_scene.instantiate()
+	var bullet = BULLET_SCENE.instantiate()
 	bullet.rotation = direction.angle()
 	bullet.direction = direction
 	bullet.position = pos

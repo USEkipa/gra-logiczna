@@ -14,17 +14,19 @@ var initialParticlePosition: Vector2 = Vector2(0, 0)
 var isInArea := false
 var player: CharacterBody2D
 
-func _ready():
+
+func _ready() -> void:
 	# Save the initial position of the particles
 	initialParticlePosition = particles.global_position
 	animation_player = $fan/AnimationPlayer
 
-func _physics_process(_delta):
+
+func _physics_process(_delta) -> void:
 	# Calculate the new position and size of the CollisionShape2D
 	var direction = Vector2.RIGHT.rotated(deg_to_rad(rotation_degrees))
 	var new_position = global_position + direction * targetDistance / 2
 	var new_size = Vector2(targetDistance, wind_area.shape.extents.y * 2)
-	
+
 	animation_player.play("active")
 	# Update the CollisionShape2D
 	wind_area.global_position = new_position
@@ -53,14 +55,12 @@ func _physics_process(_delta):
 			player.velocity.y = dir.y * windStrength
 		player.move_and_slide()
 
-func _on_wind_body_entered(body):
+
+func _on_wind_body_entered(body) -> void:
 	if body is Player:
 		isInArea = true
 		player = body
-		Globals.PlayerStats.JUMP_VELOCITY = 0
-		Globals.PlayerStats.GRAVITY = 40
 
-func _on_wind_body_exited(_body):
+
+func _on_wind_body_exited(_body) -> void:
 	isInArea = false
-	Globals.PlayerStats.JUMP_VELOCITY = -300
-	Globals.PlayerStats.GRAVITY = 20

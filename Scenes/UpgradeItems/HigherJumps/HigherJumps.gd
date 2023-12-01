@@ -16,5 +16,5 @@ func _on_area_2d_body_exited(body):
 
 
 func on_execute_interaction(_player):
-	Globals.PlayerStats.JUMP_VELOCITY = -400
+	_player.jumpVelocity = -400
 	queue_free()

@@ -16,5 +16,5 @@ func _on_area_2d_body_exited(body):
 
 
 func on_execute_interaction(_player):
-	Globals.PlayerStats.maxBulletCount += 3
+	_player.maxBulletCount += 3
 	queue_free()

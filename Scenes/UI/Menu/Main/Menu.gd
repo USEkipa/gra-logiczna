@@ -7,15 +7,15 @@ func _ready() -> void:
 		get_tree().root.get_window().mode = Window.MODE_FULLSCREEN
 
 
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
 	Sounds.play_sound(Sounds.SoundType.BUTTON_CLICK)
 	get_tree().quit()
 
 
-func _on_options_pressed():
+func _on_options_pressed() -> void:
 	Sounds.play_sound(Sounds.SoundType.BUTTON_CLICK)
 	get_tree().change_scene_to_file("res://Scenes/UI/Menu/Options/OptionsMenu.tscn")
 
 
-func _on_play_pressed():
+func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/TestLevel.tscn")
