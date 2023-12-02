@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bniqepvmttb5o"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Base/LevelBase.gd" id="1_6ukhd"]
-[ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Scenes/TileMap/TileMap.tscn" id="1_laa5k"]
+[ext_resource type="PackedScene" uid="uid://bjgfp8psykyaq" path="res://Scenes/Levels/TileMap/TileMap.tscn" id="1_laa5k"]
 [ext_resource type="Script" path="res://Scenes/Levels/Base/PlayerEnviroment.gd" id="2_2gcyn"]
 [ext_resource type="PackedScene" uid="uid://b7r212dfrwl18" path="res://Scenes/Levels/Base/Pause.tscn" id="2_va5sg"]
-[ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Player/Player.tscn" id="3_ag6sj"]
+[ext_resource type="PackedScene" uid="uid://clqptvd5duuek" path="res://Scenes/Entities/Player/Player.tscn" id="3_ag6sj"]
 
 [node name="LevelBase" type="Node2D" node_paths=PackedStringArray("player", "collectibles")]
 process_mode = 3

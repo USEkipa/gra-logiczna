@@ -14,6 +14,7 @@ func _on_area_2d_body_exited(body):
 	if "erase_interaction" in body:
 		body.erase_interaction(self)
 
+
 func on_execute_interaction(_player: Player):
-	Globals.PlayerStats.MAX_JUMPS = 2
+	_player.maxJumps = 2
 	queue_free()

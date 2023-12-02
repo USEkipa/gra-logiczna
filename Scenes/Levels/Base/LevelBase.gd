@@ -12,7 +12,6 @@ class_name LevelBase
 
 func _ready() -> void:
 	add_child(effects)
-	effects.turn_on_filter(Color.CYAN, 0.05)
 	effects.set_color_background(Color.BLACK)
 	Sounds.play_sound(Sounds.SoundType.START_GAME)
 	Sounds.play_loop_sound(Sounds.SoundType.GAME, 1)
@@ -39,20 +38,20 @@ func pause() -> void:
 		optionsMenu.hide()
 
 
-func _on_pause_menu_game_resume():
+func _on_pause_menu_game_resume() -> void:
 	pause()
 
 
-func _on_pause_menu_quit_to_menu():
+func _on_pause_menu_quit_to_menu() -> void:
 	pause()
 	get_tree().change_scene_to_file("res://Scenes/UI/Menu/Main/Menu.tscn")
 
 
-func _on_pause_menu_options_menu():
+func _on_pause_menu_options_menu() -> void:
 	pauseMenu.hide()
 	optionsMenu.show()
 
 
-func _on_pause_options_back():
+func _on_pause_options_back() -> void:
 	pauseMenu.show()
 	optionsMenu.hide()
