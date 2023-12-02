@@ -13,7 +13,8 @@ var animation_player: AnimationPlayer
 var initialParticlePosition: Vector2 = Vector2(0, 0)
 
 var isInArea := false
-var bodiesInFanArea: Array[Entity] = []
+var characterBodiesInFanArea: Array[CharacterBody2D] = []
+var rigidBodiesInFanArea: Array[RigidBody2D] = []
 var direction: Vector2
 
 
@@ -38,17 +39,23 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	for body in bodiesInFanArea:
+	for body in characterBodiesInFanArea:
 		body.velocity.y += direction.y * windStrength
 		body.velocity.x += direction.x * windStrength
 		body.move_and_slide()
+	for body in rigidBodiesInFanArea:
+		body.apply_central_impulse(direction * windStrength)
 
 
 func _on_wind_body_entered(body) -> void:
-	if body is Entity:
-		bodiesInFanArea.append(body)
+	if body is CharacterBody2D:
+		characterBodiesInFanArea.append(body)
+	if body is RigidBody2D:
+		rigidBodiesInFanArea.append(body)
 
 
 func _on_wind_body_exited(body) -> void:
-	if body is Entity:
-		bodiesInFanArea.remove_at(bodiesInFanArea.find(body))
+	if body is CharacterBody2D:
+		characterBodiesInFanArea.remove_at(characterBodiesInFanArea.find(body))
+	if body is RigidBody2D:
+		rigidBodiesInFanArea.remove_at(rigidBodiesInFanArea.find(body))

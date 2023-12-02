@@ -105,8 +105,3 @@ func update_delta(_delta: float) -> void:
 			player.velocity.x = -lastDirection.x * player.staggerForce
 		player.move_and_slide()
 		reset_jumps()
-		
-		for i in player.get_slide_collision_count():
-			var collided_object = player.get_slide_collision(i)
-			if collided_object.get_collider() is RigidBody2D:
-				collided_object.get_collider().apply_central_impulse(-collided_object.get_normal() * player.pushForce)
