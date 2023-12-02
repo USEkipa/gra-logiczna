@@ -4,10 +4,6 @@ class_name Player
 var speed := 100
 var jumpVelocity := -300
 var maxJumps := 1
-<<<<<<< HEAD
-=======
-var pushForce := 20
->>>>>>> main
 var maxBulletCount := 10
 var bulletCount := 3
 var score := 0
