@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2gs2jv14s0r3"]
+[gd_scene load_steps=15 format=3 uid="uid://2gs2jv14s0r3"]
 
 [ext_resource type="PackedScene" uid="uid://bniqepvmttb5o" path="res://Scenes/Levels/Base/LevelBase.tscn" id="1_7jek6"]
 [ext_resource type="PackedScene" uid="uid://dyry3n8f7pev4" path="res://Scenes/Levels/Platforms/MovingPlatform2.tscn" id="2_o02p3"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dif14o7qpivms" path="res://Scenes/UpgradeItems/HigherJumps/HigherJumps.tscn" id="10_3pyf2"]
 [ext_resource type="PackedScene" uid="uid://bnkwvm0aq1587" path="res://Scenes/UpgradeItems/IncreasingAmmoLimit/IncreasingAmmoLimit.tscn" id="11_awsmh"]
 [ext_resource type="PackedScene" uid="uid://e16jw12sq3as" path="res://Scenes/UpgradeItems/IncreasingMaxHealth/IncreasingMaxHealth.tscn" id="12_1ux5y"]
+[ext_resource type="PackedScene" uid="uid://b8tohxqubwtof" path="res://Scenes/Entities/Environment/Box.tscn" id="13_qkyas"]
+[ext_resource type="PackedScene" uid="uid://b82hw7tfyii3a" path="res://Scenes/Entities/Environment/Rock.tscn" id="14_l5gh1"]
 
 [node name="TestLevel" instance=ExtResource("1_7jek6")]
 
@@ -19,8 +21,8 @@
 layer_0/tile_data = PackedInt32Array(-131075, 458753, 9, 65533, 458753, 10, -131074, 524289, 9, -65538, 524289, 9, -2, 524289, 9, 65534, 524289, 10, -1, 589825, 9, 131070, 720897, 5, 131069, 720897, 5, 131068, 720897, 5, 131067, 720897, 5, 131066, 720897, 5, 131065, 720897, 5, 131064, 720897, 5, 131063, 720897, 5, 131062, 720897, 5, 131061, 720897, 5, 131060, 720897, 5, 196597, 720897, 7, 196598, 720897, 7, 196599, 720897, 7, 196600, 720897, 7, 196601, 720897, 7, 196602, 720897, 7, 196603, 720897, 7, 196604, 720897, 7, 196605, 720897, 7, 196606, 720897, 7, 196607, 720897, 7, 131072, 720897, 7, 131073, 720897, 7, 131074, 720897, 7, 131075, 720897, 7, 131076, 720897, 7, 131077, 720897, 7, 65541, 720897, 5, 65540, 720897, 5, 65539, 720897, 5, 65538, 720897, 5, 65537, 720897, 5, 65536, 720897, 5, 131071, 720897, 5, 196594, 720897, 7, 196593, 720897, 7, 196592, 720897, 7, 196591, 720897, 7, 196590, 720897, 7, 196589, 720897, 7, 196588, 720897, 7, 196587, 720897, 7, 196586, 720897, 7, 196585, 720897, 7, 196584, 720897, 7, 196583, 655361, 7, 131047, 655361, 6, 131048, 917505, 5, 131050, 720897, 5, 131049, 720897, 5, 131051, 720897, 5, 131059, 720897, 5, 131058, 720897, 5, 131057, 720897, 5, 131056, 720897, 5, 131055, 720897, 5, 131054, 720897, 5, 131053, 720897, 5, 131052, 720897, 5, 65511, 655361, 6, -25, 655361, 6, -65561, 655361, 6, -131097, 655361, 6, -196633, 655361, 6, -262169, 655361, 6, -327705, 655361, 6, -393241, 655361, 5, -393240, 786433, 5, -327704, 786433, 6, -262168, 786433, 6, -196632, 786433, 6, -131096, 786433, 6, -65560, 786433, 6, -24, 786433, 6, 65512, 786433, 6, 196595, 720897, 7, 196596, 720897, 7, 65542, 917505, 8, 131078, 720897, 7, 6, 655361, 6, -65530, 655361, 6, -131066, 655361, 6, -196602, 655361, 6, -262138, 655361, 6, -327674, 655361, 6, -393210, 655361, 6, -458746, 655361, 6, -524282, 655361, 5, -524281, 720897, 5, -524280, 786433, 5, -458744, 786433, 6, -458745, 720897, 6, -393209, 720897, 6, -327673, 720897, 6, -262137, 720897, 6, -196601, 720897, 6, -131065, 720897, 6, -65529, 720897, 6, 7, 720897, 6, 65543, 720897, 6, 131079, 720897, 7, 131080, 786433, 7, 65544, 786433, 6, 8, 786433, 6, -65528, 786433, 6, -131064, 786433, 6, -196600, 786433, 6, -262136, 786433, 6, -327672, 786433, 6, -393208, 786433, 6, 65513, 0, 65536, 65514, 0, 65536, 65515, 0, 131072, 65516, 0, 131072, 65517, 0, 131072, 65521, 0, 196608, 65522, 0, 196608, 65523, 0, 196608)
 layer_1/tile_data = PackedInt32Array(65540, 720897, 6)
 
-[node name="EnemyBase" parent="Pausable/Enemies" index="0" instance=ExtResource("2_q1d6p")]
-position = Vector2(78, 1)
+[node name="EnemyBase2" parent="Pausable/Enemies" index="0" instance=ExtResource("2_q1d6p")]
+position = Vector2(-87, -14)
 
 [node name="Coin" parent="Pausable/Collectibles" index="0" instance=ExtResource("5_1c787")]
 position = Vector2(-39, -62)
@@ -68,13 +70,19 @@ position = Vector2(-176, -83)
 [node name="IncreasingMaxHealth" parent="." index="5" instance=ExtResource("12_1ux5y")]
 position = Vector2(-177, -111)
 
+[node name="Box" parent="." index="6" instance=ExtResource("13_qkyas")]
+position = Vector2(-327, -69)
+
+[node name="Rock" parent="." index="7" instance=ExtResource("14_l5gh1")]
+position = Vector2(-54, -1)
+
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75133" to="Pausable/TileMap/@Area2D@75133" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@150694" to="Pausable/TileMap/@Area2D@150694" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75134" to="Pausable/TileMap/@Area2D@75134" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75135" to="Pausable/TileMap/@Area2D@75135" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@150695" to="Pausable/TileMap/@Area2D@150695" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@150696" to="Pausable/TileMap/@Area2D@150696" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75136" to="Pausable/TileMap/@Area2D@75136" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75137" to="Pausable/TileMap/@Area2D@75137" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@150697" to="Pausable/TileMap/@Area2D@150697" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@150698" to="Pausable/TileMap/@Area2D@150698" method="_on_body_entered" flags=18]
 
 [editable path="Pause"]

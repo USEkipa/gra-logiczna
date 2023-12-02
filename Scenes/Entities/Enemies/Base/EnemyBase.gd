@@ -47,6 +47,7 @@ func _update_health_bar() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	super(delta)
 	stateMachine.update_state_delta(delta)
 
 

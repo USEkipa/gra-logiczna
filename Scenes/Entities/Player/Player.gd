@@ -4,7 +4,6 @@ class_name Player
 var speed := 100
 var jumpVelocity := -300
 var maxJumps := 1
-var pushForce := 20
 var maxBulletCount := 10
 var bulletCount := 3
 var score := 0
@@ -139,6 +138,7 @@ func change_bulletTimer_speed(count: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	super(delta)
 	stateMachine.update_state_delta(delta)
 
 	if Input.is_action_just_pressed("interact"):
