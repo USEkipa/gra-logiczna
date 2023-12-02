@@ -35,8 +35,8 @@ func try_fetch_level_enviroment() -> void:
 		Logger.log_warning(["Collectibles was not set for this enemy! Position: ", global_position])
 
 
-func take_damage(amount: int) -> void:
-	health = clamp(health - amount, 0, maxHealth)
+func take_damage(amount: int, _objectPosition: Vector2) -> void:
+	super(amount, _objectPosition)
 	_update_health_bar()
 	if health <= 0:
 		_die()
@@ -64,9 +64,9 @@ func _die() -> void:
 
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area is PlayerBullet:
-		take_damage(area.damage)
+		take_damage(area.damage, global_position)
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.take_damage(damage)
+		body.take_damage(damage, global_position)

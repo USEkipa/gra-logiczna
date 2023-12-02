@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://51v4jfxioslu"]
 
-[ext_resource type="Script" path="res://Scenes/Fan/Fan.gd" id="1_8bide"]
+[ext_resource type="Script" path="res://Scenes/Levels/Fan/Fan.gd" id="1_8bide"]
 [ext_resource type="Texture2D" uid="uid://d3e4qr5xn5tme" path="res://Resources/Graphics/Traps/fan.png" id="2_a6gyk"]
 [ext_resource type="Texture2D" uid="uid://dfpfjbu34behc" path="res://Resources/Graphics/Traps/fan_wind.png" id="5_mixtu"]
 

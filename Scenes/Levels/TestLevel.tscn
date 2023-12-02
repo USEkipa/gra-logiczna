@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bniqepvmttb5o" path="res://Scenes/Levels/Base/LevelBase.tscn" id="1_7jek6"]
 [ext_resource type="PackedScene" uid="uid://dyry3n8f7pev4" path="res://Scenes/Levels/Platforms/MovingPlatform2.tscn" id="2_o02p3"]
 [ext_resource type="PackedScene" uid="uid://dbjj5whajpctq" path="res://Scenes/Entities/Enemies/Base/EnemyBase.tscn" id="2_q1d6p"]
-[ext_resource type="PackedScene" uid="uid://51v4jfxioslu" path="res://Scenes/Fan/Fan.tscn" id="3_biiks"]
+[ext_resource type="PackedScene" uid="uid://51v4jfxioslu" path="res://Scenes/Levels/Fan/Fan.tscn" id="3_biiks"]
 [ext_resource type="PackedScene" uid="uid://ds16pxtt8su5p" path="res://Scenes/Items/Coin/Coin.tscn" id="5_1c787"]
 [ext_resource type="PackedScene" uid="uid://dm7hq76td17sv" path="res://Scenes/Items/Heart/Heart.tscn" id="6_h8eg6"]
 [ext_resource type="PackedScene" uid="uid://dljjh8qucbnc5" path="res://Scenes/UpgradeItems/DoubleJump/DoubleJump.tscn" id="7_eei1p"]
@@ -40,8 +40,21 @@ position = Vector2(-264, -29)
 [node name="Fan" parent="Pausable/Platforms" index="1" instance=ExtResource("3_biiks")]
 position = Vector2(-328, -11)
 rotation = 4.71239
-targetDistance = 100.0
-windStrength = 100.0
+windStrength = 40.0
+
+[node name="Fan4" parent="Pausable/Platforms" index="2" instance=ExtResource("3_biiks")]
+position = Vector2(-311, -11)
+rotation = 1.5708
+windStrength = 40.0
+
+[node name="Fan2" parent="Pausable/Platforms" index="3" instance=ExtResource("3_biiks")]
+position = Vector2(-150, -26)
+windStrength = 40.0
+
+[node name="Fan3" parent="Pausable/Platforms" index="4" instance=ExtResource("3_biiks")]
+position = Vector2(-150, -44)
+rotation = -3.14159
+windStrength = 40.0
 
 [node name="FasterShooting" parent="." index="2" instance=ExtResource("9_lvumk")]
 position = Vector2(-214, -86)
@@ -56,12 +69,12 @@ position = Vector2(-176, -83)
 position = Vector2(-177, -111)
 
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@41683" to="Pausable/TileMap/@Area2D@41683" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75133" to="Pausable/TileMap/@Area2D@75133" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@41684" to="Pausable/TileMap/@Area2D@41684" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@41685" to="Pausable/TileMap/@Area2D@41685" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75134" to="Pausable/TileMap/@Area2D@75134" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75135" to="Pausable/TileMap/@Area2D@75135" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@41686" to="Pausable/TileMap/@Area2D@41686" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@41687" to="Pausable/TileMap/@Area2D@41687" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75136" to="Pausable/TileMap/@Area2D@75136" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@75137" to="Pausable/TileMap/@Area2D@75137" method="_on_body_entered" flags=18]
 
 [editable path="Pause"]

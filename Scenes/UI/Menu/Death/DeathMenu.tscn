@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://rnlb8ne6a4xu"]
+
+[ext_resource type="Theme" uid="uid://be7rheue60ujx" path="res://Resources/Themes/ui/ui_theme.tres" id="1_bqafl"]
+[ext_resource type="Script" path="res://Scenes/UI/Menu/Death/DeathMenu.gd" id="2_tvyyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1iqkr"]
+font_size = 64
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bqafl")
+script = ExtResource("2_tvyyb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -86.0
+offset_right = 168.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_bqafl")
+text = "Game Over"
+label_settings = SubResource("LabelSettings_1iqkr")
+
+[node name="Separator" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="RetryBtn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Retry"
+
+[node name="Separator2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="QuitToMenuBtn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("1_bqafl")
+text = "Quit to menu"
+
+[connection signal="pressed" from="VBoxContainer/RetryBtn" to="." method="_on_retry_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToMenuBtn" to="." method="_on_quit_to_menu_btn_pressed"]

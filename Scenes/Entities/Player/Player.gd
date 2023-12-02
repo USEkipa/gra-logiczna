@@ -8,12 +8,16 @@ var pushForce := 20
 var maxBulletCount := 10
 var bulletCount := 3
 var score := 0
+var staggerForce := 100
 
 signal bullet_shot
 
+@onready var effects := preload("res://Scenes/Effects/Effects.tscn").instantiate()
 @onready var hud: PlayerHUD = $HUD
 
 var canShoot := true
+var canTakeDamage := true
+var fade := 0.0
 var pickUpLabel: Label
 var bulletTimer: Timer
 var allInteractions: Array[UpgradeItemBase] = []
@@ -22,6 +26,7 @@ var playerMovementState := PlayerMovementState.new()
 
 
 func _ready() -> void:
+	add_child(effects)
 	hud.set_player(self)
 	hud.update_ui()
 
@@ -47,10 +52,26 @@ func add_score(amount: int) -> void:
 	hud.update_ui()
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, objectPosition: Vector2) -> void:
+	if not canTakeDamage:
+		return
+
+	super(amount, objectPosition)
+	playerMovementState.change_components_direction(-calc_stagger_direction(objectPosition))
+	effects.turn_on_filter(Color.RED, 0.2)
+	canTakeDamage = false
+	$StaggerTimer.start()
+	playerMovementState.isStaggered = true
 	Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
-	add_health(-amount)
 	hud.update_ui()
+
+	if health <= 0:
+		$Animations.play("death")
+		Sounds.play_sound(Sounds.SoundType.GAME_OVER)
+		playerMovementState.isDead = true
+	else:
+		Sounds.play_sound(Sounds.SoundType.GET_DAMAGE)
+		$Animations.play("stagger")
 
 
 func health_picked_up(count: int) -> void:
@@ -66,6 +87,26 @@ func _on_bullet_timer_timeout() -> void:
 func get_random_marker() -> Marker2D:
 	var bullet_markers = $BulletStartPositions.get_children()
 	return bullet_markers[randi() % bullet_markers.size()]
+
+
+func _on_animations_animation_finished() -> void:
+	if playerMovementState.isStaggered:
+		playerMovementState.isStaggered = false
+		effects.turn_on_filter(Color.RED, 0.0)
+	if playerMovementState.isDead:
+		for i in range(10):
+			$DeathFade.start()
+			await $DeathFade.timeout
+		get_tree().change_scene_to_file("res://Scenes/UI/Menu/Death/DeathMenu.tscn")
+
+
+func _on_stagger_timer_timeout() -> void:
+	canTakeDamage = true
+
+
+func _on_death_fade_timeout() -> void:
+	fade += 0.1
+	effects.turn_on_filter(Color.BLACK, fade)
 
 
 # INTERACTIONS --------------------------------------------------
