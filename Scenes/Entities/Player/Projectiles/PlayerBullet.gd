@@ -21,4 +21,6 @@ func _on_bullet_life_duration_timeout():
 func _on_body_entered(body) -> void:
 	if body is Area2D:
 		return
+	if body is RigidBody2D:
+		body.take_damage(10, global_position)
 	queue_free()

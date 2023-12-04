@@ -22,7 +22,7 @@ layer_0/tile_data = PackedInt32Array(-131075, 458753, 9, 65533, 458753, 10, -131
 layer_1/tile_data = PackedInt32Array(65540, 720897, 6)
 
 [node name="EnemyBase2" parent="Pausable/Enemies" index="0" instance=ExtResource("2_q1d6p")]
-position = Vector2(-87, -14)
+position = Vector2(-386, -124)
 
 [node name="Coin" parent="Pausable/Collectibles" index="0" instance=ExtResource("5_1c787")]
 position = Vector2(-39, -62)
@@ -58,6 +58,9 @@ position = Vector2(-150, -44)
 rotation = -3.14159
 windStrength = 40.0
 
+[node name="Player" parent="Pausable/PlayerEnviroment" index="0"]
+position = Vector2(-106, 4)
+
 [node name="FasterShooting" parent="." index="2" instance=ExtResource("9_lvumk")]
 position = Vector2(-214, -86)
 
@@ -71,18 +74,18 @@ position = Vector2(-176, -83)
 position = Vector2(-177, -111)
 
 [node name="Box" parent="." index="6" instance=ExtResource("13_qkyas")]
-position = Vector2(-327, -69)
+position = Vector2(-328, -56)
 
 [node name="Rock" parent="." index="7" instance=ExtResource("14_l5gh1")]
-position = Vector2(-54, -1)
+position = Vector2(-50, -78)
 
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@154211" to="Pausable/TileMap/@Area2D@154211" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@67348" to="Pausable/TileMap/@Area2D@67348" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@154212" to="Pausable/TileMap/@Area2D@154212" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@154213" to="Pausable/TileMap/@Area2D@154213" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@67349" to="Pausable/TileMap/@Area2D@67349" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@67350" to="Pausable/TileMap/@Area2D@67350" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@154214" to="Pausable/TileMap/@Area2D@154214" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@154215" to="Pausable/TileMap/@Area2D@154215" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@67351" to="Pausable/TileMap/@Area2D@67351" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@67352" to="Pausable/TileMap/@Area2D@67352" method="_on_body_entered" flags=18]
 
 [editable path="Pause"]

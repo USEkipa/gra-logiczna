@@ -11,7 +11,11 @@ func _physics_process(_delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collided_object = get_slide_collision(i)
 		if collided_object.get_collider() is RigidBody2D:
-			collided_object.get_collider().apply_central_impulse(
+			var object = collided_object.get_collider()
+			var objectForce = sqrt((object.linear_velocity.x * object.linear_velocity.x) + (object.linear_velocity.y * object.linear_velocity.y))
+			if objectForce >= 200:
+				take_damage(int(objectForce / 10), object.global_position)
+			object.apply_central_impulse(
 				-collided_object.get_normal() * pushForce
 			)
 
