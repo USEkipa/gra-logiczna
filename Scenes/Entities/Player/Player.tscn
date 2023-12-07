@@ -276,6 +276,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+floor_block_on_wall = false
 script = ExtResource("1_nivif")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

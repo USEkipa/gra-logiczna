@@ -4,21 +4,21 @@ class_name Entity
 var maxHealth: int = 100
 var health: int = 100
 var gravityWorks: bool = true
-var pushForce := 20
 
 
 func _physics_process(_delta: float) -> void:
 	for i in get_slide_collision_count():
-		var collided_object = get_slide_collision(i)
-		if collided_object.get_collider() is RigidBody2D:
-			var object = collided_object.get_collider()
-			var objectForce = sqrt((object.linear_velocity.x * object.linear_velocity.x) + (object.linear_velocity.y * object.linear_velocity.y))
-			if objectForce >= 200:
-				take_damage(int(objectForce / 10), object.global_position)
-			object.apply_central_impulse(
-				-collided_object.get_normal() * pushForce
-			)
+		var collidedObject = get_slide_collision(i)
+		if collidedObject.get_collider() is EnviromentEntity:
+			process_interaction_with_movable(collidedObject)
 
+
+func process_interaction_with_movable(movable: KinematicCollision2D):
+	var collidedObjectSpeed = movable.get_collider().speed
+	if collidedObjectSpeed >= 250:
+		take_damage(collidedObjectSpeed / 10, movable.get_collider().global_position)
+	movable.get_collider().apply_central_impulse(-movable.get_normal() * (abs(velocity.x) / 2))
+	
 
 func add_health(amount: int) -> void:
 	health = clampi(health + amount, 0, maxHealth)

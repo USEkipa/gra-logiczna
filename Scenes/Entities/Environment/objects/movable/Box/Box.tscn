@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://pbiw1ayi4xae"]
+
+[ext_resource type="PackedScene" uid="uid://e57lebvc12th" path="res://Scenes/Entities/Environment/objects/movable/base/MovableObjectBase.tscn" id="1_wklhd"]
+[ext_resource type="Texture2D" uid="uid://bppu64me3mile" path="res://Resources/Graphics/Spritesheets/Environment/objects/box.png" id="2_3xgah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxhwi"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l37gk"]
+atlas = ExtResource("2_3xgah")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjyld"]
+atlas = ExtResource("2_3xgah")
+region = Rect2(34, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6u8a"]
+atlas = ExtResource("2_3xgah")
+region = Rect2(51, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp1b0"]
+atlas = ExtResource("2_3xgah")
+region = Rect2(68, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcc6e"]
+atlas = ExtResource("2_3xgah")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_21n8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l37gk")
+}],
+"loop": false,
+"name": &"chipped",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjyld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6u8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp1b0")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcc6e")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Box" instance=ExtResource("1_wklhd")]
+angular_damp = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_xxhwi")
+
+[node name="Animations" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_21n8l")
+animation = &"idle"
+autoplay = "idle"
