@@ -1,14 +1,16 @@
-[gd_scene load_steps=44 format=3 uid="uid://clqptvd5duuek"]
+[gd_scene load_steps=55 format=3 uid="uid://clqptvd5duuek"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Player/Player.gd" id="1_nivif"]
 [ext_resource type="Texture2D" uid="uid://b5woimrh1xofx" path="res://Resources/Graphics/Spritesheets/Projectiles/white.png" id="2_78uo8"]
 [ext_resource type="Texture2D" uid="uid://d3qo0rkh1ghhu" path="res://Resources/Graphics/Spritesheets/Player/fall.png" id="3_t4p4q"]
 [ext_resource type="Texture2D" uid="uid://nqhqiujg5csn" path="res://Resources/Graphics/Spritesheets/Player/death.png" id="4_mwkyq"]
+[ext_resource type="Texture2D" uid="uid://bfsamoh7csj7k" path="res://Resources/Graphics/Spritesheets/Player/attack-sheet.png" id="4_t4r40"]
 [ext_resource type="Texture2D" uid="uid://d2tecocki86wv" path="res://Resources/Graphics/Spritesheets/Player/idle.png" id="4_vgtwx"]
 [ext_resource type="Texture2D" uid="uid://c0i0triyxopid" path="res://Resources/Graphics/Spritesheets/Player/jump.png" id="5_aof48"]
 [ext_resource type="Texture2D" uid="uid://c03rx4ojeq1km" path="res://Resources/Graphics/Spritesheets/Player/run.png" id="6_lkq3w"]
 [ext_resource type="PackedScene" uid="uid://h6cvw0kg2yd4" path="res://Scenes/Entities/Player/HUD/HUD.tscn" id="7_ctmk6"]
 [ext_resource type="Texture2D" uid="uid://cubflq5ierxau" path="res://Resources/Graphics/Spritesheets/Player/stagger.png" id="9_an0bh"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/MeleeAttack.gd" id="11_64jbs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1hfqt"]
 emission_shape = 1
@@ -30,6 +32,38 @@ height = 16.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1psbc"]
 font_size = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s6rm"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yib84"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv2c8"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2dvc"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sex1f"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itg6n"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neu5y"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxc25"]
+atlas = ExtResource("4_t4r40")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dydro"]
 atlas = ExtResource("4_mwkyq")
@@ -154,6 +188,40 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_21dem"]
 animations = [{
 "frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_5s6rm")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_yib84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv2c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2dvc")
+}],
+"loop": false,
+"name": &"attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_sex1f")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_itg6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neu5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxc25")
+}],
+"loop": false,
+"name": &"attack2",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dydro")
 }, {
@@ -274,6 +342,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d16s"]
+size = Vector2(10, 18)
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_nivif")
@@ -320,8 +391,10 @@ label_settings = SubResource("LabelSettings_1psbc")
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_21dem")
-animation = &"fall"
+animation = &"attack2"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="StaggerTimer" type="Timer" parent="."]
 one_shot = true
@@ -330,7 +403,17 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="MeleeAttackArea" type="Area2D" parent="."]
+script = ExtResource("11_64jbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttackArea"]
+position = Vector2(-10, -1)
+shape = SubResource("RectangleShape2D_8d16s")
+disabled = true
+debug_color = Color(0.992157, 0, 0.231373, 0.419608)
+
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]
 [connection signal="animation_finished" from="Animations" to="." method="_on_animations_animation_finished"]
 [connection signal="timeout" from="StaggerTimer" to="." method="_on_stagger_timer_timeout"]
 [connection signal="timeout" from="DeathFade" to="." method="_on_death_fade_timeout"]
+[connection signal="body_entered" from="MeleeAttackArea" to="MeleeAttackArea" method="_on_body_entered"]
