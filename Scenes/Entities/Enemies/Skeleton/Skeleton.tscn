@@ -295,6 +295,5 @@ scale = Vector2(0.999999, 0.999999)
 
 [node name="CollisionShape2D" parent="AttackArea/DamageArea" index="0"]
 position = Vector2(1.42857, -3.57143)
-scale = Vector2(1, 1)
 
 [editable path="AttackArea"]

@@ -34,10 +34,6 @@ func _on_wind_body_entered(body) -> void:
 		characterBodiesInFanArea.append(body)
 	if body is RigidBody2D:
 		rigidBodiesInFanArea.append(body)
-	if body is CharacterBody2D:
-		characterBodiesInFanArea.append(body)
-	if body is RigidBody2D:
-		rigidBodiesInFanArea.append(body)
 
 
 func _on_wind_body_exited(body) -> void:
