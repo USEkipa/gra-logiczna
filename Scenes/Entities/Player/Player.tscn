@@ -24,10 +24,6 @@ orbit_velocity_max = 0.0
 scale_min = 0.05
 scale_max = 0.1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wunpw"]
-radius = 4.0
-height = 16.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_1psbc"]
 font_size = 10
 
@@ -274,6 +270,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wunpw"]
+radius = 4.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_nivif")
@@ -286,9 +286,6 @@ process_material = SubResource("ParticleProcessMaterial_1hfqt")
 texture = ExtResource("2_78uo8")
 lifetime = 0.05
 one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wunpw")
 
 [node name="BulletStartPositions" type="Node2D" parent="."]
 
@@ -329,6 +326,9 @@ one_shot = true
 [node name="DeathFade" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wunpw")
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout" flags=18]
 [connection signal="animation_finished" from="Animations" to="." method="_on_animations_animation_finished"]

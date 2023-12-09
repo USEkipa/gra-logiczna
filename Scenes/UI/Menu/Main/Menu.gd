@@ -3,7 +3,7 @@ extends Control
 
 func _ready() -> void:
 	Sounds.play_loop_sound(Sounds.SoundType.MENU)
-	if Globals.Options.isFullScreen:
+	if Globals.options.isFullScreen:
 		get_tree().root.get_window().mode = Window.MODE_FULLSCREEN
 
 
