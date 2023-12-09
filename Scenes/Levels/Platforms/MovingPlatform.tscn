@@ -34,7 +34,6 @@ _data = {
 [node name="MovingPlatform" type="Node2D"]
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
-position = Vector2(0, -4)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform"]
@@ -50,3 +49,8 @@ autoplay = "move_loop"
 libraries = {
 "": SubResource("AnimationLibrary_dfist")
 }
+
+[node name="Marker2D" type="Marker2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -79)

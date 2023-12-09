@@ -1,10 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://bjgfp8psykyaq"]
+[gd_scene load_steps=36 format=3 uid="uid://bjgfp8psykyaq"]
 
 [ext_resource type="PackedScene" uid="uid://chnankwx0ekhv" path="res://Scenes/Levels/TileMap/Spikes/Spikes.tscn" id="1_c8yom"]
 [ext_resource type="PackedScene" uid="uid://bs16y7qki4w5g" path="res://Scenes/Levels/TileMap/Spikes/SpikesMoving.tscn" id="2_j2vwi"]
 [ext_resource type="PackedScene" uid="uid://bjxmhvwepchhm" path="res://Scenes/Levels/TileMap/Trampoline/Trampoline.tscn" id="3_ahwl0"]
 [ext_resource type="Texture2D" uid="uid://dcy3qpac4a5y5" path="res://Scenes/Levels/TileMap/Textures/monochrome_tilemap_packed.png" id="4_0k8b5"]
+[ext_resource type="PackedScene" uid="uid://dorejct3hu1dj" path="res://Scenes/Levels/Platforms/MovingPlatform.tscn" id="4_h83d4"]
+[ext_resource type="PackedScene" uid="uid://dyry3n8f7pev4" path="res://Scenes/Levels/Platforms/MovingPlatform2.tscn" id="5_ff0em"]
 [ext_resource type="Script" path="res://Scenes/Levels/TileMap/TileMap.gd" id="5_xn6jm"]
+[ext_resource type="PackedScene" uid="uid://cwrr1kl261nh1" path="res://Scenes/Levels/Platforms/MovingPlatform3.tscn" id="6_g2wup"]
+[ext_resource type="PackedScene" uid="uid://6x1ss4kj21as" path="res://Scenes/Levels/Platforms/MovingPlatform4.tscn" id="7_08qar"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_e5edp"]
 tile_data = PackedInt32Array(0, 1, 7, 65536, 1, 8, 1, 65537, 7, 65537, 65537, 8, 2, 131073, 7, 65538, 131073, 8)
@@ -79,6 +83,10 @@ tile_data = PackedInt32Array(65536, 262145, 1, 131072, 262145, 2, 1, 327681, 0, 
 scenes/1/scene = ExtResource("1_c8yom")
 scenes/2/scene = ExtResource("2_j2vwi")
 scenes/3/scene = ExtResource("3_ahwl0")
+scenes/4/scene = ExtResource("4_h83d4")
+scenes/5/scene = ExtResource("5_ff0em")
+scenes/6/scene = ExtResource("6_g2wup")
+scenes/7/scene = ExtResource("7_08qar")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwan4"]
 texture = ExtResource("4_0k8b5")
