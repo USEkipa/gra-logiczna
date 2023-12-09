@@ -45,12 +45,12 @@ rotation = 1.5708
 position = Vector2(-71, -13)
 
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@107545" to="Pausable/TileMap/@Area2D@107545" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17529" to="Pausable/TileMap/@Area2D@17529" method="_on_body_entered"]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@107546" to="Pausable/TileMap/@Area2D@107546" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@107547" to="Pausable/TileMap/@Area2D@107547" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17530" to="Pausable/TileMap/@Area2D@17530" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17531" to="Pausable/TileMap/@Area2D@17531" method="_on_body_entered"]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@107548" to="Pausable/TileMap/@Area2D@107548" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@107549" to="Pausable/TileMap/@Area2D@107549" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17532" to="Pausable/TileMap/@Area2D@17532" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17533" to="Pausable/TileMap/@Area2D@17533" method="_on_body_entered"]
 
 [editable path="Pause"]
