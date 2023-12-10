@@ -60,6 +60,7 @@ animations = [{
 }]
 
 [node name="Box" instance=ExtResource("1_wklhd")]
+texture_filter = 1
 angular_damp = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

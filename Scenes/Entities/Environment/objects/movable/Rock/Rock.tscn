@@ -53,6 +53,7 @@ animations = [{
 }]
 
 [node name="Rock" instance=ExtResource("1_viu0y")]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_nr158")

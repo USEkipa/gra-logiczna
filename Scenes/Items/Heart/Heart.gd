@@ -7,5 +7,5 @@ func _ready():
 
 func _on_area_2d_body_entered(body) -> void:
 	if body is Player:
-		body.add_health(10)
+		body.health_picked_up(10)
 		queue_free()
