@@ -69,12 +69,12 @@ position = Vector2(-176, -83)
 position = Vector2(-177, -111)
 
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@70213" to="Pausable/TileMap/@Area2D@70213" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26742" to="Pausable/TileMap/@Area2D@26742" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@70214" to="Pausable/TileMap/@Area2D@70214" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@70215" to="Pausable/TileMap/@Area2D@70215" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26743" to="Pausable/TileMap/@Area2D@26743" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26744" to="Pausable/TileMap/@Area2D@26744" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@70216" to="Pausable/TileMap/@Area2D@70216" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@70217" to="Pausable/TileMap/@Area2D@70217" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26745" to="Pausable/TileMap/@Area2D@26745" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26746" to="Pausable/TileMap/@Area2D@26746" method="_on_body_entered" flags=18]
 
 [editable path="Pause"]

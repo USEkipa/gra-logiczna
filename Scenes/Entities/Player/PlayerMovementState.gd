@@ -102,6 +102,7 @@ func meleeAttackManager() -> void:
 			currentAttackAnimation = "attack1"
 
 		isMeleeAttacking = true
+		Sounds.play_sound(Sounds.SoundType.ATTACK)
 		attackTimer.reset_timer()
 		playerAnimations.play(currentAttackAnimation)
 		attackAreaCollision.disabled = true
