@@ -8,7 +8,7 @@ var moveTo := Vector2(0, -2)
 
 
 func start_tween() -> void:
-	startPosition = global_position
+	startPosition = position
 	moveTo = startPosition + moveTo
 	moveTween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	moveTween.set_loops().set_parallel(false)

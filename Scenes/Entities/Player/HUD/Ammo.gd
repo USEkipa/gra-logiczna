@@ -1,6 +1,6 @@
 extends MarginContainer
 
-const BULLET_SCENE = preload("res://Scenes/UI/HUD/BulletTexture.tscn")
+const BULLET_SCENE = preload("res://Scenes/Entities/Player/HUD/BulletTexture.tscn")
 const MAX_BULLET_COUNT = 10
 @onready var BulletContainer: HBoxContainer = $H
 

@@ -18,7 +18,9 @@ func _on_bullet_life_duration_timeout():
 	queue_free()
 
 
-func _on_body_entered(body) -> void:
+func _on_body_entered(body:Node2D) -> void:
 	if body is Area2D:
 		return
+	if body is EnemyBase:
+		body.take_damage(damage, global_position)
 	queue_free()
