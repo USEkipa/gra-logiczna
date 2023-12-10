@@ -58,6 +58,8 @@ func get_object_speed() -> float:
 
 
 func take_damage(damage: int, _attackSourcePosition: Vector2):
+	if currentState == states.destroyed:
+		return
 	health = clamp(health - damage, 0, maxHealth)
 	if health <= maxHealth / 2:
 		change_state(states.chipped)
