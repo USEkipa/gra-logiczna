@@ -33,12 +33,12 @@ func get_name() -> String:
 
 # For physics process
 func update_delta(_delta: float) -> void:
-	Logger.log_error(["Function should be overridden"])
+	Logger.log_error(["update_delta function should be overridden"])
 
 
 # For input event
 func update_input(_event: InputEvent) -> void:
-	Logger.log_error(["Function should be overridden"])
+	Logger.log_error(["update_input function should be overridden"])
 
 
 func _to_string() -> String:

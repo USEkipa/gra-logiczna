@@ -1,26 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://2gs2jv14s0r3"]
+[gd_scene load_steps=11 format=3 uid="uid://2gs2jv14s0r3"]
 
 [ext_resource type="PackedScene" uid="uid://bniqepvmttb5o" path="res://Scenes/Levels/Base/LevelBase.tscn" id="1_7jek6"]
+[ext_resource type="PackedScene" uid="uid://bwuboeymdrjjk" path="res://Scenes/Entities/Enemies/Skeleton/Skeleton.tscn" id="2_8quy6"]
 [ext_resource type="PackedScene" uid="uid://dyry3n8f7pev4" path="res://Scenes/Levels/Platforms/MovingPlatform2.tscn" id="2_o02p3"]
-[ext_resource type="PackedScene" uid="uid://dbjj5whajpctq" path="res://Scenes/Entities/Enemies/Base/EnemyBase.tscn" id="2_q1d6p"]
 [ext_resource type="PackedScene" uid="uid://51v4jfxioslu" path="res://Scenes/Levels/Fan/Fan.tscn" id="3_biiks"]
 [ext_resource type="PackedScene" uid="uid://ds16pxtt8su5p" path="res://Scenes/Items/Coin/Coin.tscn" id="5_1c787"]
 [ext_resource type="PackedScene" uid="uid://dm7hq76td17sv" path="res://Scenes/Items/Heart/Heart.tscn" id="6_h8eg6"]
+[ext_resource type="PackedScene" uid="uid://pbiw1ayi4xae" path="res://Scenes/Entities/Environment/objects/movable/Box/Box.tscn" id="7_auifb"]
 [ext_resource type="PackedScene" uid="uid://dljjh8qucbnc5" path="res://Scenes/UpgradeItems/DoubleJump/DoubleJump.tscn" id="7_eei1p"]
 [ext_resource type="PackedScene" uid="uid://by4w684fwsocp" path="res://Scenes/Items/Bullets/Bullets.tscn" id="7_r5v2r"]
-[ext_resource type="PackedScene" uid="uid://5dytpjdf07md" path="res://Scenes/UpgradeItems/FasterShooting/FasterShooting.tscn" id="9_lvumk"]
-[ext_resource type="PackedScene" uid="uid://dif14o7qpivms" path="res://Scenes/UpgradeItems/HigherJumps/HigherJumps.tscn" id="10_3pyf2"]
-[ext_resource type="PackedScene" uid="uid://bnkwvm0aq1587" path="res://Scenes/UpgradeItems/IncreasingAmmoLimit/IncreasingAmmoLimit.tscn" id="11_awsmh"]
-[ext_resource type="PackedScene" uid="uid://e16jw12sq3as" path="res://Scenes/UpgradeItems/IncreasingMaxHealth/IncreasingMaxHealth.tscn" id="12_1ux5y"]
+[ext_resource type="PackedScene" uid="uid://cxennmgcp0td7" path="res://Scenes/Entities/Environment/objects/movable/Rock/Rock.tscn" id="8_r03i7"]
 
 [node name="TestLevel" instance=ExtResource("1_7jek6")]
 
 [node name="TileMap" parent="Pausable" index="0"]
-layer_0/tile_data = PackedInt32Array(-131075, 458753, 9, 65533, 458753, 10, -131074, 524289, 9, -65538, 524289, 9, -2, 524289, 9, 65534, 524289, 10, -1, 589825, 9, 131070, 720897, 5, 131069, 720897, 5, 131068, 720897, 5, 131067, 720897, 5, 131066, 720897, 5, 131065, 720897, 5, 131064, 720897, 5, 131063, 720897, 5, 131062, 720897, 5, 131061, 720897, 5, 131060, 720897, 5, 196597, 720897, 7, 196598, 720897, 7, 196599, 720897, 7, 196600, 720897, 7, 196601, 720897, 7, 196602, 720897, 7, 196603, 720897, 7, 196604, 720897, 7, 196605, 720897, 7, 196606, 720897, 7, 196607, 720897, 7, 131072, 720897, 7, 131073, 720897, 7, 131074, 720897, 7, 131075, 720897, 7, 131076, 720897, 7, 131077, 720897, 7, 65541, 720897, 5, 65540, 720897, 5, 65539, 720897, 5, 65538, 720897, 5, 65537, 720897, 5, 65536, 720897, 5, 131071, 720897, 5, 196594, 720897, 7, 196593, 720897, 7, 196592, 720897, 7, 196591, 720897, 7, 196590, 720897, 7, 196589, 720897, 7, 196588, 720897, 7, 196587, 720897, 7, 196586, 720897, 7, 196585, 720897, 7, 196584, 720897, 7, 196583, 655361, 7, 131047, 655361, 6, 131048, 917505, 5, 131050, 720897, 5, 131049, 720897, 5, 131051, 720897, 5, 131059, 720897, 5, 131058, 720897, 5, 131057, 720897, 5, 131056, 720897, 5, 131055, 720897, 5, 131054, 720897, 5, 131053, 720897, 5, 131052, 720897, 5, 65511, 655361, 6, -25, 655361, 6, -65561, 655361, 6, -131097, 655361, 6, -196633, 655361, 6, -262169, 655361, 6, -327705, 655361, 6, -393241, 655361, 5, -393240, 786433, 5, -327704, 786433, 6, -262168, 786433, 6, -196632, 786433, 6, -131096, 786433, 6, -65560, 786433, 6, -24, 786433, 6, 65512, 786433, 6, 196595, 720897, 7, 196596, 720897, 7, 65542, 917505, 8, 131078, 720897, 7, 6, 655361, 6, -65530, 655361, 6, -131066, 655361, 6, -196602, 655361, 6, -262138, 655361, 6, -327674, 655361, 6, -393210, 655361, 6, -458746, 655361, 6, -524282, 655361, 5, -524281, 720897, 5, -524280, 786433, 5, -458744, 786433, 6, -458745, 720897, 6, -393209, 720897, 6, -327673, 720897, 6, -262137, 720897, 6, -196601, 720897, 6, -131065, 720897, 6, -65529, 720897, 6, 7, 720897, 6, 65543, 720897, 6, 131079, 720897, 7, 131080, 786433, 7, 65544, 786433, 6, 8, 786433, 6, -65528, 786433, 6, -131064, 786433, 6, -196600, 786433, 6, -262136, 786433, 6, -327672, 786433, 6, -393208, 786433, 6, 65513, 0, 65536, 65514, 0, 65536, 65515, 0, 131072, 65516, 0, 131072, 65517, 0, 131072, 65521, 0, 196608, 65522, 0, 196608, 65523, 0, 196608)
+layer_0/tile_data = PackedInt32Array(131070, 720897, 5, 131069, 720897, 5, 131068, 720897, 5, 131067, 720897, 5, 131066, 720897, 5, 131065, 720897, 5, 131064, 720897, 5, 131063, 720897, 5, 131062, 720897, 5, 131061, 720897, 5, 131060, 720897, 5, 196597, 720897, 7, 196598, 720897, 7, 196599, 720897, 7, 196600, 720897, 7, 196601, 720897, 7, 196602, 720897, 7, 196603, 720897, 7, 196604, 720897, 7, 196605, 720897, 7, 196606, 720897, 7, 196607, 720897, 7, 131072, 720897, 7, 131073, 720897, 7, 131074, 720897, 7, 131075, 720897, 7, 131076, 720897, 7, 131077, 720897, 7, 65541, 720897, 5, 65540, 720897, 5, 65539, 720897, 5, 65538, 720897, 5, 65537, 720897, 5, 65536, 720897, 5, 131071, 720897, 5, 196594, 720897, 7, 196593, 720897, 7, 196592, 720897, 7, 196591, 720897, 7, 196590, 720897, 7, 196589, 720897, 7, 196588, 720897, 7, 196587, 720897, 7, 196586, 720897, 7, 196585, 720897, 7, 196584, 720897, 7, 196583, 655361, 7, 131047, 655361, 6, 131048, 917505, 5, 131050, 720897, 5, 131049, 720897, 5, 131051, 720897, 5, 131059, 720897, 5, 131058, 720897, 5, 131057, 720897, 5, 131056, 720897, 5, 131055, 720897, 5, 131054, 720897, 5, 131053, 720897, 5, 131052, 720897, 5, 65511, 655361, 6, -25, 655361, 6, -65561, 655361, 6, -131097, 655361, 6, -196633, 655361, 6, -262169, 655361, 6, -327705, 655361, 6, -393241, 655361, 5, -393240, 786433, 5, -327704, 786433, 6, -262168, 786433, 6, -196632, 786433, 6, -131096, 786433, 6, -65560, 786433, 6, -24, 786433, 6, 65512, 786433, 6, 196595, 720897, 7, 196596, 720897, 7, 65542, 720897, 5, 131078, 720897, 7, 65543, 720897, 5, 131079, 720897, 7, 131080, 720897, 7, 65544, 720897, 5, 65513, 0, 65536, 65514, 0, 65536, 65515, 0, 131072, 65516, 0, 131072, 65517, 0, 131072, 65521, 0, 196608, 65522, 0, 196608, 65523, 0, 196608, 65545, 720897, 5, 65546, 720897, 5, 65547, 720897, 5, 65548, 720897, 5, 65549, 720897, 5, 131083, 720897, 7, 131082, 720897, 7, 131081, 720897, 7, 131084, 720897, 7, 131085, 720897, 7, 131086, 720897, 7, 131087, 720897, 7, 131088, 720897, 7, 131089, 720897, 7, 65553, 720897, 5, 65552, 720897, 5, 65551, 720897, 5, 65550, 720897, 5, 65554, 720897, 5, 65555, 917505, 8, 131091, 720897, 7, 131090, 720897, 7, 131092, 786433, 7, 65556, 786433, 6, 20, 786433, 6, -65516, 786433, 6, -131052, 786433, 6, -196588, 786433, 6, -262124, 786433, 6, -327660, 786433, 5, -327661, 655361, 5, -262125, 655361, 6, -196589, 655361, 6, -131053, 655361, 6, 19, 655361, 6, -65517, 655361, 6)
 layer_1/tile_data = PackedInt32Array(65540, 720897, 6)
 
-[node name="EnemyBase" parent="Pausable/Enemies" index="0" instance=ExtResource("2_q1d6p")]
-position = Vector2(78, 1)
+[node name="Skeleton" parent="Pausable/Enemies" index="0" instance=ExtResource("2_8quy6")]
+position = Vector2(57, -6)
 
 [node name="Coin" parent="Pausable/Collectibles" index="0" instance=ExtResource("5_1c787")]
 position = Vector2(-39, -62)
@@ -34,47 +32,33 @@ position = Vector2(-168, 6)
 [node name="DoubleJump" parent="Pausable/UpgradeItems" index="0" instance=ExtResource("7_eei1p")]
 position = Vector2(-216, -63)
 
+[node name="Box" parent="Pausable/Enviroment" index="0" instance=ExtResource("7_auifb")]
+position = Vector2(-43, -63)
+
+[node name="Rock" parent="Pausable/Enviroment" index="1" instance=ExtResource("8_r03i7")]
+position = Vector2(-50, 5)
+
 [node name="MovingPlatform" parent="Pausable/Platforms" index="0" instance=ExtResource("2_o02p3")]
 position = Vector2(-264, -29)
 
 [node name="Fan" parent="Pausable/Platforms" index="1" instance=ExtResource("3_biiks")]
-position = Vector2(-328, -11)
+position = Vector2(-116, 33)
 rotation = 4.71239
-windStrength = 40.0
 
 [node name="Fan4" parent="Pausable/Platforms" index="2" instance=ExtResource("3_biiks")]
-position = Vector2(-311, -11)
+position = Vector2(-135, -113)
 rotation = 1.5708
-windStrength = 40.0
 
-[node name="Fan2" parent="Pausable/Platforms" index="3" instance=ExtResource("3_biiks")]
-position = Vector2(-150, -26)
-windStrength = 40.0
+[node name="Player" parent="Pausable/PlayerEnviroment" index="0"]
+position = Vector2(-71, -13)
 
-[node name="Fan3" parent="Pausable/Platforms" index="4" instance=ExtResource("3_biiks")]
-position = Vector2(-150, -44)
-rotation = -3.14159
-windStrength = 40.0
-
-[node name="FasterShooting" parent="." index="2" instance=ExtResource("9_lvumk")]
-position = Vector2(-214, -86)
-
-[node name="HigherJumps" parent="." index="3" instance=ExtResource("10_3pyf2")]
-position = Vector2(-216, -109)
-
-[node name="IncreasingAmmoLimit" parent="." index="4" instance=ExtResource("11_awsmh")]
-position = Vector2(-176, -83)
-
-[node name="IncreasingMaxHealth" parent="." index="5" instance=ExtResource("12_1ux5y")]
-position = Vector2(-177, -111)
-
-[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26742" to="Pausable/TileMap/@Area2D@26742" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26743" to="Pausable/TileMap/@Area2D@26743" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26744" to="Pausable/TileMap/@Area2D@26744" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26745" to="Pausable/TileMap/@Area2D@26745" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@26746" to="Pausable/TileMap/@Area2D@26746" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18309" to="Pausable/TileMap/@Area2D@18309" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18310" to="Pausable/TileMap/@Area2D@18310" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18311" to="Pausable/TileMap/@Area2D@18311" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18312" to="Pausable/TileMap/@Area2D@18312" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18313" to="Pausable/TileMap/@Area2D@18313" method="_on_body_entered"]
 
 [editable path="Pause"]

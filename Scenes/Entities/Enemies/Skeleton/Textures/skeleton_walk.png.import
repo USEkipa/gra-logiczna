@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu1mbgv26i7op"
-path="res://.godot/imported/rock.png-d8cda79724b78fda9565d3b2592d17ab.ctex"
+uid="uid://d3kqmbnfggbmg"
+path="res://.godot/imported/skeleton_walk.png-45affe1b6fa0b6474547d766ea072819.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Spritesheets/Environment/rock.png"
-dest_files=["res://.godot/imported/rock.png-d8cda79724b78fda9565d3b2592d17ab.ctex"]
+source_file="res://Scenes/Entities/Enemies/Skeleton/Textures/skeleton_walk.png"
+dest_files=["res://.godot/imported/skeleton_walk.png-45affe1b6fa0b6474547d766ea072819.ctex"]
 
 [params]
 

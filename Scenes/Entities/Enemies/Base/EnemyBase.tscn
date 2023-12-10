@@ -1,24 +1,26 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbjj5whajpctq"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/Enemies/Base/EnemyBase.gd" id="1_80c6c"]
-[ext_resource type="Texture2D" uid="uid://c5dt5w0wnqfhu" path="res://Scenes/Entities/Enemies/Base/BaseTexture.png" id="2_47mk1"]
 [ext_resource type="Texture2D" uid="uid://ca2nq6odvmpqm" path="res://Scenes/Entities/Player/HUD/under.png" id="3_dchwq"]
+[ext_resource type="PackedScene" uid="uid://cw1kjdhpnkw5" path="res://Scenes/Entities/AttackArea.tscn" id="4_7lxe6"]
 [ext_resource type="Texture2D" uid="uid://ch23p8a4vcvhy" path="res://Scenes/Entities/Player/HUD/progress.png" id="4_qbeeb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjtmc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bum10"]
 radius = 8.01561
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_us4hf"]
-size = Vector2(18, 18)
-
 [node name="EnemyBase" type="CharacterBody2D"]
+floor_block_on_wall = false
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_80c6c")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_47mk1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bum10")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
@@ -30,11 +32,17 @@ scale = Vector2(0.2, 0.2)
 texture_under = ExtResource("3_dchwq")
 texture_progress = ExtResource("4_qbeeb")
 
-[node name="DamageArea" type="Area2D" parent="."]
-disable_mode = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hjtmc")
+animation = &"run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-shape = SubResource("RectangleShape2D_us4hf")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bum10")
 
-[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[node name="AttackArea" parent="." instance=ExtResource("4_7lxe6")]
+
+[connection signal="damage_area_entered" from="AttackArea" to="." method="_on_attack_area_damage_area_entered"]
+[connection signal="detection_area_entered" from="AttackArea" to="." method="_on_attack_area_detection_area_entered"]
+[connection signal="detection_finished" from="AttackArea" to="." method="_on_attack_area_detection_finished"]
+
+[editable path="AttackArea"]

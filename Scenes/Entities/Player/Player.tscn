@@ -26,10 +26,6 @@ orbit_velocity_max = 0.0
 scale_min = 0.05
 scale_max = 0.1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wunpw"]
-radius = 4.0
-height = 16.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_1psbc"]
 font_size = 10
 
@@ -344,9 +340,13 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d16s"]
 size = Vector2(10, 18)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wunpw"]
+radius = 4.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+floor_block_on_wall = false
 script = ExtResource("1_nivif")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -357,9 +357,6 @@ process_material = SubResource("ParticleProcessMaterial_1hfqt")
 texture = ExtResource("2_78uo8")
 lifetime = 0.05
 one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wunpw")
 
 [node name="BulletStartPositions" type="Node2D" parent="."]
 

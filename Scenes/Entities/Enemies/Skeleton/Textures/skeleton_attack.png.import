@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xf12vpcyoijd"
-path="res://.godot/imported/box.png-dfe977a361c40d21999d9adbb35d3a7a.ctex"
+uid="uid://be8k4irpmybdg"
+path="res://.godot/imported/skeleton_attack.png-5a9ab05981b187b0844a4f38fbce563f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Graphics/Spritesheets/Environment/box.png"
-dest_files=["res://.godot/imported/box.png-dfe977a361c40d21999d9adbb35d3a7a.ctex"]
+source_file="res://Scenes/Entities/Enemies/Skeleton/Textures/skeleton_attack.png"
+dest_files=["res://.godot/imported/skeleton_attack.png-5a9ab05981b187b0844a4f38fbce563f.ctex"]
 
 [params]
 

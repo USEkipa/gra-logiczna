@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5dt5w0wnqfhu"
-path="res://.godot/imported/BaseTexture.png-6da658a2b91973edf528b5a4af91428a.ctex"
+uid="uid://dcuehtyp7iyxe"
+path="res://.godot/imported/skeleton_death.png-ebc596c765cdfb39d12e8f7d84236d6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Entities/Enemies/Base/BaseTexture.png"
-dest_files=["res://.godot/imported/BaseTexture.png-6da658a2b91973edf528b5a4af91428a.ctex"]
+source_file="res://Scenes/Entities/Enemies/Skeleton/Textures/skeleton_death.png"
+dest_files=["res://.godot/imported/skeleton_death.png-ebc596c765cdfb39d12e8f7d84236d6b.ctex"]
 
 [params]
 

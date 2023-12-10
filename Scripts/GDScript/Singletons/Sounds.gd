@@ -35,25 +35,26 @@ const soundDict = {
 var sound_loop := AudioStreamPlayer.new()
 var sound_instance := AudioStreamPlayer.new()
 
+
 func _ready():
 	add_child(sound_instance)
 	add_child(sound_loop)
 
 
-func play_sound(soundtype, volume_percent = Globals.Options.volume):
+func play_sound(soundtype, volume_percent = Globals.options.volume):
 	if soundDict.has(soundtype):
 		sound_instance.stream = soundDict[soundtype]
 		sound_instance.volume_db = 20 * log(clamp(volume_percent / 100.0, 0.0, 1.0)) / log(10)
 		sound_instance.play()
 	else:
 		print("Sound not found for ", soundtype)
-		
-		
-func play_loop_sound(soundtype, volume_percent = Globals.Options.volume):
+
+
+func play_loop_sound(soundtype, volume_percent = Globals.options.volume):
 	if sound_loop && sound_loop.stream == soundDict[soundtype]:
 		return
-	
-	if soundDict.has(soundtype) :
+
+	if soundDict.has(soundtype):
 		sound_loop.volume_db = 20 * log(clamp(volume_percent / 100.0, 0.0, 1.0)) / log(10)
 		var looped_sound = soundDict[soundtype]
 		looped_sound.loop = true
@@ -61,10 +62,12 @@ func play_loop_sound(soundtype, volume_percent = Globals.Options.volume):
 		sound_loop.play()
 	else:
 		print("Sound not found for ", soundtype)
-		
+
+
 func stop_loop_sound():
 	if sound_loop:
 		sound_loop.stop()
-		
-func change_volume(volume_percent = Globals.Options.volume):
+
+
+func change_volume(volume_percent = Globals.options.volume):
 	sound_loop.volume_db = 20 * log(clamp(volume_percent / 100.0, 0.0, 1.0)) / log(10)

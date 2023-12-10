@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw1kjdhpnkw5"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/AttackArea.gd" id="1_ocixl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68q0h"]
+size = Vector2(54.2857, 28.5714)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68e2s"]
+size = Vector2(54.2857, 28.5714)
+
+[node name="AttackArea" type="Node2D"]
+script = ExtResource("1_ocixl")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_68q0h")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_68e2s")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

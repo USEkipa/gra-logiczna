@@ -6,6 +6,20 @@ var health: int = 100
 var gravityWorks: bool = true
 
 
+func _physics_process(_delta: float) -> void:
+	for i in get_slide_collision_count():
+		var collidedObject = get_slide_collision(i)
+		if collidedObject.get_collider() is EnviromentEntity:
+			process_interaction_with_movable(collidedObject)
+
+
+func process_interaction_with_movable(movable: KinematicCollision2D):
+	var collidedObjectSpeed = movable.get_collider().speed
+	if collidedObjectSpeed >= 250:
+		take_damage(collidedObjectSpeed / 10 * movable.get_collider().mass, movable.get_collider().global_position)
+	movable.get_collider().apply_central_impulse(-movable.get_normal() * (abs(velocity.x) / 2))
+	
+
 func add_health(amount: int) -> void:
 	health = clampi(health + amount, 0, maxHealth)
 
