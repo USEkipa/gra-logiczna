@@ -274,7 +274,7 @@ height = 34.0
 [node name="Skeleton" instance=ExtResource("1_oqf4y")]
 texture_filter = 1
 scale = Vector2(0.7, 0.7)
-collision_layer = 3
+collision_mask = 2
 script = ExtResource("2_hc1f4")
 
 [node name="HealthBar" parent="." index="0"]
