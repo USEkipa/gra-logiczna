@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://e57lebvc12th"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Environment/EnvironmentElement.gd" id="1_p3i03"]
+
+[node name="MovableObjectBase" type="RigidBody2D"]
+script = ExtResource("1_p3i03")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
