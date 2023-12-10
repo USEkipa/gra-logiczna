@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 func process_interaction_with_movable(movable: KinematicCollision2D):
 	var collidedObjectSpeed = movable.get_collider().speed
 	if collidedObjectSpeed >= 250:
-		take_damage(collidedObjectSpeed / 10, movable.get_collider().global_position)
+		take_damage(collidedObjectSpeed / 10 * movable.get_collider().mass, movable.get_collider().global_position)
 	movable.get_collider().apply_central_impulse(-movable.get_normal() * (abs(velocity.x) / 2))
 	
 

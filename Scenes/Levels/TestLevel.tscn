@@ -79,13 +79,13 @@ position = Vector2(-176, -83)
 [node name="IncreasingMaxHealth" parent="." index="5" instance=ExtResource("12_1ux5y")]
 position = Vector2(-177, -111)
 
-[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@80662" to="Pausable/TileMap/@Area2D@80662" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@80663" to="Pausable/TileMap/@Area2D@80663" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@80664" to="Pausable/TileMap/@Area2D@80664" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@80665" to="Pausable/TileMap/@Area2D@80665" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@80666" to="Pausable/TileMap/@Area2D@80666" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18770" to="Pausable/TileMap/@Area2D@18770" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18771" to="Pausable/TileMap/@Area2D@18771" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18772" to="Pausable/TileMap/@Area2D@18772" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18773" to="Pausable/TileMap/@Area2D@18773" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18774" to="Pausable/TileMap/@Area2D@18774" method="_on_body_entered"]
 
 [editable path="Pause"]
