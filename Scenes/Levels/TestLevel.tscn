@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2gs2jv14s0r3"]
+[gd_scene load_steps=11 format=3 uid="uid://2gs2jv14s0r3"]
 
 [ext_resource type="PackedScene" uid="uid://bniqepvmttb5o" path="res://Scenes/Levels/Base/LevelBase.tscn" id="1_7jek6"]
 [ext_resource type="PackedScene" uid="uid://bwuboeymdrjjk" path="res://Scenes/Entities/Enemies/Skeleton/Skeleton.tscn" id="2_8quy6"]
@@ -10,10 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dljjh8qucbnc5" path="res://Scenes/UpgradeItems/DoubleJump/DoubleJump.tscn" id="7_eei1p"]
 [ext_resource type="PackedScene" uid="uid://by4w684fwsocp" path="res://Scenes/Items/Bullets/Bullets.tscn" id="7_r5v2r"]
 [ext_resource type="PackedScene" uid="uid://cxennmgcp0td7" path="res://Scenes/Entities/Environment/objects/movable/Rock/Rock.tscn" id="8_r03i7"]
-[ext_resource type="PackedScene" uid="uid://5dytpjdf07md" path="res://Scenes/UpgradeItems/FasterShooting/FasterShooting.tscn" id="9_lvumk"]
-[ext_resource type="PackedScene" uid="uid://dif14o7qpivms" path="res://Scenes/UpgradeItems/HigherJumps/HigherJumps.tscn" id="10_3pyf2"]
-[ext_resource type="PackedScene" uid="uid://bnkwvm0aq1587" path="res://Scenes/UpgradeItems/IncreasingAmmoLimit/IncreasingAmmoLimit.tscn" id="11_awsmh"]
-[ext_resource type="PackedScene" uid="uid://e16jw12sq3as" path="res://Scenes/UpgradeItems/IncreasingMaxHealth/IncreasingMaxHealth.tscn" id="12_1ux5y"]
 
 [node name="TestLevel" instance=ExtResource("1_7jek6")]
 
@@ -57,12 +53,12 @@ rotation = 1.5708
 position = Vector2(-71, -13)
 
 [connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17529" to="Pausable/TileMap/@Area2D@17529" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18309" to="Pausable/TileMap/@Area2D@18309" method="_on_body_entered"]
 [connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17530" to="Pausable/TileMap/@Area2D@17530" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17531" to="Pausable/TileMap/@Area2D@17531" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18310" to="Pausable/TileMap/@Area2D@18310" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18311" to="Pausable/TileMap/@Area2D@18311" method="_on_body_entered"]
 [connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17532" to="Pausable/TileMap/@Area2D@17532" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@17533" to="Pausable/TileMap/@Area2D@17533" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18312" to="Pausable/TileMap/@Area2D@18312" method="_on_body_entered"]
+[connection signal="body_entered" from="Pausable/TileMap/@Area2D@18313" to="Pausable/TileMap/@Area2D@18313" method="_on_body_entered"]
 
 [editable path="Pause"]

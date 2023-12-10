@@ -21,7 +21,7 @@ func _on_bullet_life_duration_timeout():
 func _on_body_entered(body:Node2D) -> void:
 	if body is Area2D:
 		return
-	if body is EnvironmentEntity:
+	if body is EnviromentEntity:
 		body.take_damage(10, global_position)
 	if body is EnemyBase:
 		body.take_damage(damage, global_position)
