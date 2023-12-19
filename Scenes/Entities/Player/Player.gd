@@ -1,14 +1,6 @@
 extends Entity
 class_name Player
 
-var speed := 100
-var jumpVelocity := -300
-var maxJumps := 1
-var maxBulletCount := 10
-var bulletCount := 3
-var score := 0
-var staggerForce := 100
-
 signal bullet_shot
 
 @onready var effects := preload("res://Scenes/Effects/Effects.tscn").instantiate()
@@ -22,6 +14,14 @@ var bulletTimer: Timer
 var allInteractions: Array[UpgradeItemBase] = []
 var stateMachine := StateMachine.new()
 var playerMovementState := PlayerMovementState.new()
+
+var speed := 100
+var jumpVelocity := -300
+var maxJumps := 1
+var maxBulletCount := 10
+var bulletCount := 3
+var score := 0
+var staggerForce := 100
 
 
 func _ready() -> void:
@@ -108,7 +108,6 @@ func _on_death_fade_timeout() -> void:
 	effects.turn_on_filter(Color.BLACK, fade)
 
 
-# INTERACTIONS --------------------------------------------------
 func update_pickUpLabel_visibility() -> void:
 	pickUpLabel.visible = true if allInteractions else false
 
