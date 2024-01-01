@@ -17,7 +17,7 @@ var isAttacking := false
 var attackCooldownSeconds: float = 1
 var awarnessRange: int = 100
 var damage: int = 20
-var animationTimer := Stoper.new()
+var animationTimer := Stopwatch.new()
 var movementSpeed := 25
 
 
@@ -34,6 +34,7 @@ func _ready() -> void:
 	_update_health_bar()
 
 
+## Initialization of the enemy, fetches world info
 func try_fetch_level_enviroment() -> void:
 	var levelBase: LevelBase = get_parent().get_parent().get_parent()
 	player = levelBase.player
@@ -52,6 +53,7 @@ func take_damage(amount: int, _objectPosition: Vector2) -> void:
 		_die()
 
 
+## Forces animation to play for a given duration of time
 func force_animation(animationName: String, timeMs: int) -> void:
 	animationTimer.reset_timer()
 	animationTimer.set_cooldown(timeMs)
@@ -83,6 +85,7 @@ func _input(event: InputEvent) -> void:
 	stateMachine.update_state_input(event)
 
 
+## Removes enemy and plays death animation
 func _die() -> void:
 	for packedScene in dropOnDeath:
 		var item: Node2D = packedScene.instantiate()
