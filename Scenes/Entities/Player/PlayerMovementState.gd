@@ -32,7 +32,9 @@ func set_player(_player: Player) -> void:
 ##
 ## Based on the player's movement direction the components such as animations,
 ## gpu particles, and bullet starting positions are flipped.
+##
 ## Params:
+##
 ## `direction`: `Vector2`		player's movement direction
 func change_components_direction(direction) -> void:
 	if direction == Vector2.LEFT:
@@ -61,7 +63,9 @@ func change_components_direction(direction) -> void:
 ##
 ## Based on input key, the direction can be changed to `left`, `right` or `zero` when
 ## none of the directional keys are pressed.
+##
 ## Return:
+##
 ## `direction`: `Vector2`		player's movement direction
 func get_direction() -> Vector2:
 	if Input.is_action_pressed("left"):
@@ -94,7 +98,9 @@ func jumpManager() -> void:
 ## Function will check the movement direction of the player and if it is `zero`,
 ## then the `idle` animation is going to be played, otherwise the `run` animation
 ## is going to be played.
+##
 ## Params:
+##
 ## `direction`: `Vector2`		player's movement direction
 func runManager(direction: Vector2) -> void:
 	change_components_direction(direction)
@@ -155,6 +161,7 @@ func reset_jumps() -> void:
 ## Function responsible for letting player go down from the platforms
 ##
 ## Params:
+##
 ## `event`: `InputEvent`		key pressed
 func update_input(event: InputEvent) -> void:
 	if not isDead:
@@ -166,7 +173,9 @@ func update_input(event: InputEvent) -> void:
 ##
 ## Function puts together all of the movement functionality and also
 ## adds a stagger time when player is being hit.
+##
 ## Params:
+##
 ## `_delta`: `float`		delta time since previous frame
 func update_delta(_delta: float) -> void:
 	attackTimer.update_timer(_delta)
