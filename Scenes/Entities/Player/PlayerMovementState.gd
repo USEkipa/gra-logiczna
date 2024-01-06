@@ -14,7 +14,7 @@ var lastDirection = Vector2.LEFT
 var isMeleeAttacking: bool = false
 var currentAttackAnimation: String = "attack1"
 
-var attackTimer := Stopper.new(1.5)
+var attackTimer := Stopwatch.new()
 
 
 ## Function used on initial configuration of the player's movement state
@@ -136,7 +136,7 @@ func shootingManager() -> void:
 ## If attack button is pressed and the player is able to attack then function will
 ## playe `ATTACK` sound and start a countdown for the next attack.
 func meleeAttackManager() -> void:
-	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed():
+	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed(1.5):
 		if currentAttackAnimation == "attack1":
 			currentAttackAnimation = "attack2"
 		else:
@@ -178,7 +178,6 @@ func update_input(event: InputEvent) -> void:
 ##
 ## `_delta`: `float`		delta time since previous frame
 func update_delta(_delta: float) -> void:
-	attackTimer.update_timer(_delta)
 	if not isDead:
 		var direction = get_direction()
 		if not isStaggered:
