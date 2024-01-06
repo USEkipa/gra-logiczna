@@ -14,7 +14,7 @@ var lastDirection = Vector2.LEFT
 var isMeleeAttacking: bool = false
 var currentAttackAnimation: String = "attack1"
 
-var attackTimer := Stopper.new(1.5)
+var attackTimer := Stopwatch.new()
 
 func set_player(_player: Player) -> void:
 	player = _player
@@ -95,7 +95,7 @@ func shootingManager() -> void:
 		player.add_bullets(-1)
 
 func meleeAttackManager() -> void:
-	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed():
+	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed(1.5):
 		if currentAttackAnimation == "attack1":
 			currentAttackAnimation = "attack2"
 		else:
@@ -119,7 +119,6 @@ func update_input(event: InputEvent) -> void:
 
 
 func update_delta(_delta: float) -> void:
-	attackTimer.update_timer(_delta)
 	if not isDead:
 		var direction = get_direction()
 		if not isStaggered:
