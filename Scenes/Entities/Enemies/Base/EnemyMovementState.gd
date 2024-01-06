@@ -10,7 +10,6 @@ func _init(_enemyBody: EnemyBase) -> void:
 	enemyBody = _enemyBody
 	player = _enemyBody.player
 	animatedSprite = _enemyBody.animatedSprite
-	super()
 
 
 func update_delta(_delta: float) -> void:

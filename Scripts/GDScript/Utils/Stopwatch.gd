@@ -1,5 +1,5 @@
 extends RefCounted
-class_name Stoper
+class_name Stopwatch
 
 var _startTimeMs: int
 var cooldownTimeMs: int
