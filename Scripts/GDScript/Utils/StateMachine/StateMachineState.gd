@@ -6,7 +6,7 @@ extends RefCounted
 class_name StateMachineState
 
 ## Parent state machine, reference used for switching states inside of a given state
-var StateMaster
+var StateMaster: StateMachine
 
 
 ## Called whenever a state is set as current by StateMachine
