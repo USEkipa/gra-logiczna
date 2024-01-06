@@ -24,3 +24,9 @@ Story pointy
 - 3 (max 3-4 dni)
 - 5 (max tydzień)
 - 8 (max 2 tygodnie)
+
+
+Michał - /Scripts, /Enemies + entity /Player/AttackArea
+Mateusz - /Enviroment /Menu /Player/PlayerMovement.gd
+Miłosz - /Items /UpgradeItems /Singletons /Player/HUD /Player/Projectiles
+Amadusz - /Levels /Player/Player.gd Player/MeleAttack.gd

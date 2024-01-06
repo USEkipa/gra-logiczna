@@ -14,8 +14,10 @@ var lastDirection = Vector2.LEFT
 var isMeleeAttacking: bool = false
 var currentAttackAnimation: String = "attack1"
 
-var attackTimer := Stopper.new(1.5)
+var attackTimer := Stopwatch.new()
 
+
+## Function used on initial configuration of the player's movement state
 func set_player(_player: Player) -> void:
 	player = _player
 	gpuPlayerParticles = _player.get_node("GPUParticles2D")
@@ -26,6 +28,14 @@ func set_player(_player: Player) -> void:
 	avaibleJumps = player.maxJumps
 
 
+## Function changes player's components direction
+##
+## Based on the player's movement direction the components such as animations,
+## gpu particles, and bullet starting positions are flipped.
+##
+## Params:
+##
+## `direction`: `Vector2`		player's movement direction
 func change_components_direction(direction) -> void:
 	if direction == Vector2.LEFT:
 		gpuPlayerParticles.position = Vector2(
@@ -49,6 +59,14 @@ func change_components_direction(direction) -> void:
 		lastDirection = Vector2.RIGHT
 
 
+## Function changes gets the player's movement direction
+##
+## Based on input key, the direction can be changed to `left`, `right` or `zero` when
+## none of the directional keys are pressed.
+##
+## Return:
+##
+## `direction`: `Vector2`		player's movement direction
 func get_direction() -> Vector2:
 	if Input.is_action_pressed("left"):
 		return Vector2.LEFT
@@ -57,6 +75,11 @@ func get_direction() -> Vector2:
 	return Vector2.ZERO
 
 
+## Function responsible for managing jumping
+##
+## If jump key is pressed and the player has at least one jump avaible then 
+## function will play `jump` animation and set a new y velocity. Otherwise
+## if player is not on the floor then the function will play `fall` animation.
 func jumpManager() -> void:
 	if Input.is_action_just_pressed("up") and avaibleJumps > 0:
 		Sounds.play_sound(Sounds.SoundType.JUMP)
@@ -70,6 +93,15 @@ func jumpManager() -> void:
 			playerAnimations.play("fall")
 
 
+## Function responsible for managing running
+##
+## Function will check the movement direction of the player and if it is `zero`,
+## then the `idle` animation is going to be played, otherwise the `run` animation
+## is going to be played.
+##
+## Params:
+##
+## `direction`: `Vector2`		player's movement direction
 func runManager(direction: Vector2) -> void:
 	change_components_direction(direction)
 	player.velocity.x = direction.x * player.speed
@@ -81,6 +113,10 @@ func runManager(direction: Vector2) -> void:
 			playerAnimations.play("idle")
 
 
+## Function responsible for managing shooting
+##
+## If shoot button is pressed and the player is able to shoot then function will
+## start emitting particles and will also emit a signal for rednering a bullet.
 func shootingManager() -> void:
 	if (
 		Input.is_action_pressed("shoot")
@@ -94,8 +130,13 @@ func shootingManager() -> void:
 		player.bullet_shot.emit(player.get_random_marker().global_position, lastDirection)
 		player.add_bullets(-1)
 
+
+## Function responsible for managing melee attack
+##
+## If attack button is pressed and the player is able to attack then function will
+## playe `ATTACK` sound and start a countdown for the next attack.
 func meleeAttackManager() -> void:
-	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed():
+	if Input.is_action_just_pressed("attack") and attackTimer.is_time_passed(1.5):
 		if currentAttackAnimation == "attack1":
 			currentAttackAnimation = "attack2"
 		else:
@@ -107,19 +148,36 @@ func meleeAttackManager() -> void:
 		playerAnimations.play(currentAttackAnimation)
 		attackAreaCollision.disabled = true
 
+
+## Function responsible for resetting avaible jumps
+##
+## If player is on the floor and at least one jump has been used, then
+## the function will reset avaible jumps back to it's maximum value.
 func reset_jumps() -> void:
 	if player.is_on_floor() and avaibleJumps < player.maxJumps:
 		avaibleJumps = player.maxJumps
 
 
+## Function responsible for letting player go down from the platforms
+##
+## Params:
+##
+## `event`: `InputEvent`		key pressed
 func update_input(event: InputEvent) -> void:
 	if not isDead:
 		if event.is_action_pressed("down") && player.is_on_floor():
 			player.position.y += 3
 
 
+## Function responsible for putting together all of the movement functionality
+##
+## Function puts together all of the movement functionality and also
+## adds a stagger time when player is being hit.
+##
+## Params:
+##
+## `_delta`: `float`		delta time since previous frame
 func update_delta(_delta: float) -> void:
-	attackTimer.update_timer(_delta)
 	if not isDead:
 		var direction = get_direction()
 		if not isStaggered:

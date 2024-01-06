@@ -16,9 +16,12 @@ func _physics_process(_delta: float) -> void:
 func process_interaction_with_movable(movable: KinematicCollision2D):
 	var collidedObjectSpeed = movable.get_collider().speed
 	if collidedObjectSpeed >= 250:
-		take_damage(collidedObjectSpeed / 10 * movable.get_collider().mass, movable.get_collider().global_position)
+		take_damage(
+			collidedObjectSpeed / 10 * movable.get_collider().mass,
+			movable.get_collider().global_position
+		)
 	movable.get_collider().apply_central_impulse(-movable.get_normal() * (abs(velocity.x) / 2))
-	
+
 
 func add_health(amount: int) -> void:
 	health = clampi(health + amount, 0, maxHealth)
@@ -29,8 +32,7 @@ func take_damage(amount: int, _objectPosition: Vector2) -> void:
 
 
 func calc_stagger_direction(enemyPosition: Vector2) -> Vector2:
-	var dir = global_position.x - enemyPosition.x
-	if dir >= 0:
+	if global_position.x - enemyPosition.x >= 0:
 		return Vector2.RIGHT
 	return Vector2.LEFT
 
