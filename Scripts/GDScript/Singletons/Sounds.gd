@@ -13,7 +13,8 @@ enum SoundType {
 	LAND,
 	PASS_THE_LEVEL,
 	START_GAME,
-	ATTACK
+	ATTACK,
+	SINGLE_GUNSHOT,
 }
 
 const soundDict = {
@@ -29,18 +30,22 @@ const soundDict = {
 	SoundType.LAND : preload("res://Resources/Soundtracks/Effects/land/LAND.mp3"),
 	SoundType.PASS_THE_LEVEL : preload("res://Resources/Soundtracks/Effects/pass_the_level/PASS_THE_LEVEL.mp3"),
 	SoundType.START_GAME : preload("res://Resources/Soundtracks/Effects/start_game/START_GAME.mp3"),
-	SoundType.ATTACK : preload("res://Resources/Soundtracks/Effects/attack/ATTACK.mp3")
+	SoundType.ATTACK : preload("res://Resources/Soundtracks/Effects/attack/ATTACK.mp3"),
+	SoundType.SINGLE_GUNSHOT : preload("res://Resources/Soundtracks/Effects/single_gunshot/SINGLE_GUNSHOT.mp3")
 }
 
 var sound_loop := AudioStreamPlayer.new()
 var sound_instance := AudioStreamPlayer.new()
 
-
+## Called when the node is added to the scene.
 func _ready():
 	add_child(sound_instance)
 	add_child(sound_loop)
 
 
+## Play a non-looping sound.
+## Parameter soundtype: The type of sound to play.
+## Parameter volume_percent: Optional. The volume level as a percentage (default is Globals.options.volume).
 func play_sound(soundtype, volume_percent = Globals.options.volume):
 	if soundDict.has(soundtype):
 		sound_instance.stream = soundDict[soundtype]
@@ -50,6 +55,9 @@ func play_sound(soundtype, volume_percent = Globals.options.volume):
 		print("Sound not found for ", soundtype)
 
 
+## Play a looping sound.
+## Parameter soundtype: The type of sound to play.
+## Parameter volume_percent: Optional. The volume level as a percentage (default is Globals.options.volume).
 func play_loop_sound(soundtype, volume_percent = Globals.options.volume):
 	if sound_loop && sound_loop.stream == soundDict[soundtype]:
 		return
@@ -64,10 +72,12 @@ func play_loop_sound(soundtype, volume_percent = Globals.options.volume):
 		print("Sound not found for ", soundtype)
 
 
+## Stop the currently looping sound.
 func stop_loop_sound():
 	if sound_loop:
 		sound_loop.stop()
 
-
+## Change the volume of the looping sound.
+## Parameter volume_percent: Optional. The volume level as a percentage (default is Globals.options.volume).
 func change_volume(volume_percent = Globals.options.volume):
 	sound_loop.volume_db = 20 * log(clamp(volume_percent / 100.0, 0.0, 1.0)) / log(10)

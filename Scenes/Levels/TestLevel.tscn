@@ -55,14 +55,5 @@ rotation = 1.5708
 [node name="Player" parent="Pausable/PlayerEnviroment" index="0"]
 position = Vector2(-71, -13)
 
-[connection signal="body_entered" from="Pausable/TileMap/Spikes" to="Pausable/TileMap/Spikes" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@59409" to="Pausable/TileMap/@Area2D@59409" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/SpikesMoving" to="Pausable/TileMap/SpikesMoving" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@59410" to="Pausable/TileMap/@Area2D@59410" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@59411" to="Pausable/TileMap/@Area2D@59411" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/Trampoline" to="Pausable/TileMap/Trampoline" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@59412" to="Pausable/TileMap/@Area2D@59412" method="_on_body_entered"]
-[connection signal="body_entered" from="Pausable/TileMap/@Area2D@59413" to="Pausable/TileMap/@Area2D@59413" method="_on_body_entered"]
-
 [editable path="Pausable/Platforms/MovingPlatform"]
 [editable path="Pause"]

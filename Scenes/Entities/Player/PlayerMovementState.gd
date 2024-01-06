@@ -87,7 +87,7 @@ func shootingManager() -> void:
 		and player.canShoot
 		and player.bulletCount > 0
 	):
-		Sounds.play_sound(Sounds.SoundType.START_GAME) # zmienić to
+		Sounds.play_sound(Sounds.SoundType.SINGLE_GUNSHOT, 100.0)
 		gpuPlayerParticles.set_emitting(true)
 		player.canShoot = false
 		player.get_node("BulletTimer").start()

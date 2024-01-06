@@ -17,8 +17,11 @@ signal bullet_shot
 var canShoot := true
 var canTakeDamage := true
 var fade := 0.0
+## Label displaying pick-up information.
 var pickUpLabel: Label
+## Timer for controlling bullet firing rate.
 var bulletTimer: Timer
+## Array to store all active interactions.
 var allInteractions: Array[UpgradeItemBase] = []
 var stateMachine := StateMachine.new()
 var playerMovementState := PlayerMovementState.new()
@@ -40,7 +43,8 @@ func _ready() -> void:
 
 
 func add_bullets(amount: int) -> void:
-	Sounds.play_sound(Sounds.SoundType.GET_AMMO)
+	if amount > 0:
+		Sounds.play_sound(Sounds.SoundType.GET_AMMO)
 	bulletCount = clampi(bulletCount + amount, 0, maxBulletCount)
 	hud.update_ui()
 
@@ -109,20 +113,23 @@ func _on_death_fade_timeout() -> void:
 
 
 # INTERACTIONS --------------------------------------------------
+## Update the visibility of the pick-up label based on available interactions.
 func update_pickUpLabel_visibility() -> void:
 	pickUpLabel.visible = true if allInteractions else false
 
-
+## Add a new interaction to the list.
+## Parameter interaction: The interaction to be added.
 func add_interaction(interaction: UpgradeItemBase) -> void:
 	allInteractions.insert(0, interaction)
 	update_pickUpLabel_visibility()
 
-
+## Remove an interaction from the list.
+## Parameter interaction: The interaction to be removed.
 func erase_interaction(interaction: UpgradeItemBase) -> void:
 	allInteractions.erase(interaction)
 	update_pickUpLabel_visibility()
 
-
+## Execute the current interaction.
 func execute_interaction() -> void:
 	if allInteractions.is_empty():
 		return
@@ -130,7 +137,8 @@ func execute_interaction() -> void:
 	if "on_execute_interaction" in currentInteraction:
 		currentInteraction.on_execute_interaction(self)
 
-
+## Change the speed of the bullet timer.
+## Parameter count: The amount by which to change the bullet timer speed.
 func change_bulletTimer_speed(count: float) -> void:
 	var newWaitTime := bulletTimer.wait_time + count
 	if newWaitTime > 0:
