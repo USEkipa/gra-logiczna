@@ -1,6 +1,6 @@
 extends Node2D
 
-### Variables:
+## Variables:
 - **duration**: The duration (in seconds) for the platform movement tween.
 - **platform**: An AnimatableBody2D representing the moving platform.
 - **tween**: A Tween object for handling animation and tweening.
@@ -14,7 +14,7 @@ extends Node2D
 var startingPositon: Vector2
 var endingPositon: Vector2
 
-### Function: `_ready()`
+## Function: `_ready()`
 - **Description**: Called when the scene is ready. Initializes the starting and ending positions and starts the tweening animation.
 - **Actions**:
   - Sets the starting and ending positions.
@@ -24,7 +24,7 @@ func _ready() -> void:
 	endingPositon = targetMarker.global_position
 	start_tween()
 
-### Function: `start_tween()`
+## Function: `start_tween()`
 - **Description**: Configures and starts the tweening animation for the platform's movement.
 - **Actions**:
   - Configures the tween to have no loops and run sequentially.
@@ -35,7 +35,7 @@ func start_tween() -> void:
 	tween.tween_property(platform, "global_position", endingPositon, duration / 2)
 	tween.tween_property(platform, "global_position", startingPositon, duration / 2)
 
-### Function: `_exit_tree()`
+## Function: `_exit_tree()`
 - **Description**: Called when the node is about to be removed from the scene tree. Kills the tween to clean up resources.
 - **Actions**:
   - Calls the `kill()` method on the tween object to stop and clean up the tween.

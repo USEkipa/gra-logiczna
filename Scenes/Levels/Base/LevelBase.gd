@@ -1,7 +1,7 @@
 extends Node2D
 class_name LevelBase
 
-### Variables:
+## Variables:
 - **player**: Represents the player object.
 - **collectibles**: Represents a collection of Node2D objects.
 - **effects**: An instance of the "Effects" scene, preloaded and ready to be used.
@@ -15,7 +15,7 @@ class_name LevelBase
 @onready var optionsMenu: Control = $Pause/PauseOptions
 @onready var paused: bool = false
 
-### Function: `_ready()`
+## Function: `_ready()`
 - **Description**: Called when the scene is ready. Initializes various components, connects signals, and sets up the initial game state.
 - **Actions**:
   - Adds the "effects" node as a child with a black background color.
@@ -36,7 +36,7 @@ func _ready() -> void:
 
 	optionsMenu.connect("back", _on_pause_options_back)
 
-### Function: `_input(event: InputEvent)`
+## Function: `_input(event: InputEvent)`
 - **Description**: Handles input events, specifically the "ui_cancel" action.
 - **Parameters**:
   - `event`: The InputEvent object containing information about the input event.
@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		pause()
 
-### Function: `pause()`
+## Function: `pause()`
 - **Description**: Pauses or resumes the game, showing or hiding the pause menu and options menu accordingly.
 - **Actions**:
   - Toggles the `paused` variable.
@@ -68,7 +68,7 @@ func pause() -> void:
 		pauseMenu.hide()
 		optionsMenu.hide()
 
-### Function: `_on_pause_menu_game_resume()`
+## Function: `_on_pause_menu_game_resume()`
 - **Description**: Callback function for the game resume action in the pause menu.
 - **Actions**:
   - Calls the `pause()` function.
@@ -78,7 +78,7 @@ func _on_pause_menu_game_resume() -> void:
     """
 	pause()
 
-### Function: `_on_pause_menu_quit_to_menu()`
+## Function: `_on_pause_menu_quit_to_menu()`
 - **Description**: Callback function for the quit to menu action in the pause menu.
 - **Actions**:
   - Calls the `pause()` function.
@@ -90,7 +90,7 @@ func _on_pause_menu_quit_to_menu() -> void:
 	pause()
 	get_tree().change_scene_to_file("res://Scenes/UI/Menu/Main/Menu.tscn")
 
-### Function: `_on_pause_menu_options_menu()`
+## Function: `_on_pause_menu_options_menu()`
 - **Description**: Callback function for the options menu action in the pause menu.
 - **Actions**:
   - Hides the pause menu.
@@ -102,7 +102,7 @@ func _on_pause_menu_options_menu() -> void:
 	pauseMenu.hide()
 	optionsMenu.show()
 
-### Function: `_on_pause_options_back()`
+## Function: `_on_pause_options_back()`
 - **Description**: Callback function for the back action in the options menu.
 - **Actions**:
   - Shows the pause menu.

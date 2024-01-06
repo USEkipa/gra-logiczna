@@ -2,7 +2,7 @@ extends Area2D
 
 const SPIKE_DAMAGE = 100
 
-### Function: `_on_body_entered(body)`
+## Function: `_on_body_entered(body)`
 - **Description**: Signal handler called when a physics body enters the area of the spike.
 - **Parameters**:
   - `body`: The physics body that entered the spikes area.

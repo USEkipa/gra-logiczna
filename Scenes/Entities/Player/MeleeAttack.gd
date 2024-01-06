@@ -2,7 +2,7 @@ extends Area2D
 
 @export var MELEE_DAMAGE : int = 50
 
-### Function: `_on_body_entered(body)`
+## Function: `_on_body_entered(body)`
 - **Description**: Signal handler for the "body_entered" signal of the Area2D.
 - **Parameters**:
   - `body`: The object that entered the area.

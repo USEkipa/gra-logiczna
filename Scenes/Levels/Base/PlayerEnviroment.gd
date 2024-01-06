@@ -1,18 +1,18 @@
 extends Node2D
 
-### Constants:
+## Constants:
 - **BULLET_SCENE**: A constant PackedScene representing the PlayerBullet scene, preloaded for efficient instantiation.
 const BULLET_SCENE: PackedScene = preload(
 	"res://Scenes/Entities/Player/Projectiles/PlayerBullet.tscn"
 )
 
-### Variables:
+## Variables:
 - **player**: A reference to the Player node.
 - **projectiles**: A Node2D used to group and manage player bullets.
 @onready var player: Player = $Player
 var projectiles: Node2D = null
 
-### Function: `_ready()`
+## Function: `_ready()`
 - **Description**: Called when the scene is ready. Initializes the projectiles node and connects the "bullet_shot" signal from the player.
 - **Actions**:
   - Creates a new Node2D instance named "Projectiles" and adds it as a child.
@@ -23,7 +23,7 @@ func _ready() -> void:
 	add_child(projectiles, true)
 	player.connect("bullet_shot", bullet_shot)
 
-### Function: `bullet_shot(pos: Vector2, direction: Vector2)`
+## Function: `bullet_shot(pos: Vector2, direction: Vector2)`
 - **Description**: Handles the event when the player shoots a bullet.
 - **Parameters**:
   - `pos`: The position where the bullet is shot.
