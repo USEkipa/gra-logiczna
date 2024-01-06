@@ -8,18 +8,18 @@ signal wind
 ## - **MAX_WIND_SPEED**: A constant representing the maximum wind speed, set to 100.
 const MAX_WIND_SPEED = 100
 
-## Variables:
+
 ## - **baseWindStrenght**: An integer representing the base wind strength derived from the global gravity in the game.
-## - **windStrength**: An exported variable representing the current wind strength.
-## - **animation_player**: An AnimationPlayer node responsible for playing animations.
-## - **characterBodiesInFanArea**: An array storing CharacterBody2D objects within the wind fan area.
-## - **rigidBodiesInFanArea**: An array storing RigidBody2D objects within the wind fan area.
-## - **direction**: A Vector2 representing the direction of the wind.
 var baseWindStrenght: int = Globals.World.GRAVITY
+## - **windStrength**: An exported variable representing the current wind strength.
 @export var windStrength: int = 10
+## - **animation_player**: An AnimationPlayer node responsible for playing animations.
 var animation_player: AnimationPlayer
+## - **characterBodiesInFanArea**: An array storing CharacterBody2D objects within the wind fan area.
 var characterBodiesInFanArea: Array[CharacterBody2D] = []
+## - **rigidBodiesInFanArea**: An array storing RigidBody2D objects within the wind fan area.
 var rigidBodiesInFanArea: Array[RigidBody2D] = []
+## - **direction**: A Vector2 representing the direction of the wind.
 var direction: Vector2
 
 ## Function: `_ready()`
